@@ -4,14 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sketch</title>
+    <title>Project Edu</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
+    <!--******************************
+      p5Js Modules
+    *******************************-->
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
-  </head>
+    
+    <!--******************************
+      Pandora Engine
+    *******************************-->
+    <!-- Components -->
+    <script src="pandora/components/Rect.js"></script>
+    <script src="pandora/components/Vector2.js"></script>
+    
+    <!-- Game Objects -->
+    <script src="pandora/game_objects/GameObject.js"></script>
+    <script src="pandora/game_objects/2d_objects/Object2D.js"></script>
+    <script src="pandora/game_objects/2d_objects/Shape2D.js"></script>
 
+    <!-- Handlers -->
+    <script src="pandora/handlers/GameHandler.js"></script>
+    
+    <!-- Singletons -->
+    <script src="pandora/Enums.js"></script>
+  </head>
+  
   <body>
     <script src="src/sketch.js"></script>
   </body>
