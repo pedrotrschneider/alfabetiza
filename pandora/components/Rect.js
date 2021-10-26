@@ -1,9 +1,7 @@
 class Rect
 {
-    constructor(x, y, w, h)
+    constructor(w, h=w)
     {
-        this.x = x;
-        this.y = y;
         this.w = w;
         this.h = h;
     }
