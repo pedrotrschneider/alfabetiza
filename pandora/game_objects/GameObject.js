@@ -14,10 +14,6 @@ class GameObject
 
     }
 
-
-
-
-
     // Getters
     getChildren()
     {
