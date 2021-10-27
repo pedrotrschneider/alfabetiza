@@ -1,43 +1,46 @@
-class TestObject extends Object2D
+class TestObject extends Sprite2D
 {
-    constructor(name)
+    constructor(name, p5Img)
     {
-        super(name);
+        super(name, p5Img);
 
-        this.position.x = windowWidth / 2;
-        this.position.y = windowHeight / 2;
+        this.position.x = 0;
+        this.position.y = 0;
+        this.texture.width = windowWidth;
+        this.texture.height = windowHeight;
     }
 
     _update(delta)
     {
-        if (this.name == "myTest")
-        {
-            this.position.x -= 1;
-        }
+        this.position.x -= 100 * delta;
     }
 
     _draw(delta)
     {
-        ellipse(0, 0, 100, 100)
+
     }
 }
 
 let test;
+let testImg;
+let testFont;
+
+function preload()
+{
+    testImg = loadImage("/assets/textures/monke.png");
+    testFont = loadFont("/assets/fonts/Lato-Regular.ttf");
+}
 
 function setup()
 {
-    createCanvas(windowWidth, windowHeight);
-    smooth();
     GameHandler.drawDebugFPS(true);
+    GameHandler.setRenderMode(RENDER_MODES.WEBGL);
+    GameHandler.init();
+    textFont(testFont);
 
-    test = new TestObject("myTest");
+    test = new TestObject("mySprite", testImg);
     GameHandler.addRootObject(test);
-
-    test.position = new Vector2(windowWidth / 2, windowHeight / 2);
-    test.scale = Vector2.ONE();
-    test.rotationDegrees = 0;
-
-    test.addChild(new TestObject("myChild"));
+    // print(test)
 }
 
 function draw()
