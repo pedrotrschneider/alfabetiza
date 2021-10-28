@@ -15,6 +15,7 @@ class GameHandler
         this.bDrawDebugFPS = val;
     }
 
+    static gui;
     static init(fps=60)
     {
         if (!this.renderMode) this.renderMode = RENDER_MODES.P2D;
@@ -30,6 +31,8 @@ class GameHandler
         }
         frameRate(fps);
         smooth();
+
+        this.gui = createGui();
     }
 
     static instanceGameObject(obj)
@@ -62,6 +65,7 @@ class GameHandler
             fill(0);
             text("FPS: " + frameRate(), 10, 20);
         }
+        drawGui();
 
         for (let i = 0; i < this.rootObjects.length; i++)
             this.rootObjects[i].draw(this.delta);
