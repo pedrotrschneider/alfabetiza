@@ -15,7 +15,7 @@ class GameHandler
         this.bDrawDebugFPS = val;
     }
 
-    static init(fps=60)
+    static init(fps = 60)
     {
         if (!this.renderMode) this.renderMode = RENDER_MODES.P2D;
         switch (this.renderMode)

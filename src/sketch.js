@@ -1,29 +1,33 @@
-class TestObject extends Sprite2D
+class TestObject extends Button
 {
-    constructor(name, p5Img)
-    {
-        super(name, p5Img);
-
-        this.position.x = 0;
-        this.position.y = 0;
-        this.texture.width = windowWidth;
-        this.texture.height = windowHeight;
-    }
+    // constructor(name)
+    // {
+    //     super(name);
+    // }
 
     _update(delta)
     {
-        this.position.x -= 100 * delta;
+
     }
 
     _draw(delta)
     {
 
     }
+
+    _onMousePressed() {
+        print("Hello")
+    }
+
+    _onMouseOver() {
+        print("over")
+    }
 }
 
-let test;
+let test, test2;
 let testImg;
 let testFont;
+let testButton, testSlider;
 
 function preload()
 {
@@ -38,9 +42,12 @@ function setup()
     GameHandler.init();
     textFont(testFont);
 
-    test = new TestObject("mySprite", testImg);
+    test = new TestObject("myTest");
     GameHandler.addRootObject(test);
-    // print(test)
+    test.setLabel("hello");
+
+    test2 = new TestObject("myTest2");
+    test.addChild(test2);
 }
 
 function draw()
