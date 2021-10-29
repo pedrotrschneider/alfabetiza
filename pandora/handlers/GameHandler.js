@@ -5,6 +5,7 @@ const GameHandler = {
     renderMode: null,
 
     bDrawDebugFPS: false,
+    debugFpsLabel: null,
 
     prevMillis: 0,
     delta: 0,
@@ -34,6 +35,9 @@ const GameHandler = {
         }
         frameRate(fps);
         smooth();
+
+        if (this.bDrawDebugFPS)
+            this.debugFpsLabel = new Label(`FPS: ${frameRate()}`)
     },
 
     instanceGameObject: function(obj)
@@ -49,6 +53,7 @@ const GameHandler = {
 
     update: function()
     {
+        if (this.bDrawDebugFPS) this.debugFpsLabel.setText(`FPS: ${frameRate()}`)
         this.delta = (millis() - this.prevMillis) / 1000;
         for (let i = 0; i < this.rootObjects.length; i++)
             this.rootObjects[i].update(this.delta);
@@ -57,13 +62,6 @@ const GameHandler = {
     draw: function()
     {
         if (this.renderMode == RENDER_MODES.WEBGL) translate(-windowWidth / 2, -windowHeight / 2);
-        if (this.bDrawDebugFPS)
-        {
-            textSize(12);
-            noStroke();
-            fill(0);
-            text("FPS: " + frameRate(), 10, 20);
-        }
 
         for (let i = 0; i < this.rootObjects.length; i++)
             this.rootObjects[i].draw(this.delta);
