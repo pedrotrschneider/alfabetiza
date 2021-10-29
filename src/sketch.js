@@ -1,38 +1,10 @@
-class TestObject extends Button
-{
-    // constructor(name)
-    // {
-    //     super(name);
-    // }
-
-    _update(delta)
-    {
-
-    }
-
-    _draw(delta)
-    {
-
-    }
-
-    _onMousePressed() {
-        print("Hello")
-    }
-
-    _onMouseOver() {
-        print("over")
-    }
-}
-
 let test, test2;
-let testImg;
-let testFont;
-let testButton, testSlider;
 
 function preload()
 {
-    testImg = loadImage("/assets/textures/monke.png");
-    testFont = loadFont("/assets/fonts/Lato-Regular.ttf");
+    AssetHandler.loadTexture("monke", "/assets/textures/monke.png");
+    AssetHandler.loadFont("Lato", "/assets/fonts/Lato-Regular.ttf");
+    AssetHandler.loadAudio("bonk", "/assets/audio/thonk.wav");
 }
 
 function setup()
@@ -40,14 +12,10 @@ function setup()
     GameHandler.drawDebugFPS(true);
     GameHandler.setRenderMode(RENDER_MODES.WEBGL);
     GameHandler.init();
-    textFont(testFont);
+    textFont(AssetHandler.getP5FontByName("Lato"));
 
-    test = new TestObject("myTest");
+    test = new Sprite2D("mySprite", AssetHandler.getP5ImageByName("monke"));
     GameHandler.addRootObject(test);
-    test.setLabel("hello");
-
-    test2 = new TestObject("myTest2");
-    test.addChild(test2);
 }
 
 function draw()

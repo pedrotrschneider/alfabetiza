@@ -4,8 +4,7 @@ class Sprite2D extends Object2D
     {
         super(name);
 
-        if (p5Image)
-            this.texture = new Texture(p5Image, p5Image.width, p5Image.height);
+        this.P5Image = p5Image;
     }
 
     draw(delta)
@@ -15,7 +14,7 @@ class Sprite2D extends Object2D
         rotate(this.rotationDegrees);
         scale(this.scale.x, this.scale.y);
 
-        image(this.texture.image, this.position.x, this.position.y, this.texture.width, this.texture.height);
+        image(this.P5Image, this.position.x, this.position.y, this.P5Image.width, this.P5Image.height);
 
         this._draw(delta);
 
