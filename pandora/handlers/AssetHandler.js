@@ -1,8 +1,9 @@
-class AssetHandler
-{
-    static cachedTextures = [];
+const AssetHandler = {
+    cachedTextures: [],
+    cachedAudio: [],
+    cachedFonts: [],
 
-    static loadTexture(name, link)
+    loadTexture: function(name, link)
     {
         let textRes = new TextureRes(name, null);
         this.cachedTextures.push(textRes);
@@ -10,9 +11,9 @@ class AssetHandler
         {
             textRes.P5Image = img;
         });
-    }
+    },
 
-    static getTextureByName(name)
+    getTextureByName: function(name)
     {
         for (let i = 0; i < this.cachedTextures.length; i++)
         {
@@ -22,9 +23,9 @@ class AssetHandler
             }
         }
         return null;
-    }
+    },
 
-    static getP5ImageByName(name)
+    getP5ImageByName: function(name)
     {
         for (let i = 0; i < this.cachedTextures.length; i++)
         {
@@ -34,17 +35,15 @@ class AssetHandler
             }
         }
         return null;
-    }
+    },
 
-    static cachedAudio = [];
-
-    static loadAudio(name, link)
+    loadAudio: function(name, link)
     {
         let audio = createAudio(link);
         this.cachedAudio.push(new AudioRes(name, audio));
-    }
+    },
 
-    static getAudioByName(name)
+    getAudioByName: function(name)
     {
         for (let i = 0; i < this.cachedAudio.length; i++)
         {
@@ -54,9 +53,9 @@ class AssetHandler
             }
         }
         return null;
-    }
+    },
 
-    static getP5AudioByName(name)
+    getP5AudioByName: function(name)
     {
         for (let i = 0; i < this.cachedAudio.length; i++)
         {
@@ -66,11 +65,9 @@ class AssetHandler
             }
         }
         return null;
-    }
+    },
 
-    static cachedFonts = [];
-    
-    static loadFont(name, link)
+    loadFont: function(name, link)
     {
         let fontRes = new FontRes(name, null);
         this.cachedFonts.push(fontRes);
@@ -78,9 +75,9 @@ class AssetHandler
         {
             fontRes.P5Font = font;
         })
-    }
+    },
 
-    static getFontByName(name)
+    getFontByName: function(name)
     {
         for (let i = 0; i < this.cachedFonts.length; i++)
         {
@@ -90,9 +87,9 @@ class AssetHandler
             }
         }
         return null;
-    }
+    },
 
-    static getP5FontByName(name)
+    getP5FontByName: function(name)
     {
         for (let i = 0; i < this.cachedFonts.length; i++)
         {
@@ -103,4 +100,4 @@ class AssetHandler
         }
         return null;
     }
-}
+};

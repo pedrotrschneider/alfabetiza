@@ -1,21 +1,25 @@
-class GameHandler
-{
-    static rootObjects = []
-    static nextId = 0;
+const GameHandler = {
+    nextId: 0,
+    rootObjects: [],
 
-    static renderMode = null;
-    static setRenderMode(mode)
+    renderMode: null,
+
+    bDrawDebugFPS: false,
+
+    prevMillis: 0,
+    delta: 0,
+
+    setRenderMode: function(mode)
     {
         this.renderMode = mode;
-    }
+    },
 
-    static bDrawDebugFPS = false;
-    static drawDebugFPS(val)
+    drawDebugFPS(val)
     {
         this.bDrawDebugFPS = val;
-    }
+    },
 
-    static init(fps = 60)
+    init: function(fps = 60)
     {
         if (!this.renderMode) this.renderMode = RENDER_MODES.P2D;
         switch (this.renderMode)
@@ -30,29 +34,27 @@ class GameHandler
         }
         frameRate(fps);
         smooth();
-    }
+    },
 
-    static instanceGameObject(obj)
+    instanceGameObject: function(obj)
     {
         obj.id = this.nextId;
         this.nextId++;
-    }
+    },
 
-    static addRootObject(obj)
+    addRootObject: function(obj)
     {
         this.rootObjects.push(obj);
-    }
+    },
 
-    static prevMillis = 0;
-    static delta = 0;
-    static update()
+    update: function()
     {
         this.delta = (millis() - this.prevMillis) / 1000;
         for (let i = 0; i < this.rootObjects.length; i++)
             this.rootObjects[i].update(this.delta);
-    }
+    },
 
-    static draw()
+    draw: function()
     {
         if (this.renderMode == RENDER_MODES.WEBGL) translate(-windowWidth / 2, -windowHeight / 2);
         if (this.bDrawDebugFPS)
