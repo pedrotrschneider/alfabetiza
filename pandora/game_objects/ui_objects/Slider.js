@@ -9,5 +9,16 @@ class Slider extends UIObject
         this.setStyle(DEFAULT_STYLE);
 
         this.connectCallbacks();
+        this.P5Element.changed(this.onChanged);
+    }
+
+    _onChanged()
+    {
+        console.log(this.getValue());
+    }
+
+    onChanged()
+    {
+        this.pandoraObject._onChanged();
     }
 }
