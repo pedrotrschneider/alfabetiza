@@ -61,10 +61,16 @@ const GameHandler = {
 
     draw: function()
     {
-        if (this.renderMode == RENDER_MODES.WEBGL) translate(-windowWidth / 2, -windowHeight / 2);
+        if (this.renderMode == RENDER_MODES.WEBGL)
+            translate(-windowWidth / 2, -windowHeight / 2);
 
         for (let i = 0; i < this.rootObjects.length; i++)
             this.rootObjects[i].draw(this.delta);
         this.prevMillis = millis();
     }
+}
+
+function windowResized()
+{
+    resizeCanvas(windowWidth, windowHeight);
 }
