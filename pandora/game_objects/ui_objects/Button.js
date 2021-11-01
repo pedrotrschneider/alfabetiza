@@ -8,7 +8,8 @@ class Button extends UIObject
         this.label = label;
         this.P5Element.html(label);
         this.P5Element.position(0, 0);
-        
+
+        this.setStyle(DEFAULT_STYLE);
 
         this.connectCallbacks();
     }

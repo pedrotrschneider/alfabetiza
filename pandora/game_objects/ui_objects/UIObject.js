@@ -10,19 +10,21 @@ class UIObject extends GameObject
 
     connectCallbacks()
     {
-        this.P5Element.mousePressed(this._onMousePressed);
-        this.P5Element.doubleClicked(this._onDoubleClicked);
-        this.P5Element.mouseWheel(this._onMouseWheel);
-        this.P5Element.mouseReleased(this._onMouseReleased);
-        this.P5Element.mouseClicked(this._onMouseClicked);
-        this.P5Element.mouseMoved(this._onMouseMoved);
-        this.P5Element.mouseOver(this._onMouseOver);
-        this.P5Element.mouseOut(this._onMouseOut);
-        this.P5Element.touchStarted(this._onTouchStarted);
-        this.P5Element.touchMoved(this._onTouchMoved);
-        this.P5Element.touchEnded(this._onTouchEnded);
-        this.P5Element.dragOver(this._onDragOver);
-        this.P5Element.dragLeave(this._onDragLeave);
+        this.P5Element.mousePressed(this.onMousePressed);
+        this.P5Element.doubleClicked(this.onDoubleClicked);
+        this.P5Element.mouseWheel(this.onMouseWheel);
+        this.P5Element.mouseReleased(this.onMouseReleased);
+        this.P5Element.mouseClicked(this.onMouseClicked);
+        this.P5Element.mouseMoved(this.onMouseMoved);
+        this.P5Element.mouseOver(this.onMouseOver);
+        this.P5Element.mouseOut(this.onMouseOut);
+        this.P5Element.touchStarted(this.onTouchStarted);
+        this.P5Element.touchMoved(this.onTouchMoved);
+        this.P5Element.touchEnded(this.onTouchEnded);
+        this.P5Element.dragOver(this.onDragOver);
+        this.P5Element.dragLeave(this.onDragLeave);
+
+        this.P5Element.pandoraObject = this;
     }
 
     // Setters
@@ -88,6 +90,7 @@ class UIObject extends GameObject
     }
 
     // Callbacks
+    // NOTE all callbacks change the scope to the P5 element
     _onMousePressed()
     {
 
@@ -151,5 +154,72 @@ class UIObject extends GameObject
     _onDragLeave()
     {
 
+    }
+
+    // -----------------------------------------------
+
+    onMousePressed()
+    {
+        this.pandoraObject._onMousePressed();
+    }
+
+    onDoubleClicked()
+    {
+        this.pandoraObject._onDoubleClicked();
+    }
+
+    onMouseWheel()
+    {
+        this.pandoraObject._onMouseWheel();
+    }
+
+    onMouseReleased()
+    {
+        this.pandoraObject._onMouseReleased();
+    }
+
+    onMouseClicked()
+    {
+        this.pandoraObject._onMouseClicked();
+    }
+
+    onMouseMoved()
+    {
+        this.pandoraObject._onMouseMoved();
+    }
+
+    onMouseOver()
+    {
+        this.pandoraObject._onMouseOver();
+    }
+
+    onMouseOut()
+    {
+        this.pandoraObject._onMouseOut();
+    }
+
+    onTouchStarted()
+    {
+        this.pandoraObject._onTouchStarted();
+    }
+
+    onTouchMoved()
+    {
+        this.pandoraObject._onTouchMoved();
+    }
+
+    onTouchEnded()
+    {
+        this.pandoraObject._onTouchEnded();
+    }
+
+    onDragOver()
+    {
+        this.pandoraObject._onDragOver();
+    }
+
+    onDragLeave()
+    {
+        this.pandoraObject._onDragLeave();
     }
 }
