@@ -14,8 +14,8 @@ function setup()
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
 
-    test = new Sprite2D("mySprite", AssetHandler.getP5ImageByName("monke"));
-    GameHandler.addRootObject(test);
+    test2 = new Input("myInput", "", "text");
+    GameHandler.addRootObject(test2);
 }
 
 function draw()
@@ -23,9 +23,4 @@ function draw()
     background(220);
     GameHandler.update();
     GameHandler.draw();
-}
-
-function windowResized()
-{
-    resizeCanvas(windowWidth, windowHeight);
 }
