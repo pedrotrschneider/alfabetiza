@@ -32,11 +32,11 @@ class Shape2D extends Object2D
         {
             case SHAPES.RECT:
                 rectMode(this.shapeMode);
-                rect(this.position.x, this.position.y, this.shape.w, this.shape.h);
+                rect(0, 0, this.shape.w, this.shape.h);
                 break;
             case SHAPES.ELLIPSE:
                 ellipseMode(this.shapeMode);
-                ellipse(this.position.x, this.position.y, this.shape.rx, this.shape.ry);
+                ellipse(0, 0, this.shape.rx, this.shape.ry);
         }
 
         this._draw(delta);

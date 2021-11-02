@@ -1,4 +1,5 @@
 let test, test2;
+let monke;
 
 function preload()
 {
@@ -14,7 +15,12 @@ function setup()
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
 
-    test2 = new Input("myInput", "", "text");
+    monke = AssetHandler.getP5ImageByName("monke");
+    let sf = new SpriteFrames();
+    sf.addAnimation("monke", monke, 4, 4, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 1);
+    test2 = new AnimatedSprite2D("myAnimSprite", null, sf);
+    test2.play();
+    test2.setCurrentFPS(1);
     GameHandler.addRootObject(test2);
 }
 

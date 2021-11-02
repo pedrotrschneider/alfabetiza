@@ -14,7 +14,7 @@ class Sprite2D extends Object2D
         rotate(this.rotationDegrees);
         scale(this.scale.x, this.scale.y);
 
-        image(this.P5Image, this.position.x, this.position.y, this.P5Image.width, this.P5Image.height);
+        image(this.P5Image, 0, 0, this.P5Image.width, this.P5Image.height);
 
         this._draw(delta);
 
