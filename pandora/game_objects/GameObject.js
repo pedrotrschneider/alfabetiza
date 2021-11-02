@@ -9,9 +9,9 @@ class GameObject
         this.children = [];
         this.parented = false;
         this.parent = null;
+        this.isOnTree = false;
 
         GameHandler.instanceGameObject(this);
-
     }
 
     // Getters
@@ -46,6 +46,18 @@ class GameObject
         child.parent = this;
         child.parented = true;
         this.children.push(child);
+
+        if (this.isOnTree) child.setup();
+    }
+
+    setup()
+    {
+        this.isOnTree = true;
+        this._setup();
+        for (let i = 0; i < this.children.length; i++)
+        {
+            this.children[i].setup();
+        }
     }
 
     update(delta)
@@ -63,6 +75,11 @@ class GameObject
     }
 
     // Callbacks
+    _setup()
+    {
+
+    }
+
     _update(delta)
     {
 

@@ -49,6 +49,7 @@ const GameHandler = {
     addRootObject: function(obj)
     {
         this.rootObjects.push(obj);
+        obj.setup();
     },
 
     update: function()

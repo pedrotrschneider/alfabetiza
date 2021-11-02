@@ -1,6 +1,14 @@
 let test, test2;
 let monke;
 
+class TestObject extends Object2D
+{
+    _setup()
+    {
+        console.log(this.name);
+    }
+}
+
 function preload()
 {
     AssetHandler.loadTexture("monke", "/assets/textures/monke.png");
@@ -15,13 +23,11 @@ function setup()
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
 
-    monke = AssetHandler.getP5ImageByName("monke");
-    let sf = new SpriteFrames();
-    sf.addAnimation("monke", monke, 4, 4, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 1);
-    test2 = new AnimatedSprite2D("myAnimSprite", null, sf);
-    test2.play();
-    test2.setCurrentFPS(1);
-    GameHandler.addRootObject(test2);
+    test = new TestObject("myTest");
+    test.addChild(new TestObject("myTest2"));
+    GameHandler.addRootObject(test);
+    test.addChild(new TestObject("myTest3"))
+
 }
 
 function draw()
