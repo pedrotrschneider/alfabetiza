@@ -1,6 +1,6 @@
 class SpriteAnimation
 {
-    constructor(name = "default", p5Image, rows, cols, indices)
+    constructor(name = "default", p5Image, rows, cols, indices, fps)
     {
         this.name = name;
         this.fullP5Image = p5Image;
@@ -8,7 +8,7 @@ class SpriteAnimation
         this.columns = cols;
         this.indices = indices;
         this.numFrames = this.indices.length;
-        this.frameTime = 1 / 24;
+        this.frameTime = 1 / fps;
 
         this.frames = [];
         for (let i = 0; i < this.numFrames; i++)
@@ -94,9 +94,9 @@ class SpriteFrames
         return null;
     }
 
-    addAnimation(name, p5Image, rows, cols, indices)
+    addAnimation(name, p5Image, rows, cols, indices, fps = 24)
     {
-        this.animations.push(new SpriteAnimation(name, p5Image, rows, cols, indices));
+        this.animations.push(new SpriteAnimation(name, p5Image, rows, cols, indices, fps));
         this.numAnimations++;
     }
 }
