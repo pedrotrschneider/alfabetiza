@@ -1,11 +1,26 @@
 let test, test2;
 let monke;
 
-class TestObject extends Object2D
+class TestAudio extends AudioPlayer
+{
+
+}
+
+class TestButton extends Button
 {
     _setup()
     {
-        console.log(this.name);
+        this.setPosition(100, 100);
+    }
+
+    _onMousePressed()
+    {
+        this.getParent().play();
+    }
+
+    _onMouseReleased()
+    {
+        this.getParent().stop();
     }
 }
 
@@ -14,6 +29,7 @@ function preload()
     AssetHandler.loadTexture("monke", "/assets/textures/monke.png");
     AssetHandler.loadFont("Lato", "/assets/fonts/Lato-Regular.ttf");
     AssetHandler.loadAudio("bonk", "/assets/audio/thonk.wav");
+    AssetHandler.loadAudio("music", "/assets/audio/music.ogg");
 }
 
 function setup()
@@ -23,11 +39,10 @@ function setup()
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
 
-    test = new TestObject("myTest");
-    test.addChild(new TestObject("myTest2"));
+    test = new TestAudio("myTestAudio", AssetHandler.getP5AudioByName("music"));
+    test.autoplay();
+    test.addChild(new TestButton("myTestButton", "play audio"));
     GameHandler.addRootObject(test);
-    test.addChild(new TestObject("myTest3"))
-
 }
 
 function draw()
