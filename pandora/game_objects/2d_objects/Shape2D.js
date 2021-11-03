@@ -1,3 +1,24 @@
+/************************************************************************
+ * Shape2D.js
+ ************************************************************************
+ * Copyright (c) 2021 Pedro Tonini Rosenberg Schneider.
+ *
+ * This file is part of Pandora.
+ *
+ * Pandora is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Pandora is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *     
+ * You should have received a copy of the GNU General Public License     
+ * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
+ *************************************************************************/
+
 class Shape2D extends Object2D
 {
     constructor(name, shapeType = null, shape = null)
@@ -25,9 +46,9 @@ class Shape2D extends Object2D
         fill(this.fillColor);
         strokeWeight(this.strokeWeight)
         stroke(this.strokeColor);
-        
+
         if (this.noFill) noFill();
-        if(this.noStroke) noStroke();
+        if (this.noStroke) noStroke();
         switch (this.shapeType)
         {
             case SHAPES.RECT:
