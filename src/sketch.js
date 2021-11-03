@@ -1,26 +1,39 @@
-let test, test2;
-let monke;
+let test;
 
-class TestAudio extends AudioPlayer
+class TestObject extends Object2D
 {
+    _setup()
+    {
+        this.currTime = 0;
+        this.duration = 3;
+        this.position.y = 100;
+        this.position.x = 0;
+        this.targetXPos = 200;
 
+        this.playing = false;
+    }
+
+    _update(delta)
+    {
+        if (this.playing)
+        {
+            this.currTime = min(this.currTime + delta, this.duration);
+        }
+        this.position.x = Easings.Elastic.easeOut(0, this.currTime, 0, 300, this.duration);
+    }
+
+    _draw()
+    {
+        ellipse(0, 0, 20);
+    }
 }
 
 class TestButton extends Button
 {
-    _setup()
-    {
-        this.setPosition(100, 100);
-    }
-
     _onMousePressed()
     {
-        this.getParent().play();
-    }
-
-    _onMouseReleased()
-    {
-        this.getParent().stop();
+        this.getParent().playing = true;
+        this.getParent().currTime = 0;
     }
 }
 
@@ -39,9 +52,10 @@ function setup()
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
 
-    test = new TestAudio("myTestAudio", AssetHandler.getP5AudioByName("music"));
-    test.autoplay();
-    test.addChild(new TestButton("myTestButton", "play audio"));
+    test = new TestObject("myTest");
+    but = new TestButton("myTestButton", "play");
+    but.setPosition(0, 200);
+    test.addChild(but);
     GameHandler.addRootObject(test);
 }
 
