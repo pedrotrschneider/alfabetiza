@@ -32,6 +32,9 @@ class GameObject
         this.parent = null;
         this.isOnTree = false;
 
+        this.signals = [];
+        this.initSignals();
+
         GameHandler.instanceGameObject(this);
     }
 
@@ -62,6 +65,37 @@ class GameObject
     }
 
     // Methods
+    addSignal(name)
+    {
+        this.signals.push(new Signal(name));
+    }
+
+    connect(signalName, target, callback)
+    {
+        for (let i = 0; i < this.signals.length; i++)
+        {
+            if (this.signals[i].name == signalName)
+            {
+                this.signals[i].targets.push(target);
+                this.signals[i].callbacks.push(callback);
+                return;
+            }
+        }
+    }
+
+    emitSignal(signalName, ...params)
+    {
+        for (let i = 0; i < this.signals.length; i++)
+        {
+            if (this.signals[i].name == signalName)
+            {
+                for (let j = 0; j < this.signals[i].callbacks.length; j++)
+                    this.signals[i].targets[j][this.signals[i].callbacks[j]](...params);
+                return;
+            }
+        }
+    }
+
     addChild(child)
     {
         child.parent = this;
@@ -69,6 +103,11 @@ class GameObject
         this.children.push(child);
 
         if (this.isOnTree) child.setup();
+    }
+
+    initSignals()
+    {
+        this._initSignals();
     }
 
     setup()
@@ -96,6 +135,11 @@ class GameObject
     }
 
     // Callbacks
+    _initSignals()
+    {
+
+    }
+
     _setup()
     {
 
