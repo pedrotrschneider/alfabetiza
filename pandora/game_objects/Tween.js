@@ -151,12 +151,90 @@ class Tween extends GameObject
         }
     }
 
-    play()
+    start()
     {
         for (let i = 0; i < this.tweenData.length; i++)
-        {
             this.tweenData[i].playing = true;
+    }
+
+    startByIndex(idx)
+    {
+        if (idx < 0 && idx >= this.tweenData.length) return;
+        this.tweenData[idx].playing = true;
+    }
+
+    stopAll()
+    {
+        for (let i = 0; i < this.tweenData.length; i++)
+            this.tweenData[i].playing = false;
+    }
+
+    stopByIndex(idx)
+    {
+        if (idx < 0 && idx >= this.tweenData.length) return;
+        this.tweenData[idx].playing = false;
+    }
+
+    resumeAll()
+    {
+        for (let i = 0; i < this.tweenData.length; i++)
+            this.tweenData[i].playing = true;
+    }
+
+    resumeByIndex(idx)
+    {
+        if (idx < 0 && idx >= this.tweenData.length) return;
+        this.tweenData[idx].playing = true;
+    }
+
+    resetAll()
+    {
+        this.doneTweens = 0;
+        this.done = false;
+        for (let i = 0; i < this.tweenData.length; i++)
+        {
+            this.tweenData[i].t = 0;
+            this.tweenData[i].done = false;
         }
+    }
+
+    resetByIndex(idx)
+    {
+        if (idx < 0 && idx >= this.tweenData.length) return;
+        this.doneTweens--;
+        this.done = false;
+        this.tweenData[idx].t = 0;
+        this.tweenData[idx].done = false;
+    }
+
+    removeAll()
+    {
+        while (this.tweenData.length > 0)
+            this.tweenData.pop();
+    }
+
+    removeByIndex(idx)
+    {
+        if (idx < 0 && idx >= this.tweenData.length) return;
+        this.tweenData.splice(idx, 1);
+    }
+
+    seekAll(time)
+    {
+        if (time < 0) return;
+        for (let i = 0; i < this.tweenData.length; i++)
+            this.tweenData[i].t = min(time, this.tweenData[i].duration);
+    }
+
+    seekByIndex(idx, time)
+    {
+        if (idx < 0 && idx >= this.tweenData.length) return;
+        this.tweenData[idx].t = min(time, this.tweenData[idx].duration);
+    }
+
+    allDone()
+    {
+        this.done = true;
     }
 
     update(delta)
@@ -182,10 +260,5 @@ class Tween extends GameObject
         this._update(delta);
         for (let i = 0; i < this.children.length; i++)
             this.children[i].update(delta);
-    }
-
-    allDone()
-    {
-        this.done = true;
     }
 }
