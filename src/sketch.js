@@ -28,11 +28,6 @@ class TestButton extends Button
     {
         this.getParent().getChildByName("myTimer").start();
     }
-
-    _onMouseReleased()
-    {
-        this.getParent().getChildByName("myTimer").stop();
-    }
 }
 
 function preload()
