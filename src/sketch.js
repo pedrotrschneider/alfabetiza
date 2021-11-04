@@ -6,25 +6,27 @@ class TestObject extends Object2D
     {
         this.currTime = 0;
         this.duration = 3;
-        this.position.y = 100;
-        this.position.x = 0;
-        this.targetXPos = 200;
+        this.position.y = 300;
+        this.position.x = 100;
 
-        this.playing = false;
+        this.tween = new Tween("myTween");
+        this.tween.interpolateProperty(this.position, "x", PROPERTY_TYPE.NUMBER, this.position.x, 400, 2, TRANS_TYPE.LINEAR, EASE_TYPE.OUT, 0);
+        // this.tween.interpolateProperty(this.position, "y", PROPERTY_TYPE.NUMBER, this.position.y, 100, 2, TRANS_TYPE.LINEAR, EASE_TYPE.OUT, 0);
+        // this.tween.interpolateProperty(this.position, "y", PROPERTY_TYPE.NUMBER, this.position.y, 100, 2, TRANS_TYPE.SINE, EASE_TYPE.OUT, 0);
+        this.tween.interpolateProperty(this.position, "y", PROPERTY_TYPE.NUMBER, this.position.y, 100, 3, TRANS_TYPE.CUBIC, EASE_TYPE.IN_OUT, 0);
+        // this.tween.interpolateProperty(this.position, "y", PROPERTY_TYPE.NUMBER, this.position.y, 100, 2, TRANS_TYPE.BOUNCE, EASE_TYPE.OUT, 0);
+        // this.tween.interpolateProperty(this.position, "y", PROPERTY_TYPE.NUMBER, this.position.y, 100, 2, TRANS_TYPE.ELASTIC, EASE_TYPE.OUT, 0);
+        this.addChild(this.tween);
     }
 
     _update(delta)
     {
-        if (this.playing)
-        {
-            this.currTime = min(this.currTime + delta, this.duration);
-        }
-        this.position.x = Easings.Elastic.easeOut(0, this.currTime, 0, 300, this.duration);
+        // console.log(this.color)
     }
 
-    _draw()
+    _draw(delta)
     {
-        ellipse(0, 0, 20);
+        ellipse(0, 0, 20, 20);
     }
 }
 
@@ -32,8 +34,7 @@ class TestButton extends Button
 {
     _onMousePressed()
     {
-        this.getParent().playing = true;
-        this.getParent().currTime = 0;
+        this.getParent().tween.play();
     }
 }
 
@@ -47,7 +48,7 @@ function preload()
 
 function setup()
 {
-    GameHandler.drawDebugFPS(true);
+    // GameHandler.drawDebugFPS(true);
     GameHandler.setRenderMode(RENDER_MODES.WEBGL);
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
@@ -57,11 +58,11 @@ function setup()
     but.setPosition(0, 200);
     test.addChild(but);
     GameHandler.addRootObject(test);
+    background(220);
 }
 
 function draw()
 {
-    background(220);
     GameHandler.update();
     GameHandler.draw();
 }
