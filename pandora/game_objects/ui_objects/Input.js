@@ -27,7 +27,8 @@ class Input extends UIObject
 
         this.P5Element = createInput(value, type);
         this.setPosition(0, 0);
-        this.setStyle(DEFAULT_STYLE);
+        this.setStyle(STYLE.DEFAULT_STYLE);
+        this.size = new Vector2(200, 30);
 
         this.connectCallbacks();
         this.P5Element.input(this.onInput);

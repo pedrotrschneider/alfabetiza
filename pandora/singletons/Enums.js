@@ -55,7 +55,11 @@ const RENDER_MODES = {
     WEBGL: 2,
 };
 
-const DEFAULT_STYLE = {
-    "font-family": "Lato",
-    "font-size": "12px",
-};
+const STYLE = {
+    DEFAULT_FONT_SIZE: 20,
+
+    DEFAULT_STYLE:
+    {
+        "font-family": "Lato",
+    },
+}

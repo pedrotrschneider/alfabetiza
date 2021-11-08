@@ -27,7 +27,7 @@ class Radio extends UIObject
 
         this.P5Element = createRadio();
         this.setPosition(10, 10);
-        this.setStyle(DEFAULT_STYLE);
+        this.setStyle(STYLE.DEFAULT_STYLE);
         this.multiLine = false;
 
         this.connectCallbacks();
