@@ -27,7 +27,7 @@ class ColorPicker extends UIObject
 
         this.P5Element = createColorPicker(color);
         this.setPosition(0, 0);
-        this.setStyle(DEFAULT_STYLE);
+        this.setStyle(STYLE.DEFAULT_STYLE);
 
         this.connectCallbacks();
     }

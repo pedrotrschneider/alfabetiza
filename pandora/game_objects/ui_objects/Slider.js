@@ -27,7 +27,7 @@ class Slider extends UIObject
         this.P5Element = createSlider(min, max, value, step);
         this.setPosition(0, 0);
         this.setSize(200, 25);
-        this.setStyle(DEFAULT_STYLE);
+        this.setStyle(STYLE.DEFAULT_STYLE);
 
         this.connectCallbacks();
         this.P5Element.changed(this.onChanged);

@@ -27,6 +27,9 @@ class UIObject extends GameObject
 
         this.P5Element = null;
         this.visible = true;
+        this.position = new Vector2(0, 0);
+        this.size = new Vector2(300, 100);
+        this.fontSize = STYLE.DEFAULT_FONT_SIZE;
     }
 
     connectCallbacks()
@@ -51,12 +54,19 @@ class UIObject extends GameObject
     // Setters
     setPosition(x, y)
     {
-        this.P5Element.position(x, y);
+        this.position.x = x;
+        this.position.y = y;
     }
 
     setSize(w, h)
     {
-        this.P5Element.size(w, h);
+        this.size.x = w;
+        this.size.y = h;
+    }
+
+    setFontSize(fs)
+    {
+        this.fontSize = fs;
     }
 
     setVisibility(vis)
@@ -82,7 +92,17 @@ class UIObject extends GameObject
     // Getters
     getPosition()
     {
-        return this.P5Element.position();
+        return this.position;
+    }
+
+    getSize()
+    {
+        return this.size;
+    }
+
+    getFontSize()
+    {
+        return this.fontSize;
     }
 
     getVisibility()
@@ -111,6 +131,24 @@ class UIObject extends GameObject
     }
 
     // Callbacks
+    draw(delta, db)
+    {
+        let ar = db.screenWidth / db.width;
+        let offsetx = (windowWidth - db.screenWidth) / 2;
+        let offsety = (windowHeight - db.screenHeight) / 2;
+        this.P5Element.position(offsetx + this.position.x * ar, offsety + this.position.y * ar);
+        this.P5Element.size(this.size.x * ar, this.size.y * ar);
+
+        this.setStyle(
+        {
+            "font-size": `${this.fontSize * ar}px`
+        });
+
+        this._draw(delta, db);
+        for (let i = 0; i < this.children.length; i++)
+            this.children[i].draw(delta, db);
+    }
+
     _onMousePressed()
     {
 

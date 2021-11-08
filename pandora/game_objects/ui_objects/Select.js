@@ -28,7 +28,7 @@ class Select extends UIObject
         this.P5Element = createSelect();
         this.setPosition(0, 0);
         this.setSize(100, 20);
-        this.setStyle(DEFAULT_STYLE);
+        this.setStyle(STYLE.DEFAULT_STYLE);
 
         this.connectCallbacks();
         this.P5Element.changed(this.onChanged);

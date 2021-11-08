@@ -28,20 +28,20 @@ class Sprite2D extends Object2D
         this.P5Image = p5Image;
     }
 
-    draw(delta)
+    draw(delta, db)
     {
-        push();
-        translate(this.position.x, this.position.y);
-        rotate(this.rotationDegrees);
-        scale(this.scale.x, this.scale.y);
+        db.push();
+        db.translate(this.position.x, this.position.y);
+        db.rotate(this.rotationDegrees);
+        db.scale(this.scale.x, this.scale.y);
 
-        image(this.P5Image, 0, 0, this.P5Image.width, this.P5Image.height);
+        db.image(this.P5Image, 0, 0, this.P5Image.width, this.P5Image.height);
 
-        this._draw(delta);
+        this._draw(delta, db);
 
         for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta);
+            this.children[i].draw(delta, db);
 
-        pop()
+        db.pop();
     }
 }

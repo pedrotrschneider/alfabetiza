@@ -29,7 +29,7 @@ class CheckBox extends UIObject
         this.P5Element = createCheckbox(label, val);
         this.P5Element.position(0, 0);
 
-        this.setStyle(DEFAULT_STYLE);
+        this.setStyle(STYLE.DEFAULT_STYLE);
 
         this.connectCallbacks();
         this.P5Element.changed(this.onChanged);

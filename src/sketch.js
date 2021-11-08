@@ -23,9 +23,9 @@ class TestObject extends Object2D
 
     }
 
-    _draw(delta)
+    _draw(delta, db)
     {
-        if (this.visible) ellipse(0, 0, 20);
+        if (this.visible) db.ellipse(0, 0, 50);
     }
 }
 
@@ -52,9 +52,9 @@ class TestObject2 extends Object2D
 
     }
 
-    _draw(delta)
+    _draw(delta, db)
     {
-        if (this.visible) ellipse(0, 0, 20);
+        if (this.visible) db.ellipse(0, 0, 50);
     }
 }
 
@@ -67,8 +67,8 @@ class TestButton extends Button
 
     _setup()
     {
-        this.setPosition(200, 200);
-        this.setSize(100, 50)
+        this.setPosition(100, 200);
+        this.setSize(150, 50);
     }
 
     _onMousePressed()
@@ -87,8 +87,8 @@ function preload()
 
 function setup()
 {
-    // GameHandler.drawDebugFPS(true);
-    GameHandler.setRenderMode(RENDER_MODES.WEBGL);
+    GameHandler.drawDebugFPS(true);
+    // GameHandler.setRenderMode(RENDER_MODES.WEBGL);
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
 
@@ -96,7 +96,7 @@ function setup()
     but = new TestButton("b1", "Emit signal");
     test.addChild(but);
     GameHandler.addRootObject(test);
-    GameHandler.addRootObject(new TestObject2("myTest2"))
+    GameHandler.addRootObject(new TestObject2("myTest2"));
 }
 
 function draw()
