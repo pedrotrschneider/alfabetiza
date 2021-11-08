@@ -127,11 +127,11 @@ class GameObject
             this.children[i].update(delta);
     }
 
-    draw(delta)
+    draw(delta, db)
     {
-        this._draw(delta);
+        this._draw(delta, db);
         for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta);
+            this.children[i].draw(delta, db);
     }
 
     // Callbacks
@@ -150,7 +150,7 @@ class GameObject
 
     }
 
-    _draw(delta)
+    _draw(delta, db)
     {
 
     }

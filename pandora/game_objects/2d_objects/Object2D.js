@@ -30,17 +30,17 @@ class Object2D extends GameObject
         this.scale = Vector2.ONE();
     }
 
-    draw(delta)
+    draw(delta, db)
     {
-        push();
-        translate(this.position.x, this.position.y);
-        rotate(this.rotationDegrees);
-        scale(this.scale.x, this.scale.y);
-        this._draw(delta);
+        db.push();
+        db.translate(this.position.x, this.position.y);
+        db.rotate(this.rotationDegrees);
+        db.scale(this.scale.x, this.scale.y);
+        this._draw(delta, db);
 
         for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta);
+            this.children[i].draw(delta, db);
 
-        pop()
+        db.pop()
     }
 }

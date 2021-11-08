@@ -36,35 +36,35 @@ class Shape2D extends Object2D
         this.noStroke = false;
     }
 
-    draw(delta)
+    draw(delta, db)
     {
-        push();
-        translate(this.position.x, this.position.y);
-        rotate(this.rotationDegrees);
-        scale(this.scale.x, this.scale.y);
+        db.push();
+        db.translate(this.position.x, this.position.y);
+        db.rotate(this.rotationDegrees);
+        db.scale(this.scale.x, this.scale.y);
 
-        fill(this.fillColor);
-        strokeWeight(this.strokeWeight)
-        stroke(this.strokeColor);
+        db.fill(this.fillColor);
+        db.strokeWeight(this.strokeWeight)
+        db.stroke(this.strokeColor);
 
-        if (this.noFill) noFill();
-        if (this.noStroke) noStroke();
+        if (this.noFill) db.noFill();
+        if (this.noStroke) db.noStroke();
         switch (this.shapeType)
         {
             case SHAPES.RECT:
-                rectMode(this.shapeMode);
-                rect(0, 0, this.shape.w, this.shape.h);
+                db.rectMode(this.shapeMode);
+                db.rect(0, 0, this.shape.w, this.shape.h);
                 break;
             case SHAPES.ELLIPSE:
-                ellipseMode(this.shapeMode);
-                ellipse(0, 0, this.shape.rx, this.shape.ry);
+                db.ellipseMode(this.shapeMode);
+                db.ellipse(0, 0, this.shape.rx, this.shape.ry);
         }
 
-        this._draw(delta);
+        this._draw(delta, db);
 
         for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta);
+            this.children[i].draw(delta, db);
 
-        pop()
+        db.pop()
     }
 }

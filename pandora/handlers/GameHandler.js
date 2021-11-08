@@ -31,9 +31,19 @@ const GameHandler = {
     prevMillis: 0,
     delta: 0,
 
+    db: null,
+    dbWidth: 1920,
+    dbHeight: 1080,
+
     setRenderMode: function(mode)
     {
         this.renderMode = mode;
+    },
+
+    setDoubleBufferSize: function(w, h)
+    {
+        this.dbWidth = w;
+        this.dbHeight = h;
     },
 
     drawDebugFPS(val)
@@ -48,17 +58,29 @@ const GameHandler = {
         {
             case RENDER_MODES.P2D:
                 createCanvas(windowWidth, windowHeight);
+                this.db = createGraphics(this.dbWidth, this.dbHeight);
                 break;
             case RENDER_MODES.WEBGL:
                 createCanvas(windowWidth, windowHeight, WEBGL);
+                this.db = createGraphics(this.dbWidth, this.dbHeight, WEBGL);
+                this.db.smooth();
                 break;
 
         }
         frameRate(fps);
         smooth();
 
+        if (this.renderMode == RENDER_MODES.WEBGL)
+        {
+            translate(-windowWidth / 2, -windowHeight / 2);
+            db.translate(-this.dbWidth / 2, -this.dbHeight / 2);
+        }
+
         if (this.bDrawDebugFPS)
-            this.debugFpsLabel = new Label(`FPS: ${frameRate()}`)
+        {
+            this.debugFpsLabel = new Label("debugFps", `FPS: ${frameRate()}`);
+            this.addRootObject(this.debugFpsLabel);
+        }
     },
 
     instanceGameObject: function(obj)
@@ -73,9 +95,22 @@ const GameHandler = {
         obj.setup();
     },
 
+    upframecount: 0,
+    upframenum: 20,
     update: function()
     {
-        if (this.bDrawDebugFPS) this.debugFpsLabel.setText(`FPS: ${frameRate()}`)
+        if (this.bDrawDebugFPS)
+        {
+            if (frameCount % this.upframenum == 0)
+            {
+                this.debugFpsLabel.setText(`FPS: ${
+                    Math.round(this.upframecount * 1000) / 1000
+                }`);
+                this.upframecount = 0;
+            }
+            else
+                this.upframecount = max(this.upframecount, frameRate());
+        }
         this.delta = (millis() - this.prevMillis) / 1000;
         for (let i = 0; i < this.rootObjects.length; i++)
             this.rootObjects[i].update(this.delta);
@@ -83,11 +118,30 @@ const GameHandler = {
 
     draw: function()
     {
-        if (this.renderMode == RENDER_MODES.WEBGL)
-            translate(-windowWidth / 2, -windowHeight / 2);
-
+        this.db.clear();
         for (let i = 0; i < this.rootObjects.length; i++)
-            this.rootObjects[i].draw(this.delta);
+            this.rootObjects[i].draw(this.delta, this.db);
+
+        this.db.push();
+        this.db.strokeWeight(5);
+        this.db.noFill();
+        this.db.rect(0, 0, this.dbWidth, this.dbHeight);
+        this.db.pop();
+
+        imageMode(CENTER);
+        if (windowWidth / windowHeight < this.dbWidth / this.dbHeight)
+        {
+            this.db.screenWidth = windowWidth;
+            this.db.screenHeight = windowWidth * (this.dbHeight / this.dbWidth);
+        }
+        else
+        {
+            this.db.screenHeight = windowHeight;
+            this.db.screenWidth = windowHeight * (this.dbWidth / this.dbHeight);
+        }
+
+        image(this.db, windowWidth / 2, windowHeight / 2, this.db.screenWidth, this.db.screenHeight);
+
         this.prevMillis = millis();
     }
 }
