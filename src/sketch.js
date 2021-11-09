@@ -4,18 +4,12 @@ class TestObject extends Object2D
 {
     _setup()
     {
-        this.visible = true;
         this.position = new Vector2(100, 100);
-        this.getChildByIndex(0).connect("buttonPressed", this, "_onSignal");
     }
 
     _onSignal(param1, param2, param3, param4)
     {
-        this.visible = !this.visible;
-        console.log(param1);
-        console.log(param2);
-        console.log(param3);
-        console.log(param4);
+        this.setVisibility(!this.getVisibility())
     }
 
     _update(delta)
@@ -25,7 +19,7 @@ class TestObject extends Object2D
 
     _draw(delta, db)
     {
-        if (this.visible) db.ellipse(0, 0, 50);
+        db.ellipse(0, 0, 50);
     }
 }
 
@@ -34,17 +28,7 @@ class TestObject2 extends Object2D
     _setup()
     {
         this.visible = true;
-        this.position = new Vector2(200, 100);
-        but.connect("buttonPressed", this, "_onSignal");
-    }
-
-    _onSignal(param1, param2, param3, param4)
-    {
-        this.visible = !this.visible;
-        console.log(param1);
-        console.log(param2);
-        console.log(param3);
-        console.log(param4);
+        this.position = new Vector2(100, 0);
     }
 
     _update(delta)
@@ -88,15 +72,15 @@ function preload()
 function setup()
 {
     GameHandler.drawDebugFPS(true);
-    // GameHandler.setRenderMode(RENDER_MODES.WEBGL);
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
 
     test = new TestObject("myTest");
     but = new TestButton("b1", "Emit signal");
-    test.addChild(but);
+    but.connect("buttonPressed", test, "_onSignal");
+    GameHandler.addRootObject(but);
     GameHandler.addRootObject(test);
-    GameHandler.addRootObject(new TestObject2("myTest2"));
+    test.addChild(new TestObject2("myTest2"));
 }
 
 function draw()

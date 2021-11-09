@@ -28,10 +28,51 @@ class Object2D extends GameObject
         this.position = Vector2.ZERO();
         this.rotationDegrees = 0;
         this.scale = Vector2.ONE();
+        this.visible = true;
+    }
+
+    show()
+    {
+        this.visible = true;
+
+        for (let i = 0; i < this.children.length; i++)
+        {
+            if(!this.children[i].show) continue;
+            this.children[i].show();
+        }
+    }
+
+    hide()
+    {
+        this.visible = false;
+
+        for (let i = 0; i < this.children.length; i++)
+        {
+            if(!this.children[i].hide) continue;
+            this.children[i].hide();
+        }
+    }
+
+    setVisibility(val)
+    {
+        this.visible = val;
+
+        for (let i = 0; i < this.children.length; i++)
+        {
+            if(!this.children[i].setVisibility) continue;
+            this.children[i].setVisibility(val);
+        }
+    }
+
+    getVisibility()
+    {
+        return this.visible;
     }
 
     draw(delta, db)
     {
+        if (!this.visible) return;
+
         db.push();
         db.translate(this.position.x, this.position.y);
         db.rotate(this.rotationDegrees);

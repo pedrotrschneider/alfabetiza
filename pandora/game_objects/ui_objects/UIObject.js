@@ -116,9 +116,28 @@ class UIObject extends GameObject
     }
 
     // Methods
-    toggleVisibility()
+    show()
     {
-        this.setVisibility(!this.visible);
+        this.visible = true;
+        this.P5Element.show();
+
+        for (let i = 0; i < this.children.length; i++)
+        {
+            if (!this.children[i].show) continue;
+            this.children[i].show();
+        }
+    }
+
+    hide()
+    {
+        this.visible = false;
+        this.P5Element.hide();
+        
+        for (let i = 0; i < this.children.length; i++)
+        {
+            if (!this.children[i].hide) continue;
+            this.children[i].hide();
+        }
     }
 
     addChild(child)
