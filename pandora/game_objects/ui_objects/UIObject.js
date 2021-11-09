@@ -132,7 +132,7 @@ class UIObject extends GameObject
     {
         this.visible = false;
         this.P5Element.hide();
-        
+
         for (let i = 0; i < this.children.length; i++)
         {
             if (!this.children[i].hide) continue;
@@ -150,23 +150,7 @@ class UIObject extends GameObject
     }
 
     // Callbacks
-    draw(delta, db)
-    {
-        let ar = db.screenWidth / db.width;
-        let offsetx = (windowWidth - db.screenWidth) / 2;
-        let offsety = (windowHeight - db.screenHeight) / 2;
-        this.P5Element.position(offsetx + this.position.x * ar, offsety + this.position.y * ar);
-        this.P5Element.size(this.size.x * ar, this.size.y * ar);
-
-        this.setStyle(
-        {
-            "font-size": `${this.fontSize * ar}px`
-        });
-
-        this._draw(delta, db);
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta, db);
-    }
+    
 
     _onMousePressed()
     {
@@ -235,68 +219,117 @@ class UIObject extends GameObject
 
     // -----------------------------------------------
 
+    initSignals()
+    {
+        this.addSignal("mousePressed");
+        this.addSignal("doubleClicked");
+        this.addSignal("mouseWheel");
+        this.addSignal("mouseReleased");
+        this.addSignal("mouseClicked");
+        this.addSignal("mouseMoved");
+        this.addSignal("mouseOver");
+        this.addSignal("mouseOut");
+        this.addSignal("touchStarted");
+        this.addSignal("touchMoved");
+        this.addSignal("touchEnded");
+        this.addSignal("dragOver");
+        this.addSignal("dragLeave");
+        this._initSignals();
+    }
+
+    draw(delta, db)
+    {
+        let ar = db.screenWidth / db.width;
+        let offsetx = (windowWidth - db.screenWidth) / 2;
+        let offsety = (windowHeight - db.screenHeight) / 2;
+        this.P5Element.position(offsetx + this.position.x * ar, offsety + this.position.y * ar);
+        this.P5Element.size(this.size.x * ar, this.size.y * ar);
+
+        this.setStyle(
+        {
+            "font-size": `${this.fontSize * ar}px`
+        });
+
+        this._draw(delta, db);
+        for (let i = 0; i < this.children.length; i++)
+            this.children[i].draw(delta, db);
+    }
+
     onMousePressed()
     {
+        this.pandoraObject.emitSignal("mousePressed");
         this.pandoraObject._onMousePressed();
     }
 
     onDoubleClicked()
     {
+        this.pandoraObject.emitSignal("doubleClicked");
         this.pandoraObject._onDoubleClicked();
     }
 
     onMouseWheel()
     {
+        this.pandoraObject.emitSignal("mouseWheel");
         this.pandoraObject._onMouseWheel();
     }
 
     onMouseReleased()
     {
+        this.pandoraObject.emitSignal("mouseReleased");
         this.pandoraObject._onMouseReleased();
     }
 
     onMouseClicked()
     {
+        this.pandoraObject.emitSignal("mouseClicked");
         this.pandoraObject._onMouseClicked();
     }
 
     onMouseMoved()
     {
+        this.pandoraObject.emitSignal("mouseMoved");
         this.pandoraObject._onMouseMoved();
     }
 
     onMouseOver()
     {
+        this.pandoraObject.emitSignal("mouseOver");
         this.pandoraObject._onMouseOver();
     }
 
     onMouseOut()
     {
+        this.pandoraObject.emitSignal("mouseOut");
         this.pandoraObject._onMouseOut();
     }
 
     onTouchStarted()
     {
+        this.pandoraObject.emitSignal("touchStarted");
         this.pandoraObject._onTouchStarted();
     }
 
     onTouchMoved()
     {
+        this.pandoraObject.emitSignal("touchMoved");
         this.pandoraObject._onTouchMoved();
     }
 
     onTouchEnded()
     {
+        this.pandoraObject.emitSignal("touchEnded");
         this.pandoraObject._onTouchEnded();
     }
 
     onDragOver()
     {
+        this.pandoraObject.emitSignal("dragOver");
         this.pandoraObject._onDragOver();
     }
 
     onDragLeave()
     {
+        this.pandoraObject.emitSignal("dragLeave");
         this.pandoraObject._onDragLeave();
     }
 }

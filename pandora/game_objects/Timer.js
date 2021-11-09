@@ -68,11 +68,18 @@ class Timer extends GameObject
             this.children[i].update(delta);
     }
 
+    initSignals()
+    {
+        this.addSignal("timeout");
+        this._initSignals();
+    }
+
     onFinish()
     {
         if (this.oneShot) this.paused = true
         this.timeLeft = this.duration;
         this._onFinish();
+        this.emitSignal("timeout");
     }
 
     _onFinish()

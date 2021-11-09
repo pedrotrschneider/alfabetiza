@@ -234,7 +234,16 @@ class Tween extends GameObject
 
     allDone()
     {
+        this.emitSignal("tweenAllCompleted");
         this.done = true;
+    }
+
+    initSignals()
+    {
+        this.addSignal("tweenAllCompleted");
+        this.addSignal("tweenCompleted");
+        this.addSignal("tweenStarted");
+        this._initSignals();
     }
 
     update(delta)
@@ -246,12 +255,17 @@ class Tween extends GameObject
             if (!this.tweenData[i].playing) continue;
 
             if (this.tweenData[i].t >= 0)
+            {
                 this.interpolate(this.tweenData[i]);
+            }
 
+            if (this.tweenData[i].t < 0 && this.tweenData[i].t + delta >= 0)
+                this.emitSignal("tweenStarted", this.tweenData[i]);
             this.tweenData[i].t = min(this.tweenData[i].t + delta, this.tweenData[i].duration);
 
             if (!this.tweenData[i].done && this.tweenData[i].t == this.tweenData[i].duration)
             {
+                this.emitSignal("tweenDone", this.tweenData[i]);
                 this.tweenData[i].done = true;
                 this.doneTweens += 1;
             }

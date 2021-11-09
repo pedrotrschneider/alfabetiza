@@ -44,11 +44,6 @@ class TestObject2 extends Object2D
 
 class TestButton extends Button
 {
-    _initSignals()
-    {
-        this.addSignal("buttonPressed");
-    }
-
     _setup()
     {
         this.setPosition(100, 200);
@@ -77,7 +72,7 @@ function setup()
 
     test = new TestObject("myTest");
     but = new TestButton("b1", "Emit signal");
-    but.connect("buttonPressed", test, "_onSignal");
+    but.connect("mousePressed", test, "_onSignal");
     GameHandler.addRootObject(but);
     GameHandler.addRootObject(test);
     test.addChild(new TestObject2("myTest2"));

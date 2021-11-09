@@ -88,8 +88,29 @@ class Radio extends UIObject
         console.log(this.getSelected());
     }
 
+    initSignals()
+    {
+        this.addSignal("mousePressed");
+        this.addSignal("doubleClicked");
+        this.addSignal("mouseWheel");
+        this.addSignal("mouseReleased");
+        this.addSignal("mouseClicked");
+        this.addSignal("mouseMoved");
+        this.addSignal("mouseOver");
+        this.addSignal("mouseOut");
+        this.addSignal("touchStarted");
+        this.addSignal("touchMoved");
+        this.addSignal("touchEnded");
+        this.addSignal("dragOver");
+        this.addSignal("dragLeave");
+
+        this.emitSignal("changed");
+        this._initSignals();
+    }
+
     onChanged()
     {
+        this.pandoraObject.emitSignal("changed");
         this.pandoraObject._onChanged();
     }
 }
