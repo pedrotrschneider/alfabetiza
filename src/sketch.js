@@ -49,11 +49,6 @@ class TestButton extends Button
         this.setPosition(100, 200);
         this.setSize(150, 50);
     }
-
-    _onMousePressed()
-    {
-        this.emitSignal("buttonPressed", 1, 2, 3, 4);
-    }
 }
 
 function preload()

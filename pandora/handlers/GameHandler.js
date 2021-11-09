@@ -92,7 +92,17 @@ const GameHandler = {
     addRootObject: function(obj)
     {
         this.rootObjects.push(obj);
+        obj.isRoot = true;
         obj.setup();
+    },
+
+    removeRootObjectById: function(id)
+    {
+        for (let i = 0; i < this.rootObjects.length; i++)
+        {
+            if (this.rootObjects[i].id == id)
+                this.rootObjects.splice(i, 1);
+        }
     },
 
     upframecount: 0,

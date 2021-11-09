@@ -149,8 +149,20 @@ class UIObject extends GameObject
         child.P5Element.parent(this.P5Element);
     }
 
+    destroy()
+    {
+        for (let i = 0; i < this.children.length; i++)
+            this.children[i].destroy();
+
+        if (this.P5Element)
+            this.P5Element.remove();
+
+        for (var prop in this)
+            this[prop] = null;
+    }
+
     // Callbacks
-    
+
 
     _onMousePressed()
     {

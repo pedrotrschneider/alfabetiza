@@ -31,6 +31,7 @@ class GameObject
         this.parented = false;
         this.parent = null;
         this.isOnTree = false;
+        this.isRoot = false;
 
         this.signals = [];
         this.initSignals();
@@ -103,6 +104,37 @@ class GameObject
         this.children.push(child);
 
         if (this.isOnTree) child.setup();
+    }
+
+    removeChildById(id)
+    {
+        for (let i = 0; i < this.children.length; i++)
+        {
+            if (this.children[i].id == id)
+            {
+                this.children.splice(i, 1);
+                return;
+            }
+        }
+    }
+
+    free()
+    {
+        if (this.parented)
+            this.getParent().removeChildById(this.id);
+        else if (this.isRoot)
+            GameHandler.removeRootObjectById(this.id);
+
+        this.destroy();
+    }
+
+    destroy()
+    {
+        for (let i = 0; i < this.children.length; i++)
+            this.children[i].destroy();
+
+        for (var prop in this)
+            this[prop] = null;
     }
 
     initSignals()
