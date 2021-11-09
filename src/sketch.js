@@ -27,7 +27,6 @@ class TestObject2 extends Object2D
 {
     _setup()
     {
-        this.visible = true;
         this.position = new Vector2(100, 0);
     }
 
@@ -38,7 +37,7 @@ class TestObject2 extends Object2D
 
     _draw(delta, db)
     {
-        if (this.visible) db.ellipse(0, 0, 50);
+        db.ellipse(0, 0, 50);
     }
 }
 

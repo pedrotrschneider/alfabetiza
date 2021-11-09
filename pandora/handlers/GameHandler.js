@@ -46,13 +46,28 @@ const GameHandler = {
         this.dbHeight = h;
     },
 
+    pixelDen: 1,
+    setPixelDensity: function(val)
+    {
+        this.pixelDen = val;
+    },
+
+    pixelDenMobile: 2,
+    setPixelDensityMobile: function(val)
+    {
+        this.pixelDenMobile = val;
+    },
+
     drawDebugFPS(val)
     {
         this.bDrawDebugFPS = val;
     },
 
+    isMobile: null,
     init: function(fps = 60)
     {
+        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
         if (!this.renderMode) this.renderMode = RENDER_MODES.P2D;
         switch (this.renderMode)
         {
@@ -67,7 +82,12 @@ const GameHandler = {
                 break;
 
         }
+
         frameRate(fps);
+        if (this.isMobile)
+            pixelDensity(this.pixelDenMobile);
+        else
+            pixelDensity(this.pixelDen);
         smooth();
 
         if (this.renderMode == RENDER_MODES.WEBGL)
