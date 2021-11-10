@@ -52,6 +52,16 @@ class GameObject
         return null;
     }
 
+    getChildById(id)
+    {
+        for (let i = 0; i < this.children.length; i++)
+        {
+            if (this.children[i].id == id)
+                return this.children[i];
+        }
+        return null;
+    }
+
     getChildByName(name)
     {
         for (let i = 0; i < this.children.length; i++)
@@ -106,11 +116,29 @@ class GameObject
         if (this.isOnTree) child.setup();
     }
 
+    removeChildByIndex(idx)
+    {
+        if (idx >= 0 && idx < this.children.length)
+            this.children.splice(idx, 1);
+    }
+
     removeChildById(id)
     {
         for (let i = 0; i < this.children.length; i++)
         {
             if (this.children[i].id == id)
+            {
+                this.children.splice(i, 1);
+                return;
+            }
+        }
+    }
+
+    removeChildByName(name)
+    {
+        for (let i = 0; i < this.children.length; i++)
+        {
+            if (this.children[i].name == name)
             {
                 this.children.splice(i, 1);
                 return;
