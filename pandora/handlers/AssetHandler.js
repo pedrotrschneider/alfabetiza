@@ -19,11 +19,28 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code AssetHandler} singleton provides an interface for the user
+ * to load various types of assets to memory.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @namespace
+ */
 const AssetHandler = {
-    cachedTextures: [],
-    cachedAudio: [],
-    cachedFonts: [],
+    cachedTextures: [], // Cache for TextureRes.
+    cachedAudio: [], // Cache for AudioRes.
+    cachedFonts: [], // Cache for FontRes.
 
+    /**
+     * Loads an image to cache as a TextureRes. Can be loaded from a request to a server
+     * or from a local path to a file. The recomended place to call this function is
+     * inside preload for static loading, but it can also be called dynamically inside
+     * the game.
+     * 
+     * @param {String} name name for the TextureRes to be saved as.
+     * @param {String} link link to load the image file from (server or local).
+     */
     loadTexture: function(name, link)
     {
         let textRes = new TextureRes(name, null);
@@ -34,6 +51,14 @@ const AssetHandler = {
         });
     },
 
+    /**
+     * Query a TextureRes by its name.
+     * 
+     * @param {String} name name of the requested TextureRes.
+     * 
+     * @returns reference to the first loaded TextureRes whose name matches
+     *          the parameter, or null if no TextureRes matches the name.
+     */
     getTextureByName: function(name)
     {
         for (let i = 0; i < this.cachedTextures.length; i++)
@@ -46,6 +71,15 @@ const AssetHandler = {
         return null;
     },
 
+    /**
+     * Query a p5.Image by the name of the TextureRes it was loaded as.
+     * 
+     * @param {String} name name of the TextureRes that holds the desired
+     *                      p5.Image.
+     * 
+     * @returns p5.Image held by the first loaded TextureRes whose name
+     *          matches the parameter, or null if no TextureRes matches the name.
+     */
     getP5ImageByName: function(name)
     {
         for (let i = 0; i < this.cachedTextures.length; i++)
@@ -58,12 +92,29 @@ const AssetHandler = {
         return null;
     },
 
+    /**
+     * Loads an audio to cache as an AudioRes. Can be loaded from a request to a server
+     * or from a local path to a file. The recomended place to call this function is
+     * inside preload for static loading, but it can also be called dynamically inside
+     * the game.
+     * 
+     * @param {String} name name for the AudioRes to be saved as.
+     * @param {String} link link to load the audio file from (server or local).
+     */
     loadAudio: function(name, link)
     {
         let audio = createAudio(link);
         this.cachedAudio.push(new AudioRes(name, audio));
     },
 
+    /**
+     * Query an AudioRes by its name.
+     * 
+     * @param {String} name name of the requested AudioRes.
+     * 
+     * @returns reference to the first loaded AudioRes whose name matches
+     *          the parameter, or null if no AudioRes matches the name.
+     */
     getAudioByName: function(name)
     {
         for (let i = 0; i < this.cachedAudio.length; i++)
@@ -76,6 +127,15 @@ const AssetHandler = {
         return null;
     },
 
+    /**
+     * Query a p5.Audio by the name of the AudioRes it was loaded as.
+     * 
+     * @param {String} name name of the AudioRes that holds the desired
+     *                      p5.Audio.
+     * 
+     * @returns p5.Audio held by the first loaded AudioRes whose name
+     *          matches the parameter, or null if no AudioRes matches the name.
+     */
     getP5AudioByName: function(name)
     {
         for (let i = 0; i < this.cachedAudio.length; i++)
@@ -88,6 +148,15 @@ const AssetHandler = {
         return null;
     },
 
+    /**
+     * Loads a font to cache as FontRes. Can be loaded from a request to a server
+     * or from a local path to a file. The recomended place to call this function is
+     * inside preload for static loading, but it can also be called dynamically inside
+     * the game.
+     * 
+     * @param {String} name name for the FontRes to be saved as.
+     * @param {String} link link to load the font file from (server or local).
+     */
     loadFont: function(name, link)
     {
         let fontRes = new FontRes(name, null);
@@ -98,6 +167,14 @@ const AssetHandler = {
         })
     },
 
+    /**
+     * Query a FontRes by its name.
+     * 
+     * @param {String} name name of the requested FontRes.
+     * 
+     * @returns reference to the first loaded FontRes whose name matches
+     *          the parameter, or null if no FontRes matches the name.
+     */
     getFontByName: function(name)
     {
         for (let i = 0; i < this.cachedFonts.length; i++)
@@ -110,6 +187,15 @@ const AssetHandler = {
         return null;
     },
 
+    /**
+     * Query a p5.Font by the name of the FontRes it was loaded as.
+     * 
+     * @param {String} name name of the FontRes that holds the desired
+     *                      p5.Font.
+     * 
+     * @returns p5.Font held by the first loaded FontRes whose name
+     *          matches the parameter, or null if no FontRes matches the name.
+     */
     getP5FontByName: function(name)
     {
         for (let i = 0; i < this.cachedFonts.length; i++)
