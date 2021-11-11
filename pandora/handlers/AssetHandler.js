@@ -56,8 +56,8 @@ const AssetHandler = {
      * 
      * @param {String} name name of the requested TextureRes.
      * 
-     * @returns reference to the first loaded TextureRes whose name matches
-     *          the parameter, or null if no TextureRes matches the name.
+     * @returns {TextureRes}    reference to the first loaded TextureRes whose name matches
+     *                          the parameter, or null if no TextureRes matches the name.
      */
     getTextureByName: function(name)
     {
@@ -77,8 +77,8 @@ const AssetHandler = {
      * @param {String} name name of the TextureRes that holds the desired
      *                      p5.Image.
      * 
-     * @returns p5.Image held by the first loaded TextureRes whose name
-     *          matches the parameter, or null if no TextureRes matches the name.
+     * @returns {p5.Image}  p5.Image held by the first loaded TextureRes whose name
+     *                      matches the parameter, or null if no TextureRes matches the name.
      */
     getP5ImageByName: function(name)
     {
@@ -112,8 +112,8 @@ const AssetHandler = {
      * 
      * @param {String} name name of the requested AudioRes.
      * 
-     * @returns reference to the first loaded AudioRes whose name matches
-     *          the parameter, or null if no AudioRes matches the name.
+     * @returns {AudioRes}  reference to the first loaded AudioRes whose name matches
+     *                      the parameter, or null if no AudioRes matches the name.
      */
     getAudioByName: function(name)
     {
@@ -133,8 +133,8 @@ const AssetHandler = {
      * @param {String} name name of the AudioRes that holds the desired
      *                      p5.Audio.
      * 
-     * @returns p5.Audio held by the first loaded AudioRes whose name
-     *          matches the parameter, or null if no AudioRes matches the name.
+     * @returns {p5.Audio}  p5.Audio held by the first loaded AudioRes whose name
+     *                      matches the parameter, or null if no AudioRes matches the name.
      */
     getP5AudioByName: function(name)
     {
@@ -172,8 +172,8 @@ const AssetHandler = {
      * 
      * @param {String} name name of the requested FontRes.
      * 
-     * @returns reference to the first loaded FontRes whose name matches
-     *          the parameter, or null if no FontRes matches the name.
+     * @returns {FontRes}   reference to the first loaded FontRes whose name matches
+     *                      the parameter, or null if no FontRes matches the name.
      */
     getFontByName: function(name)
     {
@@ -193,8 +193,8 @@ const AssetHandler = {
      * @param {String} name name of the FontRes that holds the desired
      *                      p5.Font.
      * 
-     * @returns p5.Font held by the first loaded FontRes whose name
-     *          matches the parameter, or null if no FontRes matches the name.
+     * @returns {p5.Font}   p5.Font held by the first loaded FontRes whose name
+     *                      matches the parameter, or null if no FontRes matches the name.
      */
     getP5FontByName: function(name)
     {

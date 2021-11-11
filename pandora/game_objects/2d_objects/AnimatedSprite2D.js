@@ -19,8 +19,27 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * The {@code AnimatedSprite2D} class represents a GameObject that inherits from
+ * Sprite2D and extends its functionality to automatically draw a series of sprites
+ * to the screen forming an animation.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class AnimatedSprite2D extends Sprite2D
 {
+    /**
+     * @constructor
+     * Initializes as AnimatedSprite2D GameObject with the specified parameters.
+     * 
+     * @param {String} name                 name for this AnimatedSprite2D GameObject. 
+     * @param {p5.Image} p5Image            this AnimatedSprite2D's p5.Image to be drawn
+     *                                      to the buffer.
+     * @param {SpriteFrames} spriteFrames   data holding the animation in frames to be
+     *                                      played by this GameObject.
+     */
     constructor(name, p5Image, spriteFrames)
     {
         super(name, p5Image);
@@ -32,7 +51,15 @@ class AnimatedSprite2D extends Sprite2D
         this.timeSinceLastFrame = 0;
     }
 
-    // Setters
+    /**
+     * Sets the current SpriteAnimation to be played based on its index on the list of
+     * animations on SpriteFrames. Does nothing if the index is invalid.
+     * 
+     * ! The index refers to the order you added the animations to this AnimatedSprite2D's
+     * ! SpriteFrames, starting at 0.
+     * 
+     * @param {number} idx  index of the SpriteAnimation on SpriteFrames.
+     */
     setCurrentAnimationByIndex(idx)
     {
         if (idx < this.spriteFrames.numAnimations)
@@ -42,6 +69,12 @@ class AnimatedSprite2D extends Sprite2D
         this.timeSinceLastFrame = 0;
     }
 
+    /**
+     * Sets the current SpriteAnimation to be played based on its name on the list of
+     * animations on SpriteFrames. Does nothing if the name is invalid.
+     * 
+     * @param {String} name name of the SpriteAnimation on SpriteFrames.
+     */
     setCurrentAnimationByName(name)
     {
         this.currentAnimation = this.spriteFrames.getAnimationIndexByName(name);
@@ -49,58 +82,118 @@ class AnimatedSprite2D extends Sprite2D
         this.timeSinceLastFrame = 0;
     }
 
+    /**
+     * Sets the current SpriteAnimation's time between frames.
+     * 
+     * @param {number} time new time in seconds between frames for the
+     *                      current SpriteAnimation.
+     */
     setCurrentFrameTime(time)
     {
         this.getCurrentAnimation().setFrameTime(time);
     }
 
+    /**
+     * Sets the current SpriteAnimation's frames per second.
+     * 
+     * @param {number} fps  new frames per second for the current SpriteAnimation.
+     */
     setCurrentFPS(fps)
     {
         this.getCurrentAnimation().setFPS(fps);
     }
 
-    // Getters
+    /**
+     * Returns the SpriteAnimation with the given index on the list os SpriteAnimations on
+     * this AnimatedSprite2D's SpriteFrames.
+     * 
+     * ! The index refers to the order you added the animations to this AnimatedSprite2D's
+     * ! SpriteFrames, starting at 0.
+     * 
+     * @param {number} idx  index of the desired SpriteAnimation on SpriteFrames' list.
+     * 
+     * @returns {SpriteAnimation}   the desired SpriteAnimation based on the given index,
+     *                              or null if the index is invalid.
+     */
     getAnimationByIndex(idx)
     {
         return this.spriteFrames.getAnimationByIndex(idx);
     }
 
+    /**
+     * Returns the current SpriteAnimation on this AnimatedSprite2D's Sprite Frames.
+     * 
+     * @returns {SpriteAnimation}   the current SpriteAnimation on the SprteFrames.
+     */
     getCurrentAnimation()
     {
         return this.spriteFrames.getAnimationByIndex(this.currentAnimation);
     }
 
+    /**
+     * Rerturns the p5.Image of the current frame on the current SpriteAnimation.
+     * 
+     * @returns {p5.Image}  image of the current frame. 
+     */
     getCurrentFrame()
     {
         return this.getCurrentAnimation().getFrame(this.frame);
     }
 
+    /**
+     * Returns the time in seconds between frames of the current SpriteAnimation.
+     * 
+     * @returns {number}    time in seconds between frames of the current SpriteAnimation.
+     */
     getCurrentFrameTime()
     {
         return this.getCurrentAnimation().getFrameTime();
     }
 
+    /**
+     * Returns the number of frames of the current SpriteAnimation.
+     * 
+     * @returns {number}    number of frames of the current SpriteAnimation.
+     */
     getCurrentNumFrames()
     {
         return this.getCurrentAnimation().getNumFrames();
     }
 
-    // Methods
+    /**
+     * Starts playing the current SpriteAnimation.
+     */
     play()
     {
         this.playing = true;
     }
 
+    /**
+     * Stops playing the current SpriteAnimation.
+     */
     stop()
     {
         this.playing = false;
     }
 
+    /**
+     * Rerturns the playing state of the current SpriteAnimation.
+     * 
+     * @returns {boolean}   true if the animation is playing, false if not. 
+     */
     isPlaying()
     {
         return this.playing;
     }
 
+    /**
+     * @override
+     * Updates the current SpriteAnimation if its playing, and updates this
+     * AnimatedSprite2D's P5Image to the current frame based on the current
+     * SpriteAnimation.
+     * 
+     * @param {number} delta    number of seconds ellapsed since the last frame. 
+     */
     update(delta)
     {
         if (this.playing)
@@ -112,6 +205,7 @@ class AnimatedSprite2D extends Sprite2D
                 this.timeSinceLastFrame = 0;
             }
         }
+        
         this.P5Image = this.getCurrentFrame();
         this._update(delta);
         for (let i = 0; i < this.children.length; i++)

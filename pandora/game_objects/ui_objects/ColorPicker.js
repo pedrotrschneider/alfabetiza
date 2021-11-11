@@ -19,19 +19,52 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * The {@code ColorPicker} class represents an UIObject that holds and HTML color picker.
+ * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class ColorPicker extends UIObject
 {
+    /**
+     * @constructor
+     * Initializes an empty ColorPicker with the specified parameters.
+     * 
+     * @param {String} name             name for the ColorPicker GameObject.
+     * @param {p5.Color, String} color  default color for the ColorPicker
+     */
     constructor(name, color = "#FFFFFF")
     {
         super(name);
 
-        this.P5Element = createColorPicker(color);
-        this.setPosition(0, 0);
-        this.setStyle(STYLE.DEFAULT_STYLE);
+        this.P5Element = createColorPicker(color); // This Button's HTML color picker.
+        this.setPosition(0, 0); // Set the position of the ColorPicker on the secondary buffer.
 
-        this.connectCallbacks();
+        this.setStyle(STYLE.DEFAULT_STYLE); // Set the default style of the UIObject.
+
+        this.connectCallbacks(); // Connect the events of the p5.Element.
     }
 
+    /**
+     * Sets the color of this ColorPicker UIObject.
+     * 
+     * @param {p5.Color, String} col    new color for this ColorPicker.
+     */
+    setColor(col)
+    {
+        this.P5Element.color(col);
+    }
+
+    /**
+     * Returns this ColorPicker's color.
+     * 
+     * @returns {p5.Color}  this ColorPicker's color.
+     */
     getColor()
     {
         return this.P5Element.color();

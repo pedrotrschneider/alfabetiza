@@ -19,8 +19,23 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * The {@code AudioPlayer} class represents a GameObject that can playa p5.Audio
+ * loaded from the AssetHandler.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class AudioPlayer extends GameObject
 {
+    /**
+     * @constructor
+     * Initializes an AudioPlayer GameObject with the given parameters.
+     * 
+     * @param {String} name         name for the AudioPlayer GameObject.
+     * @param {p5.Audio} p5Audio    p5.Audio this AudioPlayer will play from.
+     */
     constructor(name, p5Audio = null)
     {
         super(name);
@@ -28,29 +43,49 @@ class AudioPlayer extends GameObject
         this.p5Audio = p5Audio;
     }
 
+    /**
+     * Overrides AudioPlayer's p5Audio.
+     * 
+     * @param {p5.Audio} p5Audio    new p5.Audio for this AudioPlayer to play from.
+     */
     setP5Audio(p5Audio)
     {
         if (this.p5Audio) this.p5Audio.stop();
         this.p5Audio = p5Audio;
     }
 
+    /**
+     * Returns this AudioPlayer's p5Audio.
+     * 
+     * @returns {p5.Audio}  this AudioPlayer's p5Audio.
+     */
     getP5Audio()
     {
         return this.p5Audio;
     }
 
+    /**
+     * Starts playing this AudioPlayer's p5Audio.
+     */
     play()
     {
         if (this.p5Audio) this.p5Audio.play();
     }
 
+    /**
+     * Stops playing this AudioPlayer's p5Audio.
+     */
     stop()
     {
         if (this.p5Audio) this.p5Audio.stop();
     }
 
-    // TODO: This don't worky, make it worky
-    // Something to do with new browser audio policy
+    // TODO: This don't worky, make it worky.
+    // Something to do with new browser audio policy.
+    /**
+     * Sets this AudioPlayer's autoplay falg to true, so it starts whenever
+     * it is ready.
+     */
     autoplay()
     {
         if (this.p5Audio) this.p5Audio.autoplay(true);

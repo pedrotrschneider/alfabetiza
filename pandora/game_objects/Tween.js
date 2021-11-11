@@ -19,7 +19,7 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
-/**'
+/**
  * The {@code TweenData} class represents the data that a Tween GameObject needs to
  * interpolate a given property.
  * 

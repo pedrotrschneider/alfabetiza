@@ -19,23 +19,49 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * The {@code Shape2D} class represents a GameObject that inherits from
+ * Object2D and extends its functionality to automatically draw a Shape on the
+ * buffer, according to the data passed by a Shape component.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Shape2D extends Object2D
 {
+    /**
+     * @constructor
+     * Initializes a Shape2D GameObject with the specified parameters.
+     * 
+     * @param {String} name         name for this Shape2D;
+     * @param {SHAPES} shapeType    type of the shape for this Shape2D. 
+     * @param {Shape} shape         dta for the shape of this Shape2D.
+     */
     constructor(name, shapeType = null, shape = null)
     {
         super(name);
 
-        this.shapeType = shapeType;
-        this.shape = shape;
+        this.shapeType = shapeType; // This Shape2D's shape type.
+        this.shape = shape; // This Shape2D's shape data.
 
-        this.shapeMode = CORNER;
-        this.fillColor = color(255);
-        this.noFill = false;
-        this.strokeWeight = 1;
-        this.strokeColor = color(0);
-        this.noStroke = false;
+        this.shapeMode = CORNER; // This Shape2D's shape mode.
+        this.fillColor = color(255); // This Shape2D's fill color.
+        this.noFill = false; // Should this Shape2D be filled with a color?
+        this.strokeWeight = 1; // This Shape2D's stroke weight.
+        this.strokeColor = color(0); // This Shape2D's stroke color.
+        this.noStroke = false; // Should this Shape2D have an outline?
     }
 
+    /**
+     * @override
+     * Applies this Object2D's transform before calling this GameObject's _draw() callback
+     * and recursively calls the same callback on all of it's children. Also draws a shape
+     * on the buffer based on the data passed to this GameObject.
+     * 
+     * @param {number} delta    number in seconds ellapsed since the last frame.
+     * @param {p5.Graphics} db  secondary buffer to draw to.
+     */
     draw(delta, db)
     {
         db.push();

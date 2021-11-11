@@ -59,8 +59,8 @@ class GameObject
 
     /**
      * Returns the list of children of this GameObject.
-     * @returns Array containing a reference to all of this GameObject's
-     *          children.
+     * @returns {Array} array containing a reference to all of this GameObject's
+     *                  children.
      */
     getChildren()
     {
@@ -76,8 +76,8 @@ class GameObject
      * @param {String} idx  index of the desired child on the GameObject's
      *                      children list.
      * 
-     * @returns a reference to the child with the given index, or null if
-     *          no child has that index. 
+     * @returns {GameObject}    a reference to the child with the given index, or null if
+     *                          no child has that index. 
      */
     getChildByIndex(idx)
     {
@@ -92,8 +92,8 @@ class GameObject
      * @param {String} id  id of the desired child on the GameObject's
      *                      children list.
      * 
-     * @returns a reference to the child with the given id, or null if
-     *          no child has that id. 
+     * @returns {GameObject}    a reference to the child with the given id, or null if
+     *                          no child has that id. 
      */
     getChildById(id)
     {
@@ -110,8 +110,8 @@ class GameObject
      * 
      * @param {String} name name of the desired child.
      *  
-     * @returns a reference to the child with the given name, or null
-     *          if no child has that name. 
+     * @returns {GameObject}    a reference to the child with the given name, or null
+     *                          if no child has that name. 
      */
     getChildByName(name)
     {
@@ -123,8 +123,8 @@ class GameObject
     /**
      * Get a reference to this GameObject's parent.
      * 
-     * @returns a reference to this GameObject's parent if it exists, null
-     *          if it doesn't.
+     * @returns {GameObject}    a reference to this GameObject's parent if it
+     *                          exists, null if it doesn't.
      */
     getParent()
     {

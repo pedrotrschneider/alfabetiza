@@ -19,8 +19,28 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * The {@code Timer} class represents a Timer GameObject with the functionality
+ * of emiting a signal after some amount of time passed.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Timer extends GameObject
 {
+    /**
+     * @constructor
+     * Initializes a Timer GameObject with the given parameters.
+     * 
+     * @param {String} name         name for this Timer GameObject.
+     * @param {number} duration     duration in seconds of the timer.
+     *                              Default is 1 second.
+     * @param {boolean} autostart   shuold the timer start automaticaly
+     *                              when it enters the tree? Default is false.
+     * @param {boolean} oneShot     should the timer run only once?
+     *                              Default is false.
+     */
     constructor(name, duration = 1, autostart = false, oneShot = false)
     {
         super(name);
@@ -32,6 +52,13 @@ class Timer extends GameObject
         this.oneShot = oneShot;
     }
 
+    /**
+     * Starts counting the Timer if it is paused, and does nothing if
+     * the Timer is already running.
+     * 
+     * @param {number} timeSec  duration in seconds to override Timer's duration.
+     *                          Defaults to current Timer's duration.
+     */
     start(timeSec = this.duration)
     {
         if (!this.paused) return;
@@ -40,21 +67,53 @@ class Timer extends GameObject
         this.timeLeft = this.duration;
     }
 
+    /**
+     * Pauses the Timer. Does nothing if already paused.
+     */
     stop()
     {
         this.paused = true;
     }
 
+    /**
+     * Resumes the Timer. Does nothing if already running.
+     */
     resume()
     {
         this.paused = false;
     }
 
+    /**
+     * Returns the paused state of the Timer.
+     * 
+     * @returns {boolean} true if the timer is paused, false if not.
+     */
     isStopped()
     {
         return this.paused;
     }
 
+    /**
+     * This function is called when the timer is done and serves
+     * to change the data of the timer accordingly and emit the
+     * timeout signal.
+     */
+    onFinish()
+    {
+        if (this.oneShot) this.paused = true
+        this.timeLeft = this.duration;
+        this._onFinish();
+        this.emitSignal("timeout");
+    }
+
+    /**
+     * @override
+     * Updates the Timer and calls the onFinish() function if the timer ended.
+     * Also recursively calls the update() function for all of this GameObject's
+     * children.
+     * 
+     * @param {number} delta    time in seconds ellapsed since the last frame. 
+     */
     update(delta)
     {
         if (!this.paused)
@@ -68,22 +127,27 @@ class Timer extends GameObject
             this.children[i].update(delta);
     }
 
+    /**
+     * @override
+     * Adds default signals for the Timer GameObject and serves as a caller
+     * to the _initSignals() callback.
+     * 
+     * @signal timeout  emited once every time this timer is done.
+     */
     initSignals()
     {
         this.addSignal("timeout");
         this._initSignals();
     }
 
-    onFinish()
-    {
-        if (this.oneShot) this.paused = true
-        this.timeLeft = this.duration;
-        this._onFinish();
-        this.emitSignal("timeout");
-    }
-
+    /**
+     * @callback
+     * ! This function should be overriden, it provides no default functionality.
+     * Called once every time the Timer is done and can be used in
+     * objects that inherit from Timer to add functinoality this event.
+     */
     _onFinish()
     {
-        console.log("doneskis");
+
     }
 }

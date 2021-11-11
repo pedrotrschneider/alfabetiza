@@ -19,56 +19,99 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * The {@code Object2D} class represents a GameObject that has a transform,
+ * comprised of a position, a rotation in degrees and a scale. All parameters
+ * of this transform are relative to the parent of this GameObject, if it has one.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Object2D extends GameObject
 {
+    /**
+     * @constructor
+     * Initializes an empty Object2D GameObject.
+     * 
+     * @param {String} name name of the Object2D GameObject. 
+     */
     constructor(name)
     {
         super(name);
 
-        this.position = Vector2.ZERO();
-        this.rotationDegrees = 0;
-        this.scale = Vector2.ONE();
-        this.visible = true;
+        this.position = Vector2.ZERO(); // This Object2D's position on the secondary buffer.
+        this.rotationDegrees = 0; // This Object2D's rotation degrees on the secondary buffer.
+        this.scale = Vector2.ONE(); // This Object2D's scale on the secondary buffer.
+        this.visible = true; // Is this Object2D visible at the moment?
     }
 
+    /**
+     * Sets the visibility flag of this Object2D and all of its children
+     * that have a visibility flag to true.
+     */
     show()
     {
         this.visible = true;
 
         for (let i = 0; i < this.children.length; i++)
         {
-            if(!this.children[i].show) continue;
+            if (!this.children[i].show) continue;
             this.children[i].show();
         }
     }
 
+    /**
+     * Sets the visibility flag of this Object2D and all of its children
+     * that have a visibility flag to false.
+     */
     hide()
     {
         this.visible = false;
 
         for (let i = 0; i < this.children.length; i++)
         {
-            if(!this.children[i].hide) continue;
+            if (!this.children[i].hide) continue;
             this.children[i].hide();
         }
     }
 
+    /**
+     * Sets the visibility flag of this Object2D and all of its children that have a visibility
+     * flag to the provided value.
+     * 
+     * @param {boolean} val value to set the flag to.
+     */
     setVisibility(val)
     {
         this.visible = val;
 
         for (let i = 0; i < this.children.length; i++)
         {
-            if(!this.children[i].setVisibility) continue;
+            if (!this.children[i].setVisibility) continue;
             this.children[i].setVisibility(val);
         }
     }
 
+    /**
+     * Returns this Object2D's visibility flag.
+     * 
+     * @returns {boolean} true if this Object2D is visible, false if not.
+     */
     getVisibility()
     {
         return this.visible;
     }
 
+    /**
+     * @override
+     * Applies this Object2D's transform before calling this GameObject's _draw() callback
+     * and recursively calls the same callback on all of it's children. This results in the
+     * appearence of relative position.
+     * 
+     * @param {number} delta    number of seconds ellapsed since the last frame.
+     * @param {p5.Graphics} db  secondary buffer to draw to.
+     */
     draw(delta, db)
     {
         if (!this.visible) return;
@@ -77,6 +120,7 @@ class Object2D extends GameObject
         db.translate(this.position.x, this.position.y);
         db.rotate(this.rotationDegrees);
         db.scale(this.scale.x, this.scale.y);
+
         this._draw(delta, db);
 
         for (let i = 0; i < this.children.length; i++)
