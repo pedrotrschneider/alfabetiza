@@ -1,0 +1,5 @@
+#!/bin/bash
+
+find pandora -type f -name '*.js' -exec cat {} + > build.js
+uglifyjs build.js --output pandora.min.js --compress --mangle
+rm build.js
