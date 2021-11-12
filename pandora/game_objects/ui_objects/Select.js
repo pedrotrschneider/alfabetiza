@@ -19,41 +19,69 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * The {@code Select} class represents an UIObject that holds and HTML select.
+ * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Select extends UIObject
 {
+    /**
+     * @constructor
+     * Intializes an empty Select.
+     * 
+     * @param {String} name name for the Select GameObject.
+     */
     constructor(name)
     {
         super(name);
 
-        this.P5Element = createSelect();
-        this.setPosition(0, 0);
-        this.setSize(100, 20);
-        this.setStyle(STYLE.DEFAULT_STYLE);
+        this.P5Element = createSelect(); // This Select's HTML select.
+        this.setPosition(0, 0); // Set this Select's position on the secondary buffer.
+        this.setSize(100, 20); // Set this Select's size on the secondary buffer.
 
-        this.connectCallbacks();
-        this.P5Element.changed(this.onChanged);
+        this.setStyle(STYLE.DEFAULT_STYLE); // Set this UIObject's default style.
+
+        this.connectCallbacks(); // Connect the events of the p5.Element.
+        this.P5Element.changed(this.onChanged); // Connect the extra event selects have.
     }
 
-    // Setters
+    /**
+     * Set this Select's selected option based on the option's value.
+     * 
+     * @param {String} value    value of the option to be selected.
+     */
     setSelected(value)
     {
         this.P5Element.selected(value);
     }
 
-    // Getters
+    /**
+     * Returns the selecte option's value.
+     * 
+     * @returns {String}
+     */
     getSelected()
     {
         return this.P5Element.selected();
     }
 
-    // Methods
+    /**
+     * Add a new option to this Select's HTML select with the given value.
+     * 
+     * @param {String} value    value for the new option.
+     */
     addOption(value)
     {
         this.P5Element.option(value);
     }
 
-    // TODO confirm if disable methods really dont exist or if
-    // something is fucky wooky.
+    // TODO confirm if disable methods really dont exist or if something is broken.
 
     // disableAll()
     // {
@@ -65,12 +93,36 @@ class Select extends UIObject
     //     this.P5Element.disable(value);
     // }
 
-    // Callbacks
-    _onChanged()
-    {
-
-    }
-
+    /**
+     * @override
+     * Defines default signals for UIObjects and serves as the caller to this UIObject's
+     * _initSignals() callbacks. Also adds the extra onChaged signal for CheckBoxes.
+     * 
+     * @signal mousePressed     emited once every time a mouse button is pressed over this
+     *                          UIObject.
+     * @signal doubleClicked    emited once every time a mouse button is pressed twice over
+     *                          this UIObject.
+     * @signal mouseWheel       emited once everty time a mouse wheel is scrolled over this
+     *                          UIObject. Passes one argument {event} that holds the deltaY
+     *                          property, that holds a number based on how much was vertically
+     *                          scrolled (up is positive) and the deltaX property, that holds a
+     *                          number based on how much was horizontaly scrolled (right is positive).
+     * @signal mouseReleased    emited once every time a mouse button is released over this
+     *                          UIObject.
+     * @signal mouseClicked     emited once every time a mouse button is pressed and released
+     *                          over this UIObject.
+     * @signal mouseMoved       emited once every time a mouse moves over this UIObject.
+     * @signal mouseOver        emited once every time a mouse moves onto this UIObject.
+     * @signal mouseOut         emited once every time a mouse moves out of this UIObject.
+     * @signal touchStarted     emited once every time a touch is regiestered over this UIObject.
+     * @signal touchMoved       emited once every time a touch move is regiestered over this
+     *                          UIObject.
+     * @signal touchEnded       emited once every time a touch is regiestered over this UIObject.
+     * @signal dragOver         emited once every time a file is dragged over this UIObject.
+     * @signal dragLeave        emited once every time a dragged file leaves this UIObject's area.
+     * 
+     * @signal changed          emited once every time this UIObject's select's value is changed.
+     */
     initSignals()
     {
         this.addSignal("mousePressed");
@@ -91,9 +143,25 @@ class Select extends UIObject
         this._initSignals();
     }
 
+    /**
+     * Called once every time this UIObject's select's value is changed.
+     * Connected to the changed event from this UIObject's p5.Element.
+     * Serves as an emiter to the changed signal and calls the _onChanged()
+     * callback.
+     */
     onChanged()
     {
         this.pandoraObject.emitSignal("changed");
         this.pandoraObject._onChanged();
+    }
+
+    /**
+     * @callback
+     * ! This function should be overriden, it provides no default functionality.
+     * Called once every time this UIObject's select's value is changed.
+     */
+    _onChanged()
+    {
+
     }
 }

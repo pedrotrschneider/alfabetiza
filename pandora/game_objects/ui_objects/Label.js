@@ -19,23 +19,57 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * The {@code Lagel} class represents an UIObject that holds and HTML label.
+ * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Label extends UIObject
 {
+    /**
+     * @constructor
+     * Initializes and empty Label with the specified parameters.
+     * 
+     * @param {String} name name for the Label GameObject. 
+     * @param {String} text inner HTML text of the label.
+     */
     constructor(name, text = "Label")
     {
         super(name);
-        this.text = text;
-        this.P5Element = createDiv(text);
-        this.size = new Vector2(200, 50);
 
-        this.setStyle(STYLE.DEFAULT_STYLE);
+        this.text = text; // This Label's inner HTML text.
+        this.P5Element = createDiv(text); // This Label's HTML label.
+        this.setPosition(0, 0); // Set the position of the Label on the secondary buffer.
+        this.setSize(200, 50); // Set the size of the Label on the secondary buffer.
 
-        this.connectCallbacks();
+        this.setStyle(STYLE.DEFAULT_STYLE); // Set the default style of the UIObject.
+
+        this.connectCallbacks(); // Connect events of the p5.Element.
     }
 
+    /**
+     * Sets the text inside this Label's HTML label.
+     * 
+     * @param {String} t    new text for the label.
+     */
     setText(t)
     {
         this.P5Element.html(t);
         this.text = t;
+    }
+
+    /**
+     * Returns this Label's HTML label's text.
+     * 
+     * @returns {String}    HTML label's text.
+     */
+    getText()
+    {
+        return this.text;
     }
 }
