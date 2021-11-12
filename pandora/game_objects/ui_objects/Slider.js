@@ -32,7 +32,6 @@
 class Slider extends UIObject
 {
     /**
-     * @constructor
      * Initializes a Slider with the specified parameters.
      * 
      * @param {String} name     name for the Slider GameObject. 
@@ -40,6 +39,8 @@ class Slider extends UIObject
      * @param {number} max      maximum value on the slider.
      * @param {number} value    initial value for the slider.
      * @param {number} step     step value for the slider.
+     * 
+     * @constructor
      */
     constructor(name, min = 0, max = 100, value = 0, step = 0)
     {
@@ -56,7 +57,6 @@ class Slider extends UIObject
     }
 
     /**
-     * @override
      * Defines default signals for UIObjects and serves as the caller to this UIObject's
      * _initSignals() callbacks. Also adds the extra onChaged signal for CheckBoxes.
      * 
@@ -84,6 +84,8 @@ class Slider extends UIObject
      * @signal dragLeave        emited once every time a dragged file leaves this UIObject's area.
      * 
      * @signal changed          emited once every time this UIObject's slider's value is changed.
+     * 
+     * @override
      */
     initSignals()
     {
@@ -118,9 +120,10 @@ class Slider extends UIObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time this UIObject's slider's value is changed.
+     * 
+     * @callback
      */
     _onChanged()
     {

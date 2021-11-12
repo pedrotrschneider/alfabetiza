@@ -32,13 +32,14 @@
 class CheckBox extends UIObject
 {
     /**
-     * @constructor
      * Initializes an empty CheckBox GameObject.
      * 
      * @param {String} name     name for the CheckBox GameObject. 
      * @param {String} label    label for the CheckBox GameObject.
      * @param {boolean} val     initial value for the CheckBox. True
      *                          for checked, false for unchecked.
+     * 
+     * @constructor
      */
     constructor(name, label = "checkbox", val = false)
     {
@@ -66,7 +67,6 @@ class CheckBox extends UIObject
     }
 
     /**
-     * @override
      * Defines default signals for UIObjects and serves as the caller to this UIObject's
      * _initSignals() callbacks. Also adds the extra onChaged signal for CheckBoxes.
      * 
@@ -94,6 +94,8 @@ class CheckBox extends UIObject
      * @signal dragLeave        emited once every time a dragged file leaves this UIObject's area.
      * 
      * @signal changed          emited once every time this UIObject's checkbox's value is changed.
+     * 
+     * @override
      */
     initSignals()
     {
@@ -128,9 +130,10 @@ class CheckBox extends UIObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time this UIObject's checkbox's value is changed.
+     * 
+     * @callback
      */
     _onChanged()
     {

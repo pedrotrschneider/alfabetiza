@@ -23,6 +23,9 @@
  * The {@code AudioPlayer} class represents a GameObject that can playa p5.Audio
  * loaded from the AssetHandler.
  * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
  * @author Pedro Schneider
  * 
  * @class
@@ -30,11 +33,12 @@
 class AudioPlayer extends GameObject
 {
     /**
-     * @constructor
      * Initializes an AudioPlayer GameObject with the given parameters.
      * 
      * @param {String} name         name for the AudioPlayer GameObject.
      * @param {p5.Audio} p5Audio    p5.Audio this AudioPlayer will play from.
+     * 
+     * @constructor
      */
     constructor(name, p5Audio = null)
     {

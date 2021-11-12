@@ -23,6 +23,9 @@
  * The {@code TweenData} class represents the data that a Tween GameObject needs to
  * interpolate a given property.
  * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
  * @author Pedro Schneider
  * 
  * @class
@@ -30,7 +33,6 @@
 class TweenData
 {
     /**
-     * @constructor
      * Creates a TweenData Object with the specified parameters.
      * 
      * @param {Object} target                   Object that has the property to be interpolated.
@@ -45,6 +47,8 @@ class TweenData
      * @param {TRANS_TYPE} transType            transition type of the interpolation. 
      * @param {EASE_TYPE} easeType              easing type of the interpolation.
      * @param {number} delay                    delay in seconds for the interpolation to start. 
+     * 
+     * @constructor
      */
     constructor(target, property, propertyType, initVal, finalVal, duration, transType, easeType, delay)
     {
@@ -163,10 +167,11 @@ class TweenData
 class Tween extends GameObject
 {
     /**
-     * @constructor
      * Creates an empty Tween GameObject.
      * 
      * @param {String} name name of the Tween GameObject. 
+     * 
+     * @constructor
      */
     constructor(name)
     {
@@ -391,7 +396,6 @@ class Tween extends GameObject
     }
 
     /**
-     * @override
      * Adds default signals for the Tween GameObject and serves as a caller
      * to the _initSignals() callback.
      * 
@@ -403,6 +407,8 @@ class Tween extends GameObject
      * @signal tweenStarted         Emited once when one TweenData on this Tween
      *                              starts. Passes the started TweenData as a 
      *                              parameter.
+     * 
+     * @override
      */
     initSignals()
     {
@@ -413,10 +419,12 @@ class Tween extends GameObject
     }
 
     /**
-     * @override
      * Updates all TweenData added to this Tween and recursively calls the _update(delta)
      * callback for this GameObject and all of it's children.
-     * @param {*} delta 
+     * 
+     * @param {number} delta    number of ellapsed seconds since the last frame.
+     * 
+     * @override
      */
     update(delta)
     {

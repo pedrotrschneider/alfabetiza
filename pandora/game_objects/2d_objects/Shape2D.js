@@ -24,6 +24,9 @@
  * Object2D and extends its functionality to automatically draw a Shape on the
  * buffer, according to the data passed by a Shape component.
  * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
  * @author Pedro Schneider
  * 
  * @class
@@ -31,12 +34,13 @@
 class Shape2D extends Object2D
 {
     /**
-     * @constructor
      * Initializes a Shape2D GameObject with the specified parameters.
      * 
      * @param {String} name         name for this Shape2D;
      * @param {SHAPES} shapeType    type of the shape for this Shape2D. 
      * @param {Shape} shape         dta for the shape of this Shape2D.
+     * 
+     * @constructor
      */
     constructor(name, shapeType = null, shape = null)
     {
@@ -54,13 +58,14 @@ class Shape2D extends Object2D
     }
 
     /**
-     * @override
      * Applies this Object2D's transform before calling this GameObject's _draw() callback
      * and recursively calls the same callback on all of it's children. Also draws a shape
      * on the buffer based on the data passed to this GameObject.
      * 
      * @param {number} delta    number in seconds ellapsed since the last frame.
      * @param {p5.Graphics} db  secondary buffer to draw to.
+     * 
+     * @override
      */
     draw(delta, db)
     {

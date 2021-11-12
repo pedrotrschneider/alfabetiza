@@ -32,10 +32,11 @@
 class Select extends UIObject
 {
     /**
-     * @constructor
      * Intializes an empty Select.
      * 
      * @param {String} name name for the Select GameObject.
+     * 
+     * @constructor
      */
     constructor(name)
     {
@@ -94,7 +95,6 @@ class Select extends UIObject
     // }
 
     /**
-     * @override
      * Defines default signals for UIObjects and serves as the caller to this UIObject's
      * _initSignals() callbacks. Also adds the extra onChaged signal for CheckBoxes.
      * 
@@ -122,6 +122,8 @@ class Select extends UIObject
      * @signal dragLeave        emited once every time a dragged file leaves this UIObject's area.
      * 
      * @signal changed          emited once every time this UIObject's select's value is changed.
+     * 
+     * @override
      */
     initSignals()
     {
@@ -156,9 +158,10 @@ class Select extends UIObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time this UIObject's select's value is changed.
+     * 
+     * @callback
      */
     _onChanged()
     {

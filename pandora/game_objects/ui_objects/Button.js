@@ -32,11 +32,12 @@
 class Button extends UIObject
 {
     /**
-     * @constructor
      * Initializes an empty Button GameObject.
      * 
      * @param {String} name 
      * @param {String} label 
+     * 
+     * @constructor
      */
     constructor(name, label = "Button")
     {

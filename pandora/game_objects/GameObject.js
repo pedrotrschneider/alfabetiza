@@ -34,10 +34,11 @@
 class GameObject
 {
     /**
-     * @constructor
      * Creates an empty GameObject, with default properties.
      * 
      * @param {String} name name of the new GameObject.
+     * 
+     * @constructor
      */
     constructor(name)
     {
@@ -59,6 +60,7 @@ class GameObject
 
     /**
      * Returns the list of children of this GameObject.
+     * 
      * @returns {Array} array containing a reference to all of this GameObject's
      *                  children.
      */
@@ -334,10 +336,11 @@ class GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * This function is called once when the GameObject is created and should declare
      * any and all signals the user wants for the GameObject.
+     * 
+     * @callback
      */
     _initSignals()
     {
@@ -345,10 +348,11 @@ class GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * This function is called once when the GameObject is added to the tree (as a child
      * of another GameObject or as a root).
+     * 
+     * @callback
      */
     _setup()
     {
@@ -356,12 +360,13 @@ class GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * This function is called once at the start of every frame and should be used for
      * any logic that doesn't have anything to do with drawing graphics to the screen buffer.
      * 
      * @param {number} delta    ellapsed seconds since the last frame. 
+     * 
+     * @callback
      */
     _update(delta)
     {
@@ -369,7 +374,6 @@ class GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * This function is called once at the start of every frame after all update() calls
      * have been completed and should be used for any logic that results in something
@@ -377,6 +381,8 @@ class GameObject
      * 
      * @param {number} delta    ellapsed seconds since the last frame. 
      * @param {p5.Graphics} db  secondary buffer to draw on. 
+     * 
+     * @callback
      */
     _draw(delta, db)
     {

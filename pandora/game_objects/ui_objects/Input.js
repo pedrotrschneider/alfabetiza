@@ -32,12 +32,13 @@
 class Input extends UIObject
 {
     /**
-     * @constructor
      * Initializes an empty Input with the given parameters.
      * 
      * @param {String} name     name for the Input GameObject.
      * @param {String} value    default message inside the input box.
      * @param {String} type     type of the input box (e.g: "text", "password"). 
+     * 
+     * @constructor
      */
     constructor(name, value = "", type = "text")
     {
@@ -54,7 +55,6 @@ class Input extends UIObject
     }
 
     /**
-     * @override
      * Defines default signals for UIObjects and serves as the caller to this UIObject's
      * _initSignals() callbacks. Also adds the extra onChaged signal for CheckBoxes.
      * 
@@ -82,6 +82,8 @@ class Input extends UIObject
      * @signal dragLeave        emited once every time a dragged file leaves this UIObject's area.
      * 
      * @signal input            emited once every time and input is dettected.
+     * 
+     * @override
      */
     initSignals()
     {
@@ -116,9 +118,10 @@ class Input extends UIObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once everty this this UIObject's input is triggered i.e typing.
+     * 
+     * @callback
      */
     _onInput()
     {

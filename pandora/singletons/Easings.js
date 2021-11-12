@@ -69,6 +69,7 @@ const Easings = {
 
     /**
      * Namespace to separate linear easing equations.
+     * 
      * @namespace
      */
     Linear:
@@ -91,6 +92,7 @@ const Easings = {
 
     /**
      * Namespace to separate quadratic easing equations.
+     * 
      * @namespace
      */
     Quad:
@@ -144,6 +146,7 @@ const Easings = {
 
     /**
      * Namespace to separate cubic easing equations.
+     * 
      * @namespace
      */
     Cubic:
@@ -197,6 +200,7 @@ const Easings = {
 
     /**
      * Namespace to separate quartic easing equations.
+     * 
      * @namespace
      */
     Quart:
@@ -250,6 +254,7 @@ const Easings = {
 
     /**
      * Namespace to separate quintic easing equations.
+     * 
      * @namespace
      */
     Quint:
@@ -303,6 +308,7 @@ const Easings = {
 
     /**
      * Namespace to separate senoidal easing equations.
+     * 
      * @namespace
      */
     Sine:
@@ -355,6 +361,7 @@ const Easings = {
 
     /**
      * Namespace to separate exponential easing equations.
+     * 
      * @namespace
      */
     Expo:
@@ -410,6 +417,7 @@ const Easings = {
 
     /**
      * Namespace to separate circular easing equations.
+     * 
      * @namespace
      */
     Circ:
@@ -463,6 +471,7 @@ const Easings = {
 
     /**
      * Namespace to separate elastic easing equations.
+     * 
      * @namespace
      */
     Elastic:
@@ -552,6 +561,7 @@ const Easings = {
 
     /**
      * Namespace to separate back easing equations.
+     * 
      * @namespace
      */
     Back:
@@ -608,6 +618,7 @@ const Easings = {
 
     /**
      * Namespace to separate bounce easing equations.
+     * 
      * @namespace
      */
     Bounce:

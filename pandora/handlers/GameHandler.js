@@ -214,7 +214,7 @@ const GameHandler = {
 
         // Updates the delta.
         this.delta = (millis() - this.prevMillis) / 1000;
-        
+
         // Updates all game objects on the tree.
         for (let i = 0; i < this.rootObjects.length; i++)
             this.rootObjects[i].update(this.delta);
@@ -263,9 +263,10 @@ const GameHandler = {
 }
 
 /**
- * @callback
  * This function is called once every time the browser window is resized. Here, its used to make the game
  * always ocupy the entire browser window.
+ * 
+ * @callback
  */
 function windowResized()
 {

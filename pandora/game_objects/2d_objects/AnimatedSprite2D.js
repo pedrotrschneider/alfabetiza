@@ -24,6 +24,9 @@
  * Sprite2D and extends its functionality to automatically draw a series of sprites
  * to the screen forming an animation.
  * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
  * @author Pedro Schneider
  * 
  * @class
@@ -31,7 +34,6 @@
 class AnimatedSprite2D extends Sprite2D
 {
     /**
-     * @constructor
      * Initializes as AnimatedSprite2D GameObject with the specified parameters.
      * 
      * @param {String} name                 name for this AnimatedSprite2D GameObject. 
@@ -39,6 +41,8 @@ class AnimatedSprite2D extends Sprite2D
      *                                      to the buffer.
      * @param {SpriteFrames} spriteFrames   data holding the animation in frames to be
      *                                      played by this GameObject.
+     * 
+     * @constructor
      */
     constructor(name, p5Image, spriteFrames)
     {
@@ -187,12 +191,13 @@ class AnimatedSprite2D extends Sprite2D
     }
 
     /**
-     * @override
      * Updates the current SpriteAnimation if its playing, and updates this
      * AnimatedSprite2D's P5Image to the current frame based on the current
      * SpriteAnimation.
      * 
      * @param {number} delta    number of seconds ellapsed since the last frame. 
+     * 
+     * @override
      */
     update(delta)
     {
@@ -205,7 +210,7 @@ class AnimatedSprite2D extends Sprite2D
                 this.timeSinceLastFrame = 0;
             }
         }
-        
+
         this.P5Image = this.getCurrentFrame();
         this._update(delta);
         for (let i = 0; i < this.children.length; i++)

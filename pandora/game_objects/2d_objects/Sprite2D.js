@@ -24,6 +24,9 @@
  * Object2D and extends its functionality to automatically draw a Sprite on the
  * buffer.
  * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
  * @author Pedro Schneider
  * 
  * @class
@@ -31,11 +34,12 @@
 class Sprite2D extends Object2D
 {
     /**
-     * @constructor
      * Initializes a Sprite2D GameObject with the specified parameters.
      * 
      * @param {String} name         name for this Sprite2D. 
      * @param {p5.Image} p5Image    p5.Image to be drawn on the buffer.
+     * 
+     * @constructor
      */
     constructor(name, p5Image)
     {
@@ -45,13 +49,14 @@ class Sprite2D extends Object2D
     }
 
     /**
-     * @override
      * Applies this Object2D's transform before calling this GameObject's _draw() callback
      * and recursively calls the same callback on all of it's children. Also draws an image
      * on the buffer based on the data passed to this GameObject.
      * 
      * @param {number} delta    number in seconds ellapsed since the last frame.
      * @param {p5.Graphics} db  secondary buffer to draw to.
+     * 
+     * @override
      */
     draw(delta, db)
     {

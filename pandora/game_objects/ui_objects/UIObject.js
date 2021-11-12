@@ -33,10 +33,11 @@
 class UIObject extends GameObject
 {
     /**
-     * @constructor
      * Initializes an empty UIObject.
      * 
      * @param {String} name name for this UIObject. 
+     * 
+     * @constructor
      */
     constructor(name)
     {
@@ -227,11 +228,12 @@ class UIObject extends GameObject
     }
 
     /**
-     * @override
      * Adds a GameObject as a child of this UIObject, and parents the child's p5.Element
      * if they are a UIObject.
      * 
      * @param {GameObject} child 
+     * 
+     * @override
      */
     addChild(child)
     {
@@ -244,9 +246,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @override
      * Recursively marks this GameObject's and all of its children's
      * memory for garbage collection. Also removes this UIObject's p5.Element.
+     * 
+     * @override
      */
     destroy()
     {
@@ -261,7 +264,6 @@ class UIObject extends GameObject
     }
 
     /**
-     * @override
      * Defines default signals for UIObjects and serves as the caller to this UIObject's
      * _initSignals() callbacks.
      * 
@@ -287,6 +289,8 @@ class UIObject extends GameObject
      * @signal touchEnded       emited once every time a touch is regiestered over this UIObject.
      * @signal dragOver         emited once every time a file is dragged over this UIObject.
      * @signal dragLeave        emited once every time a dragged file leaves this UIObject's area.
+     * 
+     * @override
      */
     initSignals()
     {
@@ -308,15 +312,16 @@ class UIObject extends GameObject
     }
 
     /**
-     * @override
      * Updates this UIObject's p5.Element size, position and font size based
      * on the secondary buffer's size on the actual window. This gives the
      * impression that the HTML element is actually beeing drawn to the secondary
      * buffer instead of the main one.
      * ? is it possible to draw them directly to the secondary buffer?
      * 
-     * @param {number} delta 
-     * @param {p5.Graphics} db 
+     * @param {number} delta    number of ellapsed seconds since the last frame.
+     * @param {p5.Graphics} db  secondary buffer to draw to.
+     * 
+     * @override
      */
     draw(delta, db)
     {
@@ -497,9 +502,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a mouse button is pressed over this UIObject.
+     * 
+     * @callback
      */
     _onMousePressed()
     {
@@ -507,9 +513,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a mouse button in pressed twice over this UIObject.
+     * 
+     * @callback
      */
     _onDoubleClicked()
     {
@@ -517,9 +524,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a mouse wheel is scrolled over this UIObject.
+     * 
+     * @callback
      * 
      * @param {Object} event    contains data about the wheen scroll, with the deltaY
      *                          and deltaX property, containing data about the vertical
@@ -531,9 +539,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a mouse button is released over this UIObject.
+     * 
+     * @callback
      */
     _onMouseReleased()
     {
@@ -541,9 +550,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a mouse button is pressed and released over this UIObject.
+     * 
+     * @callback
      */
     _onMouseClicked()
     {
@@ -551,9 +561,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once everty time a mouse moves over this UIObject.
+     * 
+     * @callback
      */
     _onMouseMoved()
     {
@@ -561,9 +572,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a mouse moves onto this UIObject.
+     * 
+     * @callback
      */
     _onMouseOver()
     {
@@ -571,9 +583,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a mouse moves off the UIObject.
+     * 
+     * @callback
      */
     _onMouseOut()
     {
@@ -581,9 +594,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a touch is registered over this UIObject.
+     * 
+     * @callback
      */
     _onTouchStarted()
     {
@@ -591,9 +605,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a touch move is registered over this UIObject.
+     * 
+     * @callback
      */
     _onTouchMoved()
     {
@@ -601,9 +616,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a touch is registered over this UIObject.
+     * 
+     * @callback
      */
     _onTouchEnded()
     {
@@ -611,9 +627,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a file is dragged over this UIObject's area.
+     * 
+     * @callback
      */
     _onDragOver()
     {
@@ -621,9 +638,10 @@ class UIObject extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time a dragged file leaves tis UIObject's area.
+     * 
+     * @callback
      */
     _onDragLeave()
     {

@@ -24,6 +24,9 @@
  * comprised of a position, a rotation in degrees and a scale. All parameters
  * of this transform are relative to the parent of this GameObject, if it has one.
  * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
  * @author Pedro Schneider
  * 
  * @class
@@ -31,10 +34,11 @@
 class Object2D extends GameObject
 {
     /**
-     * @constructor
      * Initializes an empty Object2D GameObject.
      * 
      * @param {String} name name of the Object2D GameObject. 
+     * 
+     * @constructor
      */
     constructor(name)
     {
@@ -104,13 +108,14 @@ class Object2D extends GameObject
     }
 
     /**
-     * @override
      * Applies this Object2D's transform before calling this GameObject's _draw() callback
      * and recursively calls the same callback on all of it's children. This results in the
      * appearence of relative position.
      * 
      * @param {number} delta    number of seconds ellapsed since the last frame.
      * @param {p5.Graphics} db  secondary buffer to draw to.
+     * 
+     * @override
      */
     draw(delta, db)
     {

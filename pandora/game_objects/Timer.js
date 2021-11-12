@@ -23,6 +23,9 @@
  * The {@code Timer} class represents a Timer GameObject with the functionality
  * of emiting a signal after some amount of time passed.
  * 
+ * ! All GameObjects need to be inside the tree to do anything (can be added as a child
+ * ! of another GameObject on the tree or as a root).
+ * 
  * @author Pedro Schneider
  * 
  * @class
@@ -30,7 +33,6 @@
 class Timer extends GameObject
 {
     /**
-     * @constructor
      * Initializes a Timer GameObject with the given parameters.
      * 
      * @param {String} name         name for this Timer GameObject.
@@ -40,6 +42,8 @@ class Timer extends GameObject
      *                              when it enters the tree? Default is false.
      * @param {boolean} oneShot     should the timer run only once?
      *                              Default is false.
+     * 
+     * @constructor
      */
     constructor(name, duration = 1, autostart = false, oneShot = false)
     {
@@ -107,12 +111,13 @@ class Timer extends GameObject
     }
 
     /**
-     * @override
      * Updates the Timer and calls the onFinish() function if the timer ended.
      * Also recursively calls the update() function for all of this GameObject's
      * children.
      * 
      * @param {number} delta    time in seconds ellapsed since the last frame. 
+     * 
+     * @override
      */
     update(delta)
     {
@@ -128,11 +133,12 @@ class Timer extends GameObject
     }
 
     /**
-     * @override
      * Adds default signals for the Timer GameObject and serves as a caller
      * to the _initSignals() callback.
      * 
      * @signal timeout  emited once every time this timer is done.
+     * 
+     * @override
      */
     initSignals()
     {
@@ -141,10 +147,11 @@ class Timer extends GameObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time the Timer is done and can be used in
      * objects that inherit from Timer to add functinoality this event.
+     * 
+     * @callback
      */
     _onFinish()
     {

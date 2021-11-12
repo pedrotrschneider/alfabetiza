@@ -32,11 +32,12 @@
 class Label extends UIObject
 {
     /**
-     * @constructor
      * Initializes and empty Label with the specified parameters.
      * 
      * @param {String} name name for the Label GameObject. 
      * @param {String} text inner HTML text of the label.
+     * 
+     * @constructor
      */
     constructor(name, text = "Label")
     {

@@ -32,11 +32,12 @@
 class ColorPicker extends UIObject
 {
     /**
-     * @constructor
      * Initializes an empty ColorPicker with the specified parameters.
      * 
      * @param {String} name             name for the ColorPicker GameObject.
      * @param {p5.Color, String} color  default color for the ColorPicker
+     * 
+     * @constructor
      */
     constructor(name, color = "#FFFFFF")
     {

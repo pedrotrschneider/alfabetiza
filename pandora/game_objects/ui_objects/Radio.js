@@ -32,10 +32,11 @@
 class Radio extends UIObject
 {
     /**
-     * @constructor
      * Initializes an empty Radio.
      * 
      * @param {String} name name for the Radio GameObject. 
+     * 
+     * @constructor
      */
     constructor(name)
     {
@@ -119,7 +120,6 @@ class Radio extends UIObject
     }
 
     /**
-     * @override
      * Defines default signals for UIObjects and serves as the caller to this UIObject's
      * _initSignals() callbacks. Also adds the extra onChaged signal for CheckBoxes.
      * 
@@ -147,6 +147,8 @@ class Radio extends UIObject
      * @signal dragLeave        emited once every time a dragged file leaves this UIObject's area.
      * 
      * @signal changed          emited once every time this UIObject's radio button's value is changed.
+     * 
+     * @override
      */
     initSignals()
     {
@@ -181,9 +183,10 @@ class Radio extends UIObject
     }
 
     /**
-     * @callback
      * ! This function should be overriden, it provides no default functionality.
      * Called once every time this UIObject's radio button's value is changed.
+     * 
+     * @callback
      */
     _onChanged()
     {
