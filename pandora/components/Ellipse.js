@@ -19,8 +19,24 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code Ellipse} class provides an interface to store an ellipse as a component to
+ * any GameObject.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Ellipse
 {
+    /**
+     * Initializes an Ellipse with the given parameters.
+     * 
+     * @param {number} rx   radius on the X axis. 
+     * @param {number} ry   radius on the Y axis. Default is the same as the X axis.
+     * 
+     * @constructor
+     */
     constructor(rx, ry = rx)
     {
         this.rx = rx;

@@ -19,7 +19,7 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
-/*
+/**
  *
  * Derived from Robert Penner's easing equations: http://robertpenner.com/easing/
  * The original copyright notice is as follows:
@@ -55,30 +55,86 @@
  *
  */
 
+/**
+ * This {@code Easings} singleton provides an interface for the engine to utilize
+ * various easing equations. Used mostly on the Tween GameObject. User can access this
+ * API, but it is not recomended; try using tweens instead.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @namespace
+ */
 const Easings = {
-    // See https://easings.net/ for more details on each type of easing.
-    // t: current time, b: begInnIng value, c: change In value, d: duration.
+    // * See https://easings.net/ for more details on each type of easing.
 
+    /**
+     * Namespace to separate linear easing equations.
+     * @namespace
+     */
     Linear:
     {
+        /**
+         * Calculates a linear easing.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         ease: function(t, b, c, d)
         {
             return b + (c * t / d);
         }
     },
 
+    /**
+     * Namespace to separate quadratic easing equations.
+     * @namespace
+     */
     Quad:
     {
+        /**
+         * Calculates a quadratic ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             return c * (t /= d) * t + b;
         },
 
+        /**
+         * Calculates a quadratic ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             return -c * (t /= d) * (t - 2) + b;
         },
 
+        /**
+         * Calculates a quadratic ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             if ((t /= d / 2) < 1) return c / 2 * t * t + b;
@@ -86,18 +142,52 @@ const Easings = {
         }
     },
 
+    /**
+     * Namespace to separate cubic easing equations.
+     * @namespace
+     */
     Cubic:
     {
+        /**
+         * Calculates a cubic ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             return c * (t /= d) * t * t + b;
         },
 
+        /**
+         * Calculates a cubic ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             return c * ((t = t / d - 1) * t * t + 1) + b;
         },
 
+        /**
+         * Calculates a cubic ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             if ((t /= d / 2) < 1) return c / 2 * t * t * t + b;
@@ -105,18 +195,52 @@ const Easings = {
         }
     },
 
+    /**
+     * Namespace to separate quartic easing equations.
+     * @namespace
+     */
     Quart:
     {
+        /**
+         * Calculates a quartic ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             return c * (t /= d) * t * t * t + b;
         },
 
+        /**
+         * Calculates a quartic ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             return -c * ((t = t / d - 1) * t * t * t - 1) + b;
         },
 
+        /**
+         * Calculates a quartic ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
@@ -124,18 +248,52 @@ const Easings = {
         }
     },
 
+    /**
+     * Namespace to separate quintic easing equations.
+     * @namespace
+     */
     Quint:
     {
+        /**
+         * Calculates a quintic ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             return c * (t /= d) * t * t * t * t + b;
         },
 
+        /**
+         * Calculates a quintic ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
         },
 
+        /**
+         * Calculates a quintic ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             if ((t /= d / 2) < 1) return c / 2 * t * t * t * t * t + b;
@@ -143,36 +301,104 @@ const Easings = {
         }
     },
 
+    /**
+     * Namespace to separate senoidal easing equations.
+     * @namespace
+     */
     Sine:
     {
+        /**
+         * Calculates a senoidal ease-in;
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
         },
 
+        /**
+         * Calculates a senoidal ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             return c * Math.sin(t / d * (Math.PI / 2)) + b;
         },
 
+        /**
+         * Calculates a senoidal ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
         }
     },
 
+    /**
+     * Namespace to separate exponential easing equations.
+     * @namespace
+     */
     Expo:
     {
+        /**
+         * Calculates an exponential ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
         },
 
+        /**
+         * Calculates an exponential ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
         },
 
+        /**
+         * Calculates an exponential ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             if (t == 0) return b;
@@ -182,18 +408,52 @@ const Easings = {
         }
     },
 
+    /**
+     * Namespace to separate circular easing equations.
+     * @namespace
+     */
     Circ:
     {
+        /**
+         * Calculates a circular ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
         },
 
+        /**
+         * Calculates a circular ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
         },
-        
+
+        /**
+         * Calculates a circular ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             if ((t /= d / 2) < 1) return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
@@ -201,8 +461,22 @@ const Easings = {
         }
     },
 
+    /**
+     * Namespace to separate elastic easing equations.
+     * @namespace
+     */
     Elastic:
     {
+        /**
+         * Calculates an elastic ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             var s = 1.70158;
@@ -220,6 +494,16 @@ const Easings = {
             return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
         },
 
+        /**
+         * Calculates an elastic ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             var s = 1.70158;
@@ -237,6 +521,16 @@ const Easings = {
             return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
         },
 
+        /**
+         * Calculates an elastic ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             var s = 1.70158;
@@ -256,35 +550,93 @@ const Easings = {
         },
     },
 
+    /**
+     * Namespace to separate back easing equations.
+     * @namespace
+     */
     Back:
     {
-        easeIn: function(t, b, c, d, s)
+        /**
+         * Calculates a back ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
+        easeIn: function(t, b, c, d)
         {
-            if (s == undefined) s = 1.70158;
+            var s = 1.70158;
             return c * (t /= d) * t * ((s + 1) * t - s) + b;
         },
 
-        easeOut: function(t, b, c, d, s)
+        /**
+         * Calculates a back ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
+        easeOut: function(t, b, c, d)
         {
-            if (s == undefined) s = 1.70158;
+            var s = 1.70158;
             return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
         },
 
-        easeInOut: function(t, b, c, d, s)
+        /**
+         * Calculates a back ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
+        easeInOut: function(t, b, c, d)
         {
-            if (s == undefined) s = 1.70158;
+            var s = 1.70158;
             if ((t /= d / 2) < 1) return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
             return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
         }
     },
 
+    /**
+     * Namespace to separate bounce easing equations.
+     * @namespace
+     */
     Bounce:
     {
+        /**
+         * Calculates a bounce ease-in.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeIn: function(t, b, c, d)
         {
             return c - Easings.Bounce.easeOut(d - t, 0, c, d) + b;
         },
 
+        /**
+         * Calculates a bounce ease-out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeOut: function(t, b, c, d)
         {
             if ((t /= d) < (1 / 2.75))
@@ -296,7 +648,17 @@ const Easings = {
             else
                 return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
         },
-        
+
+        /**
+         * Calculates a bounce ease-in and out.
+         * 
+         * @param {number} t    current time of the easing process.
+         * @param {number} b    beginning value of the esasing process.
+         * @param {number} c    change in vlaue during the easing process.
+         * @param {number} d    total duration of the easing process.
+         *  
+         * @returns {number}    current value in the easing process.
+         */
         easeInOut: function(t, b, c, d)
         {
             if (t < d / 2) return Easings.Bounce.easeIn(t * 2, 0, c, d) * .5 + b;

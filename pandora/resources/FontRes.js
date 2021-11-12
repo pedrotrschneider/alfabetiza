@@ -19,8 +19,24 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code FontRes} class provides an interface to store a font resource into
+ * memory to be accessed later.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class FontRes
 {
+    /**
+     * Initializes a font resource with the given parameters.
+     * 
+     * @param {String} name         name of the font resource.
+     * @param {p5.Audio} p5font     audio data for the font resource.
+     * 
+     * @constructor
+     */
     constructor(name = "", p5Font = null)
     {
         this.name = name;

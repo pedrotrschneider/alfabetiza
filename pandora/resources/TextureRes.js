@@ -19,8 +19,24 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code Textureres} class provides an interface to store a texture resource into
+ * memory to be accessed later.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class TextureRes
 {
+    /**
+     * Initializes a texture resource with the given parameters.
+     * 
+     * @param {String} name         name of the texture resource.
+     * @param {p5.Audio} p5Image     audio data for the texture resource.
+     * 
+     * @constructor
+     */
     constructor(name = "", p5Image = null)
     {
         this.name = name;

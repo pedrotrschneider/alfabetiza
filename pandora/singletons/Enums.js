@@ -19,12 +19,34 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code Enums} file provides several useful constant enumerators the engine
+ * uses internaly. Users may find these useful for calling certain functions.
+ * 
+ * @author Pedro Schneider
+ */
+
+
+/**
+ * Enumerates property types.
+ */
 const PROPERTY_TYPE = {
     NUMBER: 1,
     VECTOR2: 2,
     COLOR: 3,
 };
 
+/**
+ * Enumerates shape types.
+ */
+const SHAPES = {
+    RECT: 1,
+    ELLIPSE: 2,
+};
+
+/**
+ * Enumerates transition types.
+ */
 const TRANS_TYPE = {
     LINEAR: 1,
     QUAD: 2,
@@ -39,22 +61,27 @@ const TRANS_TYPE = {
     BOUNCE: 11,
 };
 
+/**
+ * Enumerates easing types.
+ */
 const EASE_TYPE = {
     IN: 1,
     OUT: 2,
     IN_OUT: 3,
 };
 
-const SHAPES = {
-    RECT: 1,
-    ELLIPSE: 2,
-};
 
+/**
+ * Enumerates render modes.
+ */
 const RENDER_MODES = {
     P2D: 1,
     WEBGL: 2,
 };
 
+/**
+ * Object to hold information about the default styling of UIOBjects.
+ */
 const STYLE = {
     DEFAULT_FONT_SIZE: 20,
 

@@ -19,8 +19,24 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code AudioRes} class provides an interface to store an audio resource into
+ * memory to be accessed later.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class AudioRes
 {
+    /**
+     * Initializes an audio resource with the given parameters.
+     * 
+     * @param {String} name         name of the audio resource.
+     * @param {p5.Audio} p5Audio    audio data for the audio resource.
+     * 
+     * @constructor
+     */
     constructor(name = "", p5Audio = null)
     {
         this.name = name;

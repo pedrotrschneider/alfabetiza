@@ -19,8 +19,26 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code Color} class provides an interface to store a color as a component to
+ * any GameObject.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Color
 {
+    /**
+     * Initializes a Color with the given parameters.
+     * 
+     * @param {number(0, 255)} r 
+     * @param {number(0, 255)} g 
+     * @param {number(0, 255)} b 
+     * @param {number(0, 255)} a 
+     * 
+     * @constructor
+     */
     constructor(r, g, b, a = 255)
     {
         this.r = r;
@@ -31,6 +49,11 @@ class Color
         this.p5Color = color(this.r, this.g, this.b, this.a);
     }
 
+    /**
+     * Converts the color data in this Color component to a p5.Color.
+     * 
+     * @returns {p5.Color}  p5.Color representing this Color component.
+     */
     getP5Color()
     {
         this.p5Color.setRed(this.r);

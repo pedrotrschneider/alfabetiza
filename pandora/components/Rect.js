@@ -19,8 +19,24 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code Rect} class provides an interface to store a rectangle as a component to
+ * any GameObject.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Rect
 {
+    /**
+     * Initializes a Rect with the given parameters.
+     * 
+     * @param {number} w    width of the Rect.
+     * @param {number} h    height of the Rect.
+     * 
+     * @constructor
+     */
     constructor(w, h = w)
     {
         this.w = w;
