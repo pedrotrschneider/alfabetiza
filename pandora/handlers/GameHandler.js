@@ -218,6 +218,12 @@ const GameHandler = {
         // Updates the delta.
         this.delta = (millis() - this.prevMillis) / 1000;
 
+        let ar = this.db.screenWidth / this.db.width;
+        let offsetx = (windowWidth - this.db.screenWidth) / 2;
+        let offsety = (windowHeight - this.db.screenHeight) / 2;
+        this.mouseX = (mouseX - offsetx) / ar;
+        this.mouseY = (mouseY - offsety) / ar;
+
         // Updates all game objects on the tree.
         for (let i = 0; i < this.rootObjects.length; i++)
             this.rootObjects[i].update(this.delta);
@@ -252,12 +258,6 @@ const GameHandler = {
             this.db.screenHeight = windowHeight;
             this.db.screenWidth = windowHeight * (this.dbWidth / this.dbHeight);
         }
-
-        let ar = this.db.screenWidth / this.db.width;
-        let offsetx = (windowWidth - this.db.screenWidth) / 2;
-        let offsety = (windowHeight - this.db.screenHeight) / 2;
-        this.mouseX = (mouseX - offsetx) / ar;
-        this.mouseY = (mouseY - offsety) / ar;
 
         // Draw all game objects.
         for (let i = 0; i < this.rootObjects.length; i++)
