@@ -51,6 +51,18 @@ class Object2D extends GameObject
     }
 
     /**
+     * Sets this Object2D's position.
+     * 
+     * @param {number} x    new position on the x axis for this Object2D. 
+     * @param {number} y    new positoin on the y axis for this Object2D.
+     */
+    setPosition(x, y)
+    {
+        this.position.x = x;
+        this.position.y = y;
+    }
+
+    /**
      * Sets the visibility flag of this Object2D and all of its children
      * that have a visibility flag to true.
      */
