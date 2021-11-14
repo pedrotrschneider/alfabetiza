@@ -31,7 +31,7 @@ const GameHandler = {
     nextId: 0, // ID to be given to the next object added to the tree.
     rootObjects: [], // List of objects on the root of the tree.
 
-    renderMode: RENDER_MODES.P2D, // Can be RENDER_MODES.P2D or RENDER_MODES.WEBGL.
+    renderMode: 1, // Can be RENDER_MODES.P2D or RENDER_MODES.WEBGL.
 
     bDrawDebugFPS: false, // Should fps be drawn (for debug only).
     debugFpsLabel: null, // Object that drwas fps.
@@ -46,6 +46,9 @@ const GameHandler = {
     isMobile: null, // True if the device is a mobile device (tablet of phone).
     pixelDen: 1, // Pixel density for the canvas on destop devices.
     pixelDenMobile: 2, // Pixel denisty for the canvas on mobile devices.
+
+    mouseX: 0, // X position of the mouse relative to the secondary buffer.
+    mouseY: 0, // Y position of the mouse relative to the secondary buffer.
 
     /**
      * Sets the initial game render mode.
@@ -228,10 +231,6 @@ const GameHandler = {
         // Clear the secondary buffer.
         this.db.clear();
 
-        // Draw all game objects.
-        for (let i = 0; i < this.rootObjects.length; i++)
-            this.rootObjects[i].draw(this.delta, this.db);
-
         // Draw a rectangle to visualize the secondary buffer.
         // TODO: remove this
         this.db.push();
@@ -253,6 +252,16 @@ const GameHandler = {
             this.db.screenHeight = windowHeight;
             this.db.screenWidth = windowHeight * (this.dbWidth / this.dbHeight);
         }
+
+        let ar = this.db.screenWidth / this.db.width;
+        let offsetx = (windowWidth - this.db.screenWidth) / 2;
+        let offsety = (windowHeight - this.db.screenHeight) / 2;
+        this.mouseX = (mouseX - offsetx) / ar;
+        this.mouseY = (mouseY - offsety) / ar;
+
+        // Draw all game objects.
+        for (let i = 0; i < this.rootObjects.length; i++)
+            this.rootObjects[i].draw(this.delta, this.db);
 
         // Draws the secondary buffer to the main canvas.
         image(this.db, windowWidth / 2, windowHeight / 2, this.db.screenWidth, this.db.screenHeight);
