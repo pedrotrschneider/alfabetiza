@@ -42,4 +42,19 @@ class Rect
         this.w = w;
         this.h = h;
     }
+
+    /**
+     * Calculates if a point (x, y) lies iside the rect, assuming the
+     * rect is on the origin of the Cartesian plane.
+     * 
+     * @param {number} x    x-cooridnate of the point. 
+     * @param {number} y    y-coordinate of the point.
+     * 
+     * @returns {boolean}   true if the point lies within the bounds of the
+     *                      rect, false if not. 
+     */
+    isIn(x, y)
+    {
+        return abs(x) <= this.w / 2 && abs(y) <= this.h / 2;
+    }
 }
