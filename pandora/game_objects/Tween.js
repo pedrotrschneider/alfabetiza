@@ -435,7 +435,7 @@ class Tween extends GameObject
         {
             // Ignores TweenData that aren't playing.
             if (!this.tweenData[i].playing) continue;
-            
+
             // Interpolates TweenData that are out of the delay.
             if (this.tweenData[i].t >= 0)
                 this.interpolate(this.tweenData[i]);
@@ -443,7 +443,7 @@ class Tween extends GameObject
             // Checks if the TweenData just went out of the delay (just started).
             if (this.tweenData[i].t <= 0 && this.tweenData[i].t + delta >= 0)
                 this.emitSignal("tweenStarted", this.tweenData[i]);
-            
+
             // Updates TweenData's current time.
             this.tweenData[i].t = min(this.tweenData[i].t + delta, this.tweenData[i].duration);
 
@@ -456,8 +456,6 @@ class Tween extends GameObject
             }
         }
 
-        this._update(delta);
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].update(delta);
+        this.updateChildren(delta);
     }
 }

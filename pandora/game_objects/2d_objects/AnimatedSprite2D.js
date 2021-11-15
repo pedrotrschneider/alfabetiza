@@ -201,21 +201,7 @@ class AnimatedSprite2D extends Sprite2D
      */
     update(delta)
     {
-        // Update global transform.
-        if (!this.parented || !(this.parent instanceof Object2D))
-        {
-            this.globalPosition = this.position;
-            this.globalRotationDegrees = this.rotationDegrees;
-            this.globalScale = this.globalScale;
-        }
-        else
-        {
-            this.globalPosition.x = this.parent.globalPosition.x + this.position.x;
-            this.globalPosition.y = this.parent.globalPosition.y + this.position.y;
-            this.globalRotationDegrees = this.parent.globalRotationDegrees + this.rotationDegrees;
-            this.globalScale.x = this.parent.globalScale.x * this.scale.x;
-            this.globalScale.y = this.parent.globalScale.y * this.scale.y;
-        }
+        this.udpateGlobalTransform();
 
         // Forwards the animation.
         if (this.playing)
@@ -229,9 +215,6 @@ class AnimatedSprite2D extends Sprite2D
         }
         this.P5Image = this.getCurrentFrame();
 
-        // Callbacks
-        this._update(delta);
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].update(delta);
+        this.updateChildren(delta);
     }
 }

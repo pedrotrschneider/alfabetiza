@@ -61,17 +61,9 @@ class Sprite2D extends Object2D
     draw(delta, db)
     {
         db.push();
-        db.translate(this.position.x, this.position.y);
-        db.rotate(this.rotationDegrees / 180 * PI);
-        db.scale(this.scale.x, this.scale.y);
-
+        this.applyTransform(db);
         db.image(this.P5Image, 0, 0, this.P5Image.width, this.P5Image.height);
-
-        this._draw(delta, db);
-
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta, db);
-
+        this.drawChildren(delta, db);
         db.pop();
     }
 }

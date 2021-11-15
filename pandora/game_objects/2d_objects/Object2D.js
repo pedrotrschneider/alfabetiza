@@ -134,7 +134,7 @@ class Object2D extends GameObject
         this.position.x += x;
         this.position.y += y;
     }
-    
+
     /**
      * Rotates this Object2D by a degrees.
      * 
@@ -158,16 +158,12 @@ class Object2D extends GameObject
     }
 
     /**
-     * Updates this Object2D's global transform and recursively calls the _update(delta)
-     * callback for this GameObject and all of it's children.
+     * Updates this Object2D's global transform.
      * 
-     * @param {number} delta    number of ellapsed seconds since the last frame.
-     * 
-     * @override
+     * ! This method only exists to modularize the code, and should not be used by the user.
      */
-    update(delta)
+    udpateGlobalTransform()
     {
-        // Update global transform
         if (!this.parented || !(this.parent instanceof Object2D))
         {
             this.globalPosition = this.position;
@@ -182,13 +178,34 @@ class Object2D extends GameObject
             this.globalScale.x = this.parent.globalScale.x * this.scale.x;
             this.globalScale.y = this.parent.globalScale.y * this.scale.y;
         }
+    }
 
-        // Callbacks
-        this._update(delta);
-        for (let i = 0; i < this.children.length; i++)
-        {
-            this.children[i].update(delta);
-        }
+    /**
+     * Updates this Object2D's global transform and recursively calls the _update(delta)
+     * callback for this GameObject and all of it's children.
+     * 
+     * @param {number} delta    number of ellapsed seconds since the last frame.
+     * 
+     * @override
+     */
+    update(delta)
+    {
+        this.udpateGlobalTransform();
+        this.updateChildren(delta);
+    }
+
+    /**
+     * Apply this Object2D's transform to the secondary buffer.
+     * 
+     * ! This method only exists to modularize the code, and should not be used by the user. 
+     * 
+     * @param {p5.Graphics} db   secondary buffer to draw to. 
+     */
+    applyTransform(db)
+    {
+        db.translate(this.position.x, this.position.y);
+        db.rotate(this.rotationDegrees / 180 * PI);
+        db.scale(this.scale.x, this.scale.y);
     }
 
     /**
@@ -204,17 +221,9 @@ class Object2D extends GameObject
     draw(delta, db)
     {
         if (!this.visible) return;
-
         db.push();
-        db.translate(this.position.x, this.position.y);
-        db.rotate(this.rotationDegrees / 180 * PI);
-        db.scale(this.scale.x, this.scale.y);
-
-        this._draw(delta, db);
-
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta, db);
-
+        this.applyTransform(db);
+        this.drawChildren(delta, db);
         db.pop()
     }
 }

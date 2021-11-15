@@ -336,9 +336,7 @@ class UIObject extends GameObject
             "font-size": `${this.fontSize * ar}px`
         });
 
-        this._draw(delta, db);
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta, db);
+        this.drawChildren(delta, db);
     }
 
     /**

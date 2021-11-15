@@ -309,6 +309,23 @@ class GameObject
     }
 
     /**
+     * Serves as a caller to this GameObject's _update method and recursively updates all of
+     * this GameObject's children.
+     * 
+     * ! This method only exists to modularize the code, and should not be used by the user. 
+     *
+     * @param {number} delta    ellapsed seconds since the last frame.
+     */
+    updateChildren(delta)
+    {
+        this._update(delta);
+        for (let i = 0; i < this.children.length; i++)
+        {
+            this.children[i].update(delta);
+        }
+    }
+
+    /**
      * Caller for the _update(delta) callback. Recrusively calls itself for
      * all of this GameOject's children.
      * 
@@ -316,9 +333,23 @@ class GameObject
      */
     update(delta)
     {
-        this._update(delta);
+        this.updateChildren(delta);
+    }
+
+    /**
+     * Caller for the _draw(delta, db) callback. Recursively calls itself for
+     * all of this GameObject's children.
+     * 
+     * ! This method only exists to modularize the code, and should not be used by the user. 
+     * 
+     * @param {number} delta    ellapsed seconds since the last frame. 
+     * @param {p5.Graphics} db  secondary buffer to draw on. 
+     */
+    drawChildren(delta, db)
+    {
+        this._draw(delta, db);
         for (let i = 0; i < this.children.length; i++)
-            this.children[i].update(delta);
+            this.children[i].draw(delta, db);
     }
 
     /**
@@ -330,9 +361,7 @@ class GameObject
      */
     draw(delta, db)
     {
-        this._draw(delta, db);
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta, db);
+        this.drawChildren(delta, db);
     }
 
     /**

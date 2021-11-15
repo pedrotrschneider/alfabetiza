@@ -103,27 +103,13 @@ class Area2D extends Object2D
      */
     update(delta)
     {
-        // Updates global transform
-        if (!this.parented || !(this.parent instanceof Object2D))
-        {
-            this.globalPosition = this.position;
-            this.globalRotationDegrees = this.rotationDegrees;
-            this.globalScale = this.globalScale;
-        }
-        else
-        {
-            this.globalPosition.x = this.parent.globalPosition.x + this.position.x;
-            this.globalPosition.y = this.parent.globalPosition.y + this.position.y;
-            this.globalRotationDegrees = this.parent.globalRotationDegrees + this.rotationDegrees;
-            this.globalScale.x = this.parent.globalScale.x * this.scale.x;
-            this.globalScale.y = this.parent.globalScale.y * this.scale.y;
-        }
+        this.udpateGlobalTransform();
 
         // Checks collision with mouse
         if (this.listenToMouse)
         {
             if (Collisions[this.shapeName].point(this.globalPosition.x, this.globalPosition.y, this.globalRotationDegrees, this.globalScale.x,
-                this.globalScale.y, this.shape, GameHandler.mouseX, GameHandler.mouseY))
+                    this.globalScale.y, this.shape, GameHandler.mouseX, GameHandler.mouseY))
             {
                 if (!this.mouseIn)
                     this.emitSignal("mouseEntered");
@@ -137,10 +123,7 @@ class Area2D extends Object2D
             }
         }
 
-        // Callbacks
-        this._update(delta);
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].update(delta);
+        this.updateChildren(delta);
     }
 
     /**
@@ -158,10 +141,9 @@ class Area2D extends Object2D
         if (!this.visible) return;
 
         db.push();
-        db.translate(this.position.x, this.position.y);
-        db.rotate(this.rotationDegrees / 180 * PI);
-        db.scale(this.scale.x, this.scale.y);
+        this.applyTransform(db);
 
+        // Draw the shape for debug purposes.
         if (this.drawDebug)
         {
             db.push();
@@ -181,11 +163,7 @@ class Area2D extends Object2D
             db.pop();
         }
 
-        this._draw(delta, db);
-
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].draw(delta, db);
-
+        this.drawChildren(delta, db);
         db.pop()
     }
 }

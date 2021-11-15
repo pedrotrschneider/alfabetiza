@@ -127,9 +127,7 @@ class Timer extends GameObject
             if (this.timeLeft <= 0) this.onFinish();
         }
 
-        this._update(delta);
-        for (let i = 0; i < this.children.length; i++)
-            this.children[i].update(delta);
+        this.updateChildren(delta);
     }
 
     /**
