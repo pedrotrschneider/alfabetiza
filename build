@@ -35,6 +35,7 @@ cat pandora/game_objects/2d_objects/Object2D.js >> build.js
 cat pandora/game_objects/2d_objects/Sprite2D.js >> build.js
 cat pandora/game_objects/2d_objects/Shape2D.js >> build.js
 cat pandora/game_objects/2d_objects/AnimatedSprite2D.js >> build.js
+cat pandora/game_objects/2d_objects/Area2D.js >> build.js
 
 # Package UI Objects
 cat pandora/game_objects/ui_objects/UIObject.js >> build.js

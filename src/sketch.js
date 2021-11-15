@@ -1,52 +1,21 @@
 let test, but;
 
-class TestObject extends Object2D
+class TestObj extends GameObject
 {
     _setup()
     {
-        this.position = new Vector2(100, 100);
+        this.getParent().connect("mouseEntered", this, "_onMouseEntered");
+        this.getParent().connect("mouseExited", this, "_onMouseExited");
     }
 
-    _onSignal(param1, param2, param3, param4)
+    _onMouseEntered()
     {
-        this.setVisibility(!this.getVisibility())
+        console.log("hello");
     }
 
-    _update(delta)
+    _onMouseExited()
     {
-
-    }
-
-    _draw(delta, db)
-    {
-        db.ellipse(0, 0, 50);
-    }
-}
-
-class TestObject2 extends Object2D
-{
-    _setup()
-    {
-        this.position = new Vector2(100, 0);
-    }
-
-    _update(delta)
-    {
-
-    }
-
-    _draw(delta, db)
-    {
-        db.ellipse(0, 0, 50);
-    }
-}
-
-class TestButton extends Button
-{
-    _setup()
-    {
-        this.setPosition(100, 200);
-        this.setSize(150, 50);
+        console.log("goodbye");
     }
 }
 
@@ -64,12 +33,10 @@ function setup()
     GameHandler.init();
     textFont(AssetHandler.getP5FontByName("Lato"));
 
-    test = new TestObject("myTest");
-    but = new TestButton("b1", "Emit signal");
-    but.connect("mousePressed", test, "_onSignal");
-    GameHandler.addRootObject(but);
+    test = new Area2D("myTest", SHAPES.ELLIPSE, new Ellipse(200, 400), true, true);
+    test.setPosition(600, 600);
     GameHandler.addRootObject(test);
-    test.addChild(new TestObject2("myTest2"));
+    test.addChild(new TestObj("myDummy"));
 }
 
 function draw()
