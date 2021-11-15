@@ -1,5 +1,5 @@
 /************************************************************************
- * Signal.js
+ * Component.js
  ************************************************************************
  * Copyright (c) 2021 Pedro Tonini Rosenberg Schneider.
  *
@@ -19,24 +19,8 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
-/**
- * This {@code Signal} class provides an object to store data about a signal.
- * 
- * ! This class should not be used directly by the user. To add signals to GameObjects
- * ! use the addSignal() method from the object inside the _initSignals() callback.
- * 
- * @author Pedro Schneider
- * 
- * @class
- */
-class Signal extends Component
+class Component
 {
-    constructor(name)
-    {
-        super();
-
-        this.name = name;
-        this.targets = [];
-        this.callbacks = [];
-    }
+    constructor()
+    {}
 }

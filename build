@@ -12,6 +12,7 @@ cat pandora/handlers/GameHandler.js >> build.js
 cat pandora/handlers/AssetHandler.js >> build.js
 
 # Package components
+cat pandora/components/Component.js >> build.js
 cat pandora/components/Color.js >> build.js
 cat pandora/components/Vector2.js >> build.js
 cat pandora/components/Signal.js >> build.js

@@ -27,7 +27,7 @@
  * 
  * @class
  */
-class Rect
+class Rect extends Component
 {
     /**
      * Initializes a Rect with the given parameters.
@@ -39,6 +39,8 @@ class Rect
      */
     constructor(w, h = w)
     {
+        super();
+        
         this.w = w;
         this.h = h;
     }

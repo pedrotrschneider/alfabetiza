@@ -27,7 +27,7 @@
  * 
  * @class
  */
-class Vector2
+class Vector2 extends Component
 {
     /**
      * Creates a Vector2 with length 0.
@@ -98,6 +98,8 @@ class Vector2
      */
     constructor(x, y)
     {
+        super();
+
         this.x = x;
         this.y = y;
     }
