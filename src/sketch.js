@@ -1,11 +1,11 @@
-let test, but;
+let test, test2, but;
 
-class TestObj extends GameObject
+class TestObj extends Object2D
 {
     _setup()
     {
-        this.getParent().connect("mouseEntered", this, "_onMouseEntered");
-        this.getParent().connect("mouseExited", this, "_onMouseExited");
+        this.getChildByIndex(0).connect("mouseEntered", this, "_onMouseEntered");
+        this.getChildByIndex(0).connect("mouseExited", this, "_onMouseExited");
     }
 
     _onMouseEntered()
@@ -34,7 +34,8 @@ GameHandler._setup = function()
     textFont(AssetHandler.getP5FontByName("Lato"));
 
     test = new Area2D("myTest", SHAPES.ELLIPSE, new Ellipse(200, 400), true, true);
-    test.setPosition(600, 600);
-    GameHandler.addRootObject(test);
-    test.addChild(new TestObj("myDummy"));
+    test2 = new TestObj("myDummy");
+    test2.setPosition(600, 600);
+    test2.addChild(test);
+    GameHandler.addRootObject(test2);
 }

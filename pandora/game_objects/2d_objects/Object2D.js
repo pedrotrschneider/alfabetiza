@@ -48,6 +48,10 @@ class Object2D extends GameObject
         this.rotationDegrees = 0; // This Object2D's rotation degrees on the secondary buffer.
         this.scale = Vector2.ONE(); // This Object2D's scale on the secondary buffer.
         this.visible = true; // Is this Object2D visible at the moment?
+
+        this.globalPosition = Vector2.ZERO(); // This Object2D's global position on the secondary buffer.
+        this.globalRotationDegrees = 0; // This Object2D's global rotation degrees on the secondary buffer.
+        this.globalScale = Vector2.ONE(); // This Object2D's global scale on the secondary buffer.
     }
 
     /**
@@ -117,6 +121,40 @@ class Object2D extends GameObject
     getVisibility()
     {
         return this.visible;
+    }
+
+    /**
+     * Updates this Object2D's global transform and recursively calls the _update(delta)
+     * callback for this GameObject and all of it's children.
+     * 
+     * @param {number} delta    number of ellapsed seconds since the last frame.
+     * 
+     * @override
+     */
+    update(delta)
+    {
+        // Update global transform
+        if (!this.parented || !(this.parent instanceof Object2D))
+        {
+            this.globalPosition = this.position;
+            this.globalRotationDegrees = this.rotationDegrees;
+            this.globalScale = this.globalScale;
+        }
+        else
+        {
+            this.globalPosition.x = this.parent.globalPosition.x + this.position.x;
+            this.globalPosition.y = this.parent.globalPosition.y + this.position.y;
+            this.globalRotationDegrees = this.parent.globalRotationDegrees + this.rotationDegrees;
+            this.globalScale.x = this.parent.globalScale.x + this.scale.x;
+            this.globalScale.y = this.parent.globalScale.y + this.scale.y;
+        }
+
+        // Callbacks
+        this._update(delta);
+        for (let i = 0; i < this.children.length; i++)
+        {
+            this.children[i].update(delta);
+        }
     }
 
     /**
