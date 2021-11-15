@@ -44,19 +44,4 @@ class Ellipse extends Shape
         this.rx = rx;
         this.ry = ry;
     }
-
-    /**
-     * Calculates if a point (x, y) lies iside the ellipse, assuming the
-     * ellipse is on the origin of the Cartesian plane.
-     * 
-     * @param {number} x    x-cooridnate of the point. 
-     * @param {number} y    y-coordinate of the point.
-     * 
-     * @returns {boolean}   true if the point lies within the bounds of the
-     *                      ellipse, false if not. 
-     */
-    isIn(x, y)
-    {
-        return (x * x) * (this.ry * this.ry) + (y * y) * (this.rx * this.rx) <= (this.rx * this.rx) * (this.ry * this.ry);
-    }
 }

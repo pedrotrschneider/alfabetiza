@@ -213,8 +213,8 @@ class AnimatedSprite2D extends Sprite2D
             this.globalPosition.x = this.parent.globalPosition.x + this.position.x;
             this.globalPosition.y = this.parent.globalPosition.y + this.position.y;
             this.globalRotationDegrees = this.parent.globalRotationDegrees + this.rotationDegrees;
-            this.globalScale.x = this.parent.globalScale.x + this.scale.x;
-            this.globalScale.y = this.parent.globalScale.y + this.scale.y;
+            this.globalScale.x = this.parent.globalScale.x * this.scale.x;
+            this.globalScale.y = this.parent.globalScale.y * this.scale.y;
         }
 
         // Forwards the animation.

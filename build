@@ -6,6 +6,7 @@ rm pandora.min.js
 # Package singletons
 cat pandora/singletons/Enums.js > build.js
 cat pandora/singletons/Easings.js >> build.js
+cat pandora/singletons/Collisions.js >> build.js
 
 # Package handlers
 cat pandora/handlers/GameHandler.js >> build.js

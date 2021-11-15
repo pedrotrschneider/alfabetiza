@@ -33,7 +33,7 @@ GameHandler._setup = function()
     GameHandler.drawDebugBufferBounds(true);
     textFont(AssetHandler.getP5FontByName("Lato"));
 
-    test = new Area2D("myTest", SHAPES.RECT, new Rect(200, 400), true, true);
+    test = new Area2D("myTest", SHAPES.ELLIPSE, new Ellipse(200, 400), true, true);
     test2 = new TestObj("myDummy");
     test2.setPosition(600, 600);
     test2.addChild(test);

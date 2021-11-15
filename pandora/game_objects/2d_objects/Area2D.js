@@ -50,6 +50,15 @@ class Area2D extends Object2D
         super(name);
 
         this.shapeType = shapeType;
+        switch (this.shapeType)
+        {
+            case SHAPES.RECT:
+                this.shapeName = "Rect";
+                break;
+            case SHAPES.ELLIPSE:
+                this.shapeName = "Ellipse";
+                break;
+        }
         this.shape = shape;
         this.listenToMouse = listenToMouse;
         this.drawDebug = drawDebug;
@@ -106,14 +115,15 @@ class Area2D extends Object2D
             this.globalPosition.x = this.parent.globalPosition.x + this.position.x;
             this.globalPosition.y = this.parent.globalPosition.y + this.position.y;
             this.globalRotationDegrees = this.parent.globalRotationDegrees + this.rotationDegrees;
-            this.globalScale.x = this.parent.globalScale.x + this.scale.x;
-            this.globalScale.y = this.parent.globalScale.y + this.scale.y;
+            this.globalScale.x = this.parent.globalScale.x * this.scale.x;
+            this.globalScale.y = this.parent.globalScale.y * this.scale.y;
         }
 
         // Checks collision with mouse
         if (this.listenToMouse)
         {
-            if (this.shape.isIn(GameHandler.mouseX - this.globalPosition.x, GameHandler.mouseY - this.globalPosition.y))
+            if (Collisions[this.shapeName].point(this.globalPosition.x, this.globalPosition.y, this.globalRotationDegrees, this.globalScale.x,
+                this.globalScale.y, this.shape, GameHandler.mouseX, GameHandler.mouseY))
             {
                 if (!this.mouseIn)
                     this.emitSignal("mouseEntered");
