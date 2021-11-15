@@ -43,10 +43,11 @@ const Collisions = {
     {
         var rotx = x,
             roty = y;
+        var ra = radians(a)
         if (a % 360 != 0)
         {
-            rotx = x * cos(-radians(a)) - y * sin(-radians(a));
-            roty = x * sin(-radians(a)) + y * cos(-radians(a));
+            rotx = x * cos(-ra) - y * sin(-ra);
+            roty = x * sin(-ra) + y * cos(-ra);
         }
 
         return Object.freeze([rotx, roty]);

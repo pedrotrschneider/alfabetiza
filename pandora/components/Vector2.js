@@ -158,6 +158,90 @@ class Vector2 extends Component
     }
 
     /**
+     * Normalizes this vector inplace.
+     */
+    normalize()
+    {
+        let len = this.length();
+        this.x /= len;
+        this.y /= len;
+    }
+
+    /**
+     * Creates a Vector2 rotated a radians clockwise in relation to this Vector2.
+     * 
+     * @param {number} a    angle in radians to rotate the vector.
+     * 
+     * @returns {Vector2}   rotated Vector2.
+     */
+    rotated(a)
+    {
+        return new Vector2(this.x * cos(-a) - this.y * sin(-a), this.x * sin(-a) + this.y * cos(-a))
+    }
+
+    /**
+     * Rotates this Vector2 inplace by a radians clockwise.
+     * 
+     * @param {number} a    angle in radians to rotate this vector.
+     */
+    rotate(a)
+    {
+        let rotX = this.x * cos(-a) - this.y * sin(-a),
+            rotY = this.x * sin(-a) + this.y * cos(-a);
+
+        this.x = rotX;
+        this.y = rotY;
+    }
+
+    /**
+     * Creates a Vector2 based on this Vector2 but scaled by s.
+     * 
+     * @param {number} s    factor to scale the Vector2.
+     * 
+     * @returns {Vector2}   scaled Vector2. 
+     */
+    scaled(s)
+    {
+        return new Vector2(this.x * s, this.y * s);
+    }
+
+    /**
+     * Scales this Vector2 inplace.
+     * 
+     * @param {number} s    factor to scale the Vector2.
+     */
+    scale(s)
+    {
+        this.x *= s;
+        this.y *= s;
+    }
+
+    /**
+     * Creates a Vector2 based on this Vector2 but translated by x on the X-axis and y on the Y-axis.
+     * 
+     * @param {number} x    X-axis translation.
+     * @param {number} y    Y-axis translation.
+     * 
+     * @returns {Vector2}   translated Vector2.
+     */
+    translated(x, y)
+    {
+        return new Vector2(this.x + x, this.y + y);
+    }
+
+    /**
+     * Translates this Vector2 by x on the X-axis and y on the Y-axis.
+     * 
+     * @param {number} x    X-axis translation.
+     * @param {number} y    Y-axis translation.
+     */
+    translate(x, y)
+    {
+        this.x += x;
+        this.y += y;
+    }
+
+    /**
      * Returns this Vector2's distance squared to another Vector2.
      * 
      * @param {Vector2} v   Vector2 to calculate the distance to.
