@@ -16,6 +16,7 @@ cat pandora/components/Component.js >> build.js
 cat pandora/components/Color.js >> build.js
 cat pandora/components/Vector2.js >> build.js
 cat pandora/components/Signal.js >> build.js
+cat pandora/components/Shape.js >> build.js
 cat pandora/components/Rect.js >> build.js
 cat pandora/components/Ellipse.js >> build.js
 

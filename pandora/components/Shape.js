@@ -1,5 +1,5 @@
 /************************************************************************
- * Rect.js
+ * Shape.js
  ************************************************************************
  * Copyright (c) 2021 Pedro Tonini Rosenberg Schneider.
  *
@@ -20,43 +20,24 @@
  *************************************************************************/
 
 /**
- * This {@code Rect} class provides an interface to store a rectangle as a component to
- * any GameObject.
+ * This {@code Shape} class represents the base class all Shape components inherit from.
+ * 
+ * ! This is an empty class the serves only to be inherited from to organize the hierarchy.
+ * ! This class should not bet used by the user.
  * 
  * @author Pedro Schneider
  * 
  * @class
  */
-class Rect extends Shape
+class Shape extends Component
 {
     /**
-     * Initializes a Rect with the given parameters.
-     * 
-     * @param {number} w    width of the Rect.
-     * @param {number} h    height of the Rect.
+     * Creates an empty Shape Component.
      * 
      * @constructor
      */
-    constructor(w, h = w)
+    constructor()
     {
         super();
-
-        this.w = w;
-        this.h = h;
-    }
-
-    /**
-     * Calculates if a point (x, y) lies iside the rect, assuming the
-     * rect is on the origin of the Cartesian plane.
-     * 
-     * @param {number} x    x-cooridnate of the point. 
-     * @param {number} y    y-coordinate of the point.
-     * 
-     * @returns {boolean}   true if the point lies within the bounds of the
-     *                      rect, false if not. 
-     */
-    isIn(x, y)
-    {
-        return abs(x) <= this.w / 2 && abs(y) <= this.h / 2;
     }
 }

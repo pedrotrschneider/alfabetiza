@@ -27,7 +27,7 @@
  * 
  * @class
  */
-class Ellipse extends Component
+class Ellipse extends Shape
 {
     /**
      * Initializes an Ellipse with the given parameters.
@@ -40,7 +40,7 @@ class Ellipse extends Component
     constructor(rx, ry = rx)
     {
         super();
-        
+
         this.rx = rx;
         this.ry = ry;
     }
