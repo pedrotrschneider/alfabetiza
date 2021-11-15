@@ -19,7 +19,7 @@ class TestObj extends GameObject
     }
 }
 
-function preload()
+GameHandler._preload = function()
 {
     AssetHandler.loadTexture("monke", "/assets/textures/monke.png");
     AssetHandler.loadFont("Lato", "/assets/fonts/Lato-Regular.ttf");
@@ -27,21 +27,14 @@ function preload()
     AssetHandler.loadAudio("music", "/assets/audio/music.ogg");
 }
 
-function setup()
+GameHandler._setup = function()
 {
     GameHandler.drawDebugFPS(true);
-    GameHandler.init();
+    GameHandler.drawDebugBufferBounds(true);
     textFont(AssetHandler.getP5FontByName("Lato"));
 
     test = new Area2D("myTest", SHAPES.ELLIPSE, new Ellipse(200, 400), true, true);
     test.setPosition(600, 600);
     GameHandler.addRootObject(test);
     test.addChild(new TestObj("myDummy"));
-}
-
-function draw()
-{
-    background(220);
-    GameHandler.update();
-    GameHandler.draw();
 }

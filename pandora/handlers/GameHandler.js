@@ -51,13 +51,15 @@ const GameHandler = {
     mouseX: 0, // X position of the mouse relative to the secondary buffer.
     mouseY: 0, // Y position of the mouse relative to the secondary buffer.
 
+    backgroundColor: null, // Default color to be drawn to the background.
+
     /**
      * Sets the initial game render mode.
      * 
      * @param {RENDER_MODES} mode   RENDER_MODES.P2D for default P5Js render or 
      *                              RENDER_MODES.WEBGL for webgl (not recomended for mobile).
      */
-    setRenderMode: function(mode)
+    setRenderMode(mode)
     {
         this.renderMode = mode;
     },
@@ -68,7 +70,7 @@ const GameHandler = {
      * @param {number} w    width in pixels to initialize the secondary buffer.
      * @param {number} h    height in pixels to initialize the secondary buffer.
      */
-    setDoubleBufferSize: function(w, h)
+    setDoubleBufferSize(w, h)
     {
         this.dbWidth = w;
         this.dbHeight = h;
@@ -80,7 +82,7 @@ const GameHandler = {
      * 
      * @param {number} val  pixel density for the canvas on desktop devices.
      */
-    setPixelDensity: function(val)
+    setPixelDensity(val)
     {
         this.pixelDen = val;
     },
@@ -91,9 +93,19 @@ const GameHandler = {
      * 
      * @param {number} val  pixel density for the canvas on desktop devices.
      */
-    setPixelDensityMobile: function(val)
+    setPixelDensityMobile(val)
     {
         this.pixelDenMobile = val;
+    },
+
+    /**
+     * Sets the default color to be drawn to the main buffer's background.
+     * 
+     * @param {Color} col   new background color; 
+     */
+    setBackgroundColor(col)
+    {
+        this.backgroundColor = col;
     },
 
     /**
@@ -122,7 +134,7 @@ const GameHandler = {
      * 
      * @param {number} fps  target fps for the game (default if 60).
      */
-    init: function(fps = 60)
+    init(fps = 60)
     {
         // Sets the mobile flag.
         this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -171,7 +183,7 @@ const GameHandler = {
      * 
      * @param {GameObject} obj  GameObject to be instanced. 
      */
-    instanceGameObject: function(obj)
+    instanceGameObject(obj)
     {
         obj.id = this.nextId;
         this.nextId++;
@@ -182,7 +194,7 @@ const GameHandler = {
      * 
      * @param {GameObject} obj  GameObject to be added as a root of the tree. 
      */
-    addRootObject: function(obj)
+    addRootObject(obj)
     {
         this.rootObjects.push(obj);
         obj.isRoot = true;
@@ -196,7 +208,7 @@ const GameHandler = {
      * 
      * @param {number} id   object id of the GameObject that should be removed from the tree.
      */
-    removeRootObjectById: function(id)
+    removeRootObjectById(id)
     {
         for (let i = 0; i < this.rootObjects.length; i++)
         {
@@ -210,7 +222,7 @@ const GameHandler = {
     /**
      * Updates all of the GameObjects on the tree.
      */
-    update: function()
+    update()
     {
         // Updates the debug fps label if it existis.
         if (this.bDrawDebugFPS)
@@ -243,7 +255,7 @@ const GameHandler = {
     /**
      * Draws all of the GameObjects on the tree.
      */
-    draw: function()
+    draw()
     {
         // Clear the secondary buffer.
         this.db.clear();
@@ -281,7 +293,69 @@ const GameHandler = {
 
         // Updates the delta
         this.prevMillis = millis();
-    }
+    },
+
+    /**
+     * ! This function should be overriden, it provides no default functionality.
+     * This function is called once when the page loads, and should be used by the user to load
+     * assets and other forms of data that need to be already loaded when the prorgam starts.
+     * 
+     * @callback
+     */
+    _preload()
+    {
+
+    },
+
+    /**
+     * ! This function should be overriden, it provides no default functionality.
+     * This function is called once when the program starts, and should be used by the user to
+     * initialize any necessary aspects of the game.
+     * 
+     * @callback
+     */
+    _setup()
+    {
+
+    },
+}
+
+/**
+ * This function is called once when the page loads. Serves to load assets and other
+ * data that needs to be loaded when the program starts.
+ * 
+ * @callback
+ */
+function preload()
+{
+    GameHandler._preload();
+}
+
+/**
+ * This function is called once at the start of the program. Serves to initialize several
+ * aspects of the game.
+ * 
+ * @callback
+ */
+function setup()
+{
+    GameHandler._setup();
+    GameHandler.init();
+}
+
+/**
+ * This function is called once every frame. Serves to update and draw all GameObjects.
+ * 
+ * @callback
+ */
+function draw()
+{
+    if (GameHandler.backgroundColor)
+        background(GameHandler.backgroundColor.getP5Color());
+    else
+        background(200);
+    GameHandler.update();
+    GameHandler.draw();
 }
 
 /**
