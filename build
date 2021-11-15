@@ -21,6 +21,7 @@ cat pandora/components/Rect.js >> build.js
 cat pandora/components/Ellipse.js >> build.js
 
 # Package resources
+cat pandora/resources/Resource.js >> build.js
 cat pandora/resources/AudioRes.js >> build.js
 cat pandora/resources/FontRes.js >> build.js
 cat pandora/resources/TextureRes.js >> build.js

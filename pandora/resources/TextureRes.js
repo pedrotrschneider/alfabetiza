@@ -20,14 +20,14 @@
  *************************************************************************/
 
 /**
- * This {@code Textureres} class provides an interface to store a texture resource into
+ * This {@code TextureRes} class provides an interface to store a texture resource into
  * memory to be accessed later.
  * 
  * @author Pedro Schneider
  * 
  * @class
  */
-class TextureRes
+class TextureRes extends Resource
 {
     /**
      * Initializes a texture resource with the given parameters.
@@ -39,7 +39,8 @@ class TextureRes
      */
     constructor(name = "", p5Image = null)
     {
-        this.name = name;
+        super(name);
+
         this.P5Image = p5Image;
     }
 }

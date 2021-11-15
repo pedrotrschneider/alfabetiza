@@ -1,5 +1,5 @@
 /************************************************************************
- * AudioRes.js
+ * Resource.js
  ************************************************************************
  * Copyright (c) 2021 Pedro Tonini Rosenberg Schneider.
  *
@@ -20,27 +20,24 @@
  *************************************************************************/
 
 /**
- * This {@code AudioRes} class provides an interface to store an audio resource into
- * memory to be accessed later.
+ * This {@code Resource} class represents the base class all Resources inherit from.
+ * 
+ * ! This is an empty class the serves only to be inherited from to organize the hierarchy.
+ * ! This class should not bet used by the user.
  * 
  * @author Pedro Schneider
  * 
  * @class
  */
-class AudioRes extends Resource
+class Resource
 {
     /**
-     * Initializes an audio resource with the given parameters.
-     * 
-     * @param {String} name         name of the audio resource.
-     * @param {p5.Audio} p5Audio    audio data for the audio resource.
+     * Creates an empty Resource.
      * 
      * @constructor
      */
-    constructor(name = "", p5Audio = null)
+    constructor(name = "")
     {
-        super(name);
-
-        this.P5Audio = p5Audio;
+        this.name = name;
     }
 }

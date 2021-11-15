@@ -30,7 +30,7 @@
  * 
  * @class
  */
-class SpriteAnimation
+class SpriteAnimation extends Resource
 {
     /**
      * Initialize a SpriteAnimation with the given parameters.
@@ -47,7 +47,8 @@ class SpriteAnimation
      */
     constructor(name = "default", p5Image, rows, cols, indices, fps)
     {
-        this.name = name;
+        super(name);
+
         this.fullP5Image = p5Image;
         this.rows = rows;
         this.columns = cols;
@@ -146,7 +147,7 @@ class SpriteAnimation
  * 
  * @class
  */
-class SpriteFrames
+class SpriteFrames extends Resource
 {
     /**
      * Initializes an empty SpriteFrames.
@@ -155,6 +156,8 @@ class SpriteFrames
      */
     constructor()
     {
+        super();
+        
         this.animations = [];
         this.numAnimations = 0;
     }

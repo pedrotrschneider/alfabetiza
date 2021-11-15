@@ -27,7 +27,7 @@
  * 
  * @class
  */
-class FontRes
+class FontRes extends Resource
 {
     /**
      * Initializes a font resource with the given parameters.
@@ -39,7 +39,8 @@ class FontRes
      */
     constructor(name = "", p5Font = null)
     {
-        this.name = name;
+        super(name);
+
         this.P5Font = p5Font;
     }
 }
