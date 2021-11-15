@@ -124,6 +124,40 @@ class Object2D extends GameObject
     }
 
     /**
+     * Translates this Object2D by (x, y).
+     * 
+     * @param {number} x    X-axis translation. 
+     * @param {number} y    Y-axis translation.
+     */
+    translate(x, y)
+    {
+        this.position.x += x;
+        this.position.y += y;
+    }
+    
+    /**
+     * Rotates this Object2D by a degrees.
+     * 
+     * @param {number} a    rotation in degrees. 
+     */
+    rotate(a)
+    {
+        this.rotationDegrees += a;
+    }
+
+    /**
+     * Scales this Object2D by (x, y).
+     * 
+     * @param {number} x    X-axis scale.
+     * @param {number} y    Y-axis scale.
+     */
+    addScale(x, y)
+    {
+        this.scale.x *= x;
+        this.scale.y *= y;
+    }
+
+    /**
      * Updates this Object2D's global transform and recursively calls the _update(delta)
      * callback for this GameObject and all of it's children.
      * 
