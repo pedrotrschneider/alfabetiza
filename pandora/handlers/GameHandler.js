@@ -35,6 +35,7 @@ const GameHandler = {
 
     bDrawDebugFPS: false, // Should fps be drawn (for debug only).
     debugFpsLabel: null, // Object that drwas fps.
+    bDrawDebugBufferBounds: false, // Should the secondary buffer's bounds be drawn?
 
     prevMillis: 0, // Milliseconds ellapsed since the begining of the application.
     delta: 0, // Milliseconds ellapsed since the last frame.
@@ -103,6 +104,16 @@ const GameHandler = {
     drawDebugFPS(val)
     {
         this.bDrawDebugFPS = val;
+    },
+
+    /**
+     * Sets the flag to draw secondary buffer bounds.
+     * 
+     * @param {boolean} val true if debug secondary buffer bounds should be drawn, false if not. 
+     */
+    drawDebugBufferBounds(val)
+    {
+        this.bDrawDebugBufferBounds = val;
     },
 
     /**
@@ -237,13 +248,15 @@ const GameHandler = {
         // Clear the secondary buffer.
         this.db.clear();
 
-        // Draw a rectangle to visualize the secondary buffer.
-        // TODO: remove this
-        this.db.push();
-        this.db.strokeWeight(5);
-        this.db.noFill();
-        this.db.rect(0, 0, this.dbWidth, this.dbHeight);
-        this.db.pop();
+        if (this.bDrawDebugBufferBounds)
+        {
+            // Draw a rectangle to visualize the secondary buffer.
+            this.db.push();
+            this.db.strokeWeight(5);
+            this.db.noFill();
+            this.db.rect(0, 0, this.dbWidth, this.dbHeight);
+            this.db.pop();
+        }
 
         // Centers the image and calculates the dimensions of the secondary
         // buffer to best fit the size of the window.
