@@ -19,8 +19,23 @@
  * along with Pandora.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
+/**
+ * This {@code Component} class represents the base class all Components inherit from.
+ * 
+ * ! This is an empty class the serves only to be inherited from to organize the hierarchy.
+ * ! This class should not bet used by the user.
+ * 
+ * @author Pedro Schneider
+ * 
+ * @class
+ */
 class Component
 {
+    /**
+     * Creates an empty Component.
+     * 
+     * @constructor
+     */
     constructor()
     {}
 }
