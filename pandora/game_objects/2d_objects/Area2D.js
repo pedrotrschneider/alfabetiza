@@ -149,7 +149,7 @@ class Area2D extends Object2D
 
         db.push();
         db.translate(this.position.x, this.position.y);
-        db.rotate(this.rotationDegrees);
+        db.rotate(this.rotationDegrees / 180 * PI);
         db.scale(this.scale.x, this.scale.y);
 
         if (this.drawDebug)

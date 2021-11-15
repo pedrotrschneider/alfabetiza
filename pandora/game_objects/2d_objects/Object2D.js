@@ -173,7 +173,7 @@ class Object2D extends GameObject
 
         db.push();
         db.translate(this.position.x, this.position.y);
-        db.rotate(this.rotationDegrees);
+        db.rotate(this.rotationDegrees / 180 * PI);
         db.scale(this.scale.x, this.scale.y);
 
         this._draw(delta, db);

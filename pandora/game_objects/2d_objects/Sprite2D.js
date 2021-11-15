@@ -62,7 +62,7 @@ class Sprite2D extends Object2D
     {
         db.push();
         db.translate(this.position.x, this.position.y);
-        db.rotate(this.rotationDegrees);
+        db.rotate(this.rotationDegrees / 180 * PI);
         db.scale(this.scale.x, this.scale.y);
 
         db.image(this.P5Image, 0, 0, this.P5Image.width, this.P5Image.height);
