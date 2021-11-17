@@ -12,5 +12,4 @@ GameHandler._setup = function()
 {
     GameHandler.drawDebugFPS(true);
     GameHandler.drawDebugBufferBounds(true);
-    textFont(AssetHandler.getP5FontByName("Lato"));
 }
