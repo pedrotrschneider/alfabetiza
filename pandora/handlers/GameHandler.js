@@ -50,6 +50,8 @@ const GameHandler = {
 
     mouseX: 0, // X position of the mouse relative to the secondary buffer.
     mouseY: 0, // Y position of the mouse relative to the secondary buffer.
+    pmouseX: 0, // X position of the mouse relative to the secondary buffer on the previous frame.
+    pmouseY: 0, // Y position of the mouse relative to the secondary buffer on the previous frame.
 
     backgroundColor: null, // Default color to be drawn to the background.
 
@@ -241,6 +243,9 @@ const GameHandler = {
         // Updates the delta.
         this.delta = (millis() - this.prevMillis) / 1000;
 
+        // Update mouse position relative to the secondary buffer.
+        this.pmouseX = this.mouseX;
+        this.pmouseY = this.mouseY;
         let ar = this.db.screenWidth / this.db.width;
         let offsetx = (windowWidth - this.db.screenWidth) / 2;
         let offsety = (windowHeight - this.db.screenHeight) / 2;
@@ -283,6 +288,9 @@ const GameHandler = {
             this.db.screenHeight = windowHeight;
             this.db.screenWidth = windowHeight * (this.dbWidth / this.dbHeight);
         }
+
+        this.db.ellipse(this.pmouseX, this.pmouseY, 20);
+        this.db.line(this.pmouseX, this.pmouseY, this.mouseX, this.mouseY);
 
         // Draw all game objects.
         for (let i = 0; i < this.rootObjects.length; i++)
