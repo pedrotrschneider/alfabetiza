@@ -37,6 +37,7 @@ class RebusQuestionCard extends Object2D
 
     _draw(delta, db)
     {
+        db.strokeWeight(10);
         db.rectMode(CENTER);
         db.fill(this.fillColor.getP5Color());
         db.rect(0, 0, 300, 400, 10, 10);
