@@ -1,104 +1,30 @@
-class RebusQuestionCard extends Object2D
-{
-    thumb = null;
-    imgName = "";
-
-    fillColor = new Color(200, 200, 200);
-
-    _setup()
-    {
-        var sprite = new Sprite2D("sprite", this.thumb);
-        sprite.width = 250;
-        sprite.height = 250;
-        sprite.setPosition(0, -75);
-        this.addChild(sprite);
-    }
-
-    _draw(delta, db)
-    {
-        db.rectMode(CENTER);
-        db.fill(this.fillColor.getP5Color());
-        db.rect(0, 0, 300, 400, 10, 10);
-        db.textAlign(CENTER, CENTER);
-        db.fill(0);
-        db.textSize(40);
-        db.text(this.imgName, 0, 100);
-    }
-}
-
-class RebusOptionCard extends RebusQuestionCard
-{
-    isAnswer = false;
-
-    mouseOver = false;
-    mousePress = false;
-
-    _setup()
-    {
-        var sprite = new Sprite2D("sprite", this.thumb);
-        sprite.width = 250;
-        sprite.height = 250;
-        sprite.setPosition(0, -75);
-        this.addChild(sprite);
-
-        var area = new Area2D("area", SHAPES.RECT, new Rect(300, 400), true);
-        area.connect("mouseEntered", this, "_onMouseEntered");
-        area.connect("mouseExited", this, "_onMouseExited");
-        this.addChild(area);
-    }
-
-    _update(delta)
-    {
-        if (this.mouseOver)
-        {
-            if (InputHandler.mouseIsClicked)
-            {
-                console.log("selected");
-            }
-
-            if (InputHandler.mouseIsPressed)
-            {
-                this.scale.x = max(this.scale.x - 3.0 * delta, 0.95);
-                this.scale.y = max(this.scale.y - 3.0 * delta, 0.95);
-            }
-            else
-            {
-                this.scale.x = min(this.scale.x + 2.0 * delta, 1.1);
-                this.scale.y = min(this.scale.y + 2.0 * delta, 1.1);
-            }
-        }
-
-        else
-        {
-            this.scale.x = max(this.scale.x - 2.0 * delta, 1);
-            this.scale.y = max(this.scale.y - 2.0 * delta, 1);
-        }
-    }
-
-    _onMouseEntered()
-    {
-        this.mouseOver = true;
-    }
-
-    _onMouseExited()
-    {
-        this.mouseOver = false;
-    }
-}
-
 class RebusGame extends Object2D
 {
     levelData = null;
+    gameFinished = false;
+    points = 3;
+
+    backButton = null;
+    continueButton = null;
+    timer = null;
 
     _setup()
     {
+        var arr = [];
+        for (let i = 0; i < this.levelData.optionCards.length; i++)
+            arr.push(i);
+        arr = shuffle(arr);
+
         for (let i = 0; i < this.levelData.optionCards.length; i++)
         {
-            var newCard = new RebusOptionCard("OptionCard" + i);
-            AssetHandler.loadTexture(this.levelData.optionCards[i].name, this.levelData.optionCards[i].path);
-            newCard.thumb = AssetHandler.getTextureByName(this.levelData.optionCards[i].name);
-            newCard.imgName = this.levelData.optionCards[i].name;
+            var j = arr[i];
+            var newCard = new RebusOptionCard("OptionCard" + j);
+            AssetHandler.loadTexture(this.levelData.optionCards[j].name, this.levelData.optionCards[j].path);
+            newCard.thumb = AssetHandler.getTextureByName(this.levelData.optionCards[j].name);
+            newCard.imgName = this.levelData.optionCards[j].name;
+            newCard.isAnswer = this.levelData.optionCards[j].answer;
             newCard.setPosition((i + 1) * (1920 / 4), 3 * (1080 / 4));
+            newCard.connect("selected", this, "_onCardSelected");
             this.addChild(newCard)
         }
 
@@ -111,10 +37,71 @@ class RebusGame extends Object2D
             newCard.setPosition((i + 1) * (1920 / (this.levelData.questionCards.length + 1)), 1080 / 4);
             this.addChild(newCard)
         }
+
+        this.addChild(new RebusGameVisualEffects("GameVisualEffects"));
+
+        this.backButton = new Button("BackButton");
+        this.backButton.setLabel("Voltar");
+        this.backButton.setFontSize(30);
+        this.backButton.setPosition(20, 20);
+        this.backButton.setSize(110, 75);
+        this.backButton.connect("mouseClicked", this, "_onBackClicked");
+        this.addChild(this.backButton);
+
+        this.continueButton = new Button("ContinueButton");
+        this.continueButton.setLabel("Continuar");
+        this.continueButton.setFontSize(40);
+        this.continueButton.setPosition((1920 - this.continueButton.getSize().x) / 2, 1080 - 450);
+        this.continueButton.hide();
+        this.continueButton.connect("mouseClicked", this, "_onContinueClicked");
+        this.addChild(this.continueButton);
+
+        this.timer = new Timer("Timer", 2, false, true);
+        this.timer.connect("timeout", this, "_onTimerTimeout");
+        this.addChild(this.timer);
     }
 
     _draw(delta, db)
     {
         background(52);
+    }
+
+    returnToMenu()
+    {
+        AssetHandler.clearTextureCache();
+        GameHandler.addRootObject(new RebusLevelSelector("LevelSelector"));
+        this.queueFree();
+    }
+
+    _onCardSelected(isAnswer)
+    {
+        if (!isAnswer)
+            this.points--;
+        else
+        {
+            this.gameFinished = true;
+            this.backButton.hide();
+            this.timer.start();
+            for (let i = 0; i < this.children.length; i++)
+            {
+                if (this.children[i] instanceof RebusOptionCard)
+                    this.children[i].selectable = false;
+            }
+        }
+    }
+
+    _onBackClicked()
+    {
+        this.returnToMenu();
+    }
+
+    _onContinueClicked()
+    {
+        this.returnToMenu();
+    }
+
+    _onTimerTimeout()
+    {
+        this.continueButton.show();
     }
 }

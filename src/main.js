@@ -5,11 +5,13 @@ GameHandler._preload = function()
 
 GameHandler._setup = function()
 {
-    GameHandler.drawDebugFPS(true);
-    GameHandler.drawDebugBufferBounds(true);
+    // GameHandler.drawDebugFPS(true);
+    // GameHandler.drawDebugBufferBounds(true);
     textFont(AssetHandler.getP5FontByName("Lato"));
 
-    rg = new RebusGame("Rebus game");
-    rg.levelData = REBUS_LEVELS.tutorial;
-    GameHandler.addRootObject(rg);
+    // rg = new RebusGame("Rebus game");
+    // rg.levelData = REBUS_LEVELS.tutorial;
+    // GameHandler.addRootObject(rg);
+    let rls = new RebusLevelSelector("LevelSelector");
+    GameHandler.addRootObject(rls);
 }
