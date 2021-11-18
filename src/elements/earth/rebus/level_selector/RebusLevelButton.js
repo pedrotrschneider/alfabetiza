@@ -28,11 +28,6 @@ class RebusLevelButton extends Button
         this.addSignal("levelSelected");
     }
 
-    _setup()
-    {
-
-    }
-
     _onMouseClicked()
     {
         this.emitSignal("levelSelected", this.levelData);

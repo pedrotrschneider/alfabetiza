@@ -39,7 +39,7 @@ class RebusLevelSelector extends Object2D
         this.addChild(b);
         b.setSize(200, 100);
         b.setPosition((1920 - b.getSize().x) / 2, 300);
-        b.connect("levelSelected", this, "_onLevelSelected");
+        b.connect("levelSelected", this, "_onTutorialSelected");
 
         var i = 1;
         while (REBUS_LEVELS[`level${i}`])
@@ -74,6 +74,14 @@ class RebusLevelSelector extends Object2D
         db.text("RÉBUS", 1920 / 2, 125);
         db.textSize(40);
         db.text("Escolha o nível", 1920 / 2, 200);
+    }
+
+    _onTutorialSelected(levelData)
+    {
+        var rg = new RebusTutorial("RebusTutorial");
+        rg.levelData = levelData;
+        GameHandler.addRootObject(rg);
+        this.queueFree();
     }
 
     _onLevelSelected(levelData)

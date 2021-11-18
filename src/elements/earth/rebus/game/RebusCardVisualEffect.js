@@ -21,6 +21,7 @@
 
 class RebusCardVisualEffect extends Object2D
 {
+    glowIterations = 7;
     glowAmount = 0;
 
     _draw(delta, db)
@@ -36,11 +37,11 @@ class RebusCardVisualEffect extends Object2D
             else
             {
                 db.noFill();
-                this.glowAmount = min(1.0, this.glowAmount + 0.07);
-                for (let i = 0; i < 100; i++)
+                this.glowAmount = min(1.0, this.glowAmount + 0.03);
+                for (let i = 0; i < this.glowIterations; i++)
                 {
-                    db.stroke(255, 255, 100, this.glowAmount * 200 / (101 - i));
-                    db.strokeWeight((100 - i) / 3);
+                    db.stroke(255, 255, 100, this.glowAmount * 200 / (this.glowIterations + 1 - i));
+                    db.strokeWeight((this.glowIterations - i) * 6);
                     db.rect(0, 0, 300, 400, 10);
                 }
             }
