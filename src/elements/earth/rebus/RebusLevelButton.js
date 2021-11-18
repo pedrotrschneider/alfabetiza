@@ -1,5 +1,5 @@
 /************************************************************************
- * RebusQuestionCard.js
+ * RebusLevelButton.js
  ************************************************************************
  * Copyright (c) 2021 Pedro Tonini Rosenberg Schneider.
  *
@@ -19,30 +19,22 @@
  * along with Alfabetiza.  If not, see <https://www.gnu.org/licenses/>.
  *************************************************************************/
 
-class RebusQuestionCard extends Object2D
+class RebusLevelButton extends Button
 {
-    thumb = null;
-    imgName = "";
+    levelData = null;
 
-    fillColor = new Color(200, 200, 200);
+    _initSignals()
+    {
+        this.addSignal("levelSelected");
+    }
 
     _setup()
     {
-        var sprite = new Sprite2D("sprite", this.thumb);
-        sprite.width = 250;
-        sprite.height = 250;
-        sprite.setPosition(0, -75);
-        this.addChild(sprite);
+
     }
 
-    _draw(delta, db)
+    _onMouseClicked()
     {
-        db.rectMode(CENTER);
-        db.fill(this.fillColor.getP5Color());
-        db.rect(0, 0, 300, 400, 10, 10);
-        db.textAlign(CENTER, CENTER);
-        db.fill(0);
-        db.textSize(40);
-        db.text(this.imgName, 0, 100);
+        this.emitSignal("levelSelected", this.levelData);
     }
 }
