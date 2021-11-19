@@ -31,6 +31,10 @@ class RebusOptionCard extends Object2D
     mouseOver = false;
     mousePress = false;
 
+    tweenStarted = false;
+    tween = null;
+    timer = null;
+
     _initSignals()
     {
         this.addSignal("selected");
@@ -50,10 +54,25 @@ class RebusOptionCard extends Object2D
         this.addChild(area);
 
         this.addChild(new RebusCardVisualEffect("CardVfx"));
+
+        this.tween = new Tween("Tween");
+        this.tween.interpolateProperty(this, "scale", PROPERTY_TYPE.VECTOR2, Vector2.ZERO(), Vector2.ONE(), 1, TRANS_TYPE.ELASTIC, EASE_TYPE.OUT);
+        this.addChild(this.tween);
+
+        this.timer = new Timer("Timer", 1, false, true);
+        this.timer.connect("timeout", this, "_onTimerTimeout");
+        this.addChild(this.timer);
     }
 
     _update(delta)
     {
+        if (this.visible && !this.tweenStarted)
+        {
+            this.timer.start();
+            this.tween.startAll();
+            this.tweenStarted = true;
+        }
+
         if (this.selectable && this.mouseOver)
         {
             if (InputHandler.mouseIsClicked)
@@ -107,5 +126,10 @@ class RebusOptionCard extends Object2D
     _onMouseExited()
     {
         this.mouseOver = false;
+    }
+
+    _onTimerTimeout()
+    {
+        this.tween.stopAll();
     }
 }

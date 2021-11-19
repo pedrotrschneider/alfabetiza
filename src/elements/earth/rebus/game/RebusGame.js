@@ -46,9 +46,9 @@ class RebusGame extends Object2D
             newCard.isAnswer = this.levelData.optionCards[j].answer;
             newCard.setPosition((i + 1) * (1920 / 4), 3 * (1080 / 4));
             newCard.connect("selected", this, "_onCardSelected");
-            this.addChild(newCard)
+            this.addChild(newCard);
         }
-
+        
         for (let i = 0; i < this.levelData.questionCards.length; i++)
         {
             var newCard = new RebusQuestionCard("OptionCard" + i);
@@ -56,7 +56,7 @@ class RebusGame extends Object2D
             newCard.thumb = AssetHandler.getTextureByName(this.levelData.questionCards[i].name);
             newCard.imgName = this.levelData.questionCards[i].name;
             newCard.setPosition((i + 1) * (1920 / (this.levelData.questionCards.length + 1)), 1080 / 4);
-            this.addChild(newCard)
+            this.addChild(newCard);
         }
 
         this.addChild(new RebusGameVisualEffects("GameVisualEffects"));

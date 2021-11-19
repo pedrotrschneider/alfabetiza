@@ -25,6 +25,7 @@ class RebusQuestionCard extends Object2D
     imgName = "";
 
     fillColor = new Color(200, 200, 200);
+    tween = null;
 
     _setup()
     {
@@ -33,10 +34,22 @@ class RebusQuestionCard extends Object2D
         sprite.height = 250;
         sprite.setPosition(0, -75);
         this.addChild(sprite);
+        this.scale = Vector2.ZERO();
+
+        this.tween = new Tween("Tween");
+        this.tween.interpolateProperty(this, "scale", PROPERTY_TYPE.VECTOR2, Vector2.ZERO(), Vector2.ONE(), 1, TRANS_TYPE.ELASTIC, EASE_TYPE.OUT);
+        this.addChild(this.tween);
+    }
+
+    start()
+    {
+        this.tween.startAll();
     }
 
     _draw(delta, db)
     {
+        if (this.visible) this.tween.startAll();
+
         db.strokeWeight(10);
         db.rectMode(CENTER);
         db.fill(this.fillColor.getP5Color());

@@ -104,9 +104,9 @@ class RebusTutorial extends Object2D
             case 5:
                 for (let i = 0; i < this.optionCards.length; i++)
                     this.optionCards[i].show();
-                this.timer.start(1);
-            case 6:
                 this.timer.start(2);
+            case 6:
+                this.timer.start(3);
                 break;
         }
     }
