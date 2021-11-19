@@ -21,14 +21,14 @@
 
 GameHandler._preload = function()
 {
-    AssetHandler.loadFont("Lato", "/assets/fonts/Lato-Regular.ttf");
+    AssetHandler.loadFont("Lato", "../assets/fonts/Lato-Regular.ttf");
 }
 
 GameHandler._setup = function()
 {
     // GameHandler.drawDebugFPS(true);
     // GameHandler.drawDebugBufferBounds(true);
-    // textFont(AssetHandler.getP5FontByName("Lato"));
+    textFont(AssetHandler.getP5FontByName("Lato"));
 
     // rg = new RebusGame("Rebus game");
     // rg.levelData = REBUS_LEVELS.tutorial;
