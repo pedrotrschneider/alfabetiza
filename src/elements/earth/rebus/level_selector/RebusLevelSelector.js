@@ -94,6 +94,8 @@ class RebusLevelSelector extends Object2D
 
     _onBackClicked()
     {
-
+        var ems = new EarthMinigameSelector("EarthMinigameSelector");
+        GameHandler.addRootObject(ems);
+        this.queueFree();
     }
 }

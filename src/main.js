@@ -33,6 +33,13 @@ GameHandler._setup = function()
     // rg = new RebusGame("Rebus game");
     // rg.levelData = REBUS_LEVELS.tutorial;
     // GameHandler.addRootObject(rg);
-    let rls = new RebusLevelSelector("LevelSelector");
-    GameHandler.addRootObject(rls);
+
+    // let rls = new RebusLevelSelector("LevelSelector");
+    // GameHandler.addRootObject(rls);
+
+    // var ems = new EarthMinigameSelector("EarthMinigameSelector");
+    // GameHandler.addRootObject(ems);
+
+    var menu = new EelementSelector("ElementSelector");
+    GameHandler.addRootObject(menu);
 }

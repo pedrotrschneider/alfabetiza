@@ -56,7 +56,7 @@ class RebusOptionCard extends Object2D
         this.addChild(new RebusCardVisualEffect("CardVfx"));
 
         this.tween = new Tween("Tween");
-        this.tween.interpolateProperty(this, "scale", PROPERTY_TYPE.VECTOR2, Vector2.ZERO(), Vector2.ONE(), 1, TRANS_TYPE.ELASTIC, EASE_TYPE.OUT);
+        this.tween.interpolateProperty(this, "scale", PROPERTY_TYPE.VECTOR2, Vector2.ZERO(), Vector2.ONE(), 2, TRANS_TYPE.ELASTIC, EASE_TYPE.OUT);
         this.addChild(this.tween);
 
         this.timer = new Timer("Timer", 1, false, true);
