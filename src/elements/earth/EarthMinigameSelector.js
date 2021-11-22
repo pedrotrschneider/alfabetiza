@@ -122,7 +122,9 @@ class EarthMinigameSelector extends Object2D
 
     _onFoodHuntSelected()
     {
-        console.log("Food hunt has been selected");
+        var fh = new FoodHuntGame("FoodHuntGame");
+        GameHandler.addRootObject(fh);
+        this.queueFree();
     }
 
     _onLetterHuntSelected()

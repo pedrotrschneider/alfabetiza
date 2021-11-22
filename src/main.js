@@ -26,20 +26,13 @@ GameHandler._preload = function()
 
 GameHandler._setup = function()
 {
-    // GameHandler.drawDebugFPS(true);
-    // GameHandler.drawDebugBufferBounds(true);
+    GameHandler.drawDebugFPS(true);
+    GameHandler.drawDebugBufferBounds(true);
     // textFont(AssetHandler.getP5FontByName("Lato"));
 
-    // rg = new RebusGame("Rebus game");
-    // rg.levelData = REBUS_LEVELS.tutorial;
-    // GameHandler.addRootObject(rg);
+    var fh = new FoodHuntGame("FoodHunGame");
+    GameHandler.addRootObject(fh);
 
-    // let rls = new RebusLevelSelector("LevelSelector");
-    // GameHandler.addRootObject(rls);
-
-    // var ems = new EarthMinigameSelector("EarthMinigameSelector");
-    // GameHandler.addRootObject(ems);
-
-    var menu = new EelementSelector("ElementSelector");
-    GameHandler.addRootObject(menu);
+    // var menu = new EelementSelector("ElementSelector");
+    // GameHandler.addRootObject(menu);
 }
