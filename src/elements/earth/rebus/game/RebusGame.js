@@ -21,12 +21,18 @@
 
 class RebusGame extends Object2D
 {
+    /** @type {Object} */
     levelData = null;
+    /** @type {Boolean} */
     gameFinished = false;
+    /** @type {number} */
     points = 3;
 
+    /** @type {Button} */
     backButton = null;
+    /** @type {Button} */
     continueButton = null;
+    /** @type {Button} */
     timer = null;
 
     _setup()
@@ -48,7 +54,7 @@ class RebusGame extends Object2D
             newCard.connect("selected", this, "_onCardSelected");
             this.addChild(newCard);
         }
-        
+
         for (let i = 0; i < this.levelData.questionCards.length; i++)
         {
             var newCard = new RebusQuestionCard("OptionCard" + i);
@@ -82,7 +88,7 @@ class RebusGame extends Object2D
         this.addChild(this.timer);
     }
 
-    _draw(delta, db)
+    _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
         background(52);
     }
@@ -94,7 +100,7 @@ class RebusGame extends Object2D
         this.queueFree();
     }
 
-    _onCardSelected(isAnswer)
+    _onCardSelected( /** @type {Boolean} */ isAnswer)
     {
         if (!isAnswer)
             this.points--;

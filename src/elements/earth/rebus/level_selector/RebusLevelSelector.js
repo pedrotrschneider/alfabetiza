@@ -21,6 +21,7 @@
 
 class RebusLevelSelector extends Object2D
 {
+    /** @type {Object} */
     gridMargins = {
         left: 0,
         right: 0,
@@ -28,6 +29,7 @@ class RebusLevelSelector extends Object2D
         down: 0
     };
 
+    /** @type {number} */
     gridCols = 5;
 
     _setup()
@@ -64,7 +66,7 @@ class RebusLevelSelector extends Object2D
         this.addChild(this.backButton);
     }
 
-    _draw(delta, db)
+    _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
         background(52);
 
@@ -76,7 +78,7 @@ class RebusLevelSelector extends Object2D
         db.text("Escolha o nível", 1920 / 2, 200);
     }
 
-    _onTutorialSelected(levelData)
+    _onTutorialSelected( /** @type {Object} */ levelData)
     {
         var rg = new RebusTutorial("RebusTutorial");
         rg.levelData = levelData;
@@ -84,7 +86,7 @@ class RebusLevelSelector extends Object2D
         this.queueFree();
     }
 
-    _onLevelSelected(levelData)
+    _onLevelSelected( /** @type {Object} */ levelData)
     {
         var rg = new RebusGame("RebusGame");
         rg.levelData = levelData;

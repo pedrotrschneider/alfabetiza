@@ -21,10 +21,14 @@
 
 class RebusQuestionCard extends Object2D
 {
+    /** @type {TextureRes} */
     thumb = null;
+    /** @type {String} */
     imgName = "";
 
+    /** @type {Color} */
     fillColor = new Color(200, 200, 200);
+    /** @type {Tween} */
     tween = null;
 
     _setup()
@@ -46,7 +50,7 @@ class RebusQuestionCard extends Object2D
         this.tween.startAll();
     }
 
-    _draw(delta, db)
+    _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
         if (this.visible) this.tween.startAll();
 

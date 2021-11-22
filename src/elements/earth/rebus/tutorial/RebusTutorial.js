@@ -21,17 +21,25 @@
 
 class RebusTutorial extends Object2D
 {
+    /** @type {Object} */
     levelData = null;
+    /** @type {Boolean} */
     gameFinished = false;
+    /** @type {Number} */
     points = 3;
 
+    /** @type {Button} */
     backButton = null;
     continueButton = null;
     timer = null;
 
+    /** @type {Number} */
     tutorialStep = 0;
+    /** @type {Array} */
     questionCards = [];
+    /** @type {Array} */
     optionCards = [];
+    /** @type {Number} */
     answerIdx = 0;
 
     _setup()
@@ -92,7 +100,7 @@ class RebusTutorial extends Object2D
         this.addChild(new RebusTutorialVisualEffects);
     }
 
-    _update(delta)
+    _update( /** @type {Number} */ delta)
     {
         switch (this.tutorialStep)
         {
@@ -111,7 +119,7 @@ class RebusTutorial extends Object2D
         }
     }
 
-    _draw(delta, db)
+    _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
         background(52);
     }
@@ -132,7 +140,7 @@ class RebusTutorial extends Object2D
     {
         this.continueButton.hide();
         this.tutorialStep++;
-        
+
         switch (this.tutorialStep)
         {
             case 4:

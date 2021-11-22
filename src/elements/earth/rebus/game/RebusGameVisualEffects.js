@@ -21,11 +21,14 @@
 
 class RebusGameVisualEffects extends Object2D
 {
+    /** @type {String} */
     suffix = "";
+    /** @type {number} */
     bgOpacity = 0;
+    /** @type {number} */
     textOpacity = 0;
 
-    _draw(delta, db)
+    _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
         if (this.parent.gameFinished)
         {

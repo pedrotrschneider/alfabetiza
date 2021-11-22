@@ -21,18 +21,29 @@
 
 class RebusOptionCard extends Object2D
 {
+    /** @type {TextureRes} */
     thumb = null;
+    /** @type {String} */
     imgName = "";
+    /** @type {Boolean} */
     isAnswer = false;
+    /** @type {Boolean} */
     selected = false;
+    /** @type {Boolean} */
     selectable = true;
 
+    /** @type {Color} */
     fillColor = new Color(200, 200, 200);
+    /** @type {Boolean} */
     mouseOver = false;
+    /** @type  {Boolean} */
     mousePress = false;
 
+    /** @type {Boolean} */
     tweenStarted = false;
+    /** @type {Tween} */
     tween = null;
+    /** @type {Timer} */
     timer = null;
 
     _initSignals()
@@ -64,7 +75,7 @@ class RebusOptionCard extends Object2D
         this.addChild(this.timer);
     }
 
-    _update(delta)
+    _update( /** @type {number} */ delta)
     {
         if (this.visible && !this.tweenStarted)
         {
@@ -101,7 +112,7 @@ class RebusOptionCard extends Object2D
         }
     }
 
-    _draw(delta, db)
+    _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
         db.rectMode(CENTER);
         db.fill(this.fillColor.getP5Color());

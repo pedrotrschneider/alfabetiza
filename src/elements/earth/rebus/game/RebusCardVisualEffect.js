@@ -21,10 +21,12 @@
 
 class RebusCardVisualEffect extends Object2D
 {
+    /** @type {number} */
     glowIterations = 7;
+    /** @type {number} */
     glowAmount = 0;
 
-    _draw(delta, db)
+    _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
         db.rectMode(CENTER);
         if (this.parent.selected)
