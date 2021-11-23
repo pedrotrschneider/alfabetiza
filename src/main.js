@@ -30,9 +30,6 @@ GameHandler._setup = function()
     GameHandler.drawDebugBufferBounds(true);
     // textFont(AssetHandler.getP5FontByName("Lato"));
 
-    var fh = new FoodHuntGame("FoodHunGame");
-    GameHandler.addRootObject(fh);
-
-    // var menu = new EelementSelector("ElementSelector");
-    // GameHandler.addRootObject(menu);
+    var menu = new EelementSelector("ElementSelector");
+    GameHandler.addRootObject(menu);
 }

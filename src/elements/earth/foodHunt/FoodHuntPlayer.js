@@ -5,7 +5,7 @@ class FoodHuntPlayer extends Object2D
 
     _setup()
     {
-        this.setPosition(1920 / 2, 1080 - 300);
+        this.setPosition(1920 / 2, 1080 - 200);
     }
 
     _update( /** @type {Number} */ delta)
@@ -19,8 +19,6 @@ class FoodHuntPlayer extends Object2D
     {
         db.rectMode(CENTER);
         db.rect(0, 0, 100, 200);
-        db.fill(200);
-        db.rect(0, 0, 110, 110);
 
         this.position.x += 400 * this.direction * delta;
         if (this.position.x >= 1920 - 50) this.position.x = 1920 - 55;

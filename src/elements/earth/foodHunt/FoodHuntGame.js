@@ -9,6 +9,10 @@ class FoodHuntGame extends Object2D
     tree = null;
     /** @type {Object2D} */
     fruits = null;
+    /** @type {FoodHuntBasket} */
+    basket = null;
+    /** @type {FoodHuntDialogue} */
+    dialogue = null;
 
     /** @type {Timer} */
     initialTimer = null;
@@ -16,14 +20,21 @@ class FoodHuntGame extends Object2D
     gameTimer = null;
     /** @type {Timer} */
     fruitsTimer = null;
+    /** @type {Timer} */
+    endGameTimer = null;
 
     /** @type {Boolean} */
     gameStarted = false;
     /** @type {Boolean} */
     gameEnded = false;
 
+    /** @type {Number} */
+    points = 0;
+
     _setup()
     {
+        this.drawOnTopOfChildren = true;
+
         // Create back button
         this.backButton = new Button("BackButton");
         this.backButton.setLabel("Voltar");
@@ -36,24 +47,37 @@ class FoodHuntGame extends Object2D
         this.tree = new FoodHuntTree("Tree");
         this.addChild(this.tree);
 
-        this.fruits = new Object2D("Fruits");
-        this.addChild(this.fruits);
-
         this.player = new FoodHuntPlayer("Player");
         this.player.updatePaused = true;
         this.addChild(this.player);
+
+        this.fruits = new Object2D("Fruits");
+        this.fruits.setPosition(1920 / 2, -100);
+        this.addChild(this.fruits);
+
+        this.basket = new FoodHuntBasket("Basket");
+        this.basket.player = this.player;
+        this.addChild(this.basket);
+
+        this.dialogue = new FoodHuntDialogue("Dialogue");
+        this.dialogue.connect("dialogueFinished", this, "_onDialogueFinished");
+        this.addChild(this.dialogue);
 
         this.initialTimer = new Timer("InitialTimer", 4, true, true);
         this.initialTimer.connect("timeout", this, "_onInitialTimerTimeout");
         this.addChild(this.initialTimer);
 
-        this.gameTimer = new Timer("GameTimer", 60, false, true);
+        this.gameTimer = new Timer("GameTimer", 10, false, true);
         this.gameTimer.connect("timeout", this, "_onGameTimerTimeout");
         this.addChild(this.gameTimer);
 
         this.fruitsTimer = new Timer("FruitsTimer", 1, false, true);
         this.fruitsTimer.connect("timeout", this, "_onFruitsTimerTimeout");
         this.addChild(this.fruitsTimer);
+
+        this.endGameTimer = new Timer("EndGametimer", 1, false, true);
+        this.endGameTimer.connect("timeout", this, "_onEndGameTimerTimeout");
+        this.addChild(this.endGameTimer);
     }
 
     _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
@@ -75,13 +99,15 @@ class FoodHuntGame extends Object2D
             }
 
         }
-        else if (!this.gameEnded)
-        {
-            db.textAlign(RIGHT, TOP);
-            db.fill(255);
-            db.textSize(75);
-            db.text(`${int(this.gameTimer.timeLeft - 0.0001 + 1)}`, 1920 - 10, 0 + 10);
-        }
+        db.textAlign(RIGHT, TOP);
+        db.fill(255);
+        db.textSize(50);
+
+        if (!this.gameEnded)
+            db.text(`t: ${int(this.gameTimer.timeLeft - 0.0001 + 1)}`, 1920 - 10, 10);
+        else
+            db.text(`t: 0`, 1920 - 10, 10);
+        db.text(`p: ${this.points}`, 1920 - 10, 60);
     }
 
     _onBackClicked()
@@ -97,18 +123,41 @@ class FoodHuntGame extends Object2D
         this.player.updatePaused = false;
         this.gameTimer.start();
         this.fruitsTimer.start();
-        console.log("start");
     }
 
     _onFruitsTimerTimeout()
     {
-        console.log("fruit fell");
+        var newFruit = new FoodHuntFruit("Fruit");
+        newFruit.position.x = random(-550, 550);
+        newFruit.basket = this.basket;
+        newFruit.connect("collected", this, "_onFruitCollected");
+        this.fruits.addChild(newFruit);
         this.fruitsTimer.start(random(3, 4));
+    }
+
+    _onFruitCollected()
+    {
+        this.points += 3;
     }
 
     _onGameTimerTimeout()
     {
         this.gameEnded = true;
-        console.log("game ended");
+        this.fruitsTimer.stop();
+        this.endGameTimer.start(2);
+    }
+
+    _onEndGameTimerTimeout()
+    {
+        this.player.updatePaused = true;
+        this.player.direction = 0;
+        this.dialogue._initDialogue();
+    }
+
+    _onDialogueFinished()
+    {
+        var ems = new EarthMinigameSelector("EarthMinigameSelector");
+        GameHandler.addRootObject(ems);
+        this.queueFree();
     }
 }
