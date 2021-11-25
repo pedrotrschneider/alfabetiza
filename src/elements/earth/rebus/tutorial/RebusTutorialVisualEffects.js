@@ -21,12 +21,17 @@
 
 class RebusTutorialVisualEffects extends Object2D
 {
-    /** @type {String} */
-    text = "";
-    /** @type {Number} */
-    bgOpacity = 0;
-    /** @type {Number} */
-    textOpacity = 0;
+    constructor(name)
+    {
+        super(name);
+
+        /** @type {String} */
+        this.text = "";
+        /** @type {Number} */
+        this.bgOpacity = 0;
+        /** @type {Number} */
+        this.textOpacity = 0;
+    }
 
     _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {

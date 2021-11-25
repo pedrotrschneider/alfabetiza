@@ -21,10 +21,15 @@
 
 class RebusCardVisualEffect extends Object2D
 {
-    /** @type {number} */
-    glowIterations = 7;
-    /** @type {number} */
-    glowAmount = 0;
+    constructor(name)
+    {
+        super(name);
+
+        /** @type {number} */
+        this.glowIterations = 7;
+        /** @type {number} */
+        this.glowAmount = 0;
+    }
 
     _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {

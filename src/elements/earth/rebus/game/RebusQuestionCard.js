@@ -21,15 +21,20 @@
 
 class RebusQuestionCard extends Object2D
 {
-    /** @type {TextureRes} */
-    thumb = null;
-    /** @type {String} */
-    imgName = "";
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {Color} */
-    fillColor = new Color(200, 200, 200);
-    /** @type {Tween} */
-    tween = null;
+        /** @type {TextureRes} */
+        this.thumb = null;
+        /** @type {String} */
+        this.imgName = "";
+    
+        /** @type {Color} */
+        this.fillColor = new Color(200, 200, 200);
+        /** @type {Tween} */
+        this.tween = null;
+    }
 
     _setup()
     {

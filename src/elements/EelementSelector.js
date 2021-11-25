@@ -1,15 +1,20 @@
 class EelementSelector extends Object2D
 {
-    /** @type {Button} */
-    backButton = null;
-    /** @type {Button} */
-    earthButton = null;
-    /** @type {Button} */
-    waterButton = null;
-    /** @type {Button} */
-    fireButton = null;
-    /** @type {Button} */
-    airButton = null;
+    constructor(name)
+    {
+        super(name);
+
+        /** @type {Button} */
+        this.backButton = null;
+        /** @type {Button} */
+        this.earthButton = null;
+        /** @type {Button} */
+        this.waterButton = null;
+        /** @type {Button} */
+        this.fireButton = null;
+        /** @type {Button} */
+        this.airButton = null;
+    }
 
     _setup()
     {

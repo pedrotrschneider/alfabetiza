@@ -1,26 +1,31 @@
 class LetterHuntGame extends Object2D
 {
-    /** @type {Button} */
-    backButton = null;
-    /** @type {Object2D} */
-    plants = null;
-    /** @type {LetterHuntDialogue} */
-    dialogue = null;
-    /** @type {Timer} */
-    initialTimer = null;
-    /** @type {Timer} */
-    roundTimer = null;
-    /** @type {Timer} */
-    gameTimer = null;
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {Boolean} */
-    gameStarted = false;
-    /** @type {Boolean} */
-    gameEnded = false;
-    /** @type {Number} */
-    points = 0;
-    /** @type {String} */
-    answerLetter = "";
+        /** @type {Button} */
+        this.backButton = null;
+        /** @type {Object2D} */
+        this.plants = null;
+        /** @type {LetterHuntDialogue} */
+        this.dialogue = null;
+        /** @type {Timer} */
+        this.initialTimer = null;
+        /** @type {Timer} */
+        this.roundTimer = null;
+        /** @type {Timer} */
+        this.gameTimer = null;
+
+        /** @type {Boolean} */
+        this.gameStarted = false;
+        /** @type {Boolean} */
+        this.gameEnded = false;
+        /** @type {Number} */
+        this.points = 0;
+        /** @type {String} */
+        this.answerLetter = "";
+    }
 
     _setup()
     {

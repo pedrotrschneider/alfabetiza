@@ -1,35 +1,40 @@
 class FoodHuntGame extends Object2D
 {
-    /** @type {Button} */
-    backButton = null;
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {FoodHuntPlayer} */
-    player = null;
-    /** @type {FoodHuntTree} */
-    tree = null;
-    /** @type {Object2D} */
-    fruits = null;
-    /** @type {FoodHuntBasket} */
-    basket = null;
-    /** @type {FoodHuntDialogue} */
-    dialogue = null;
-
-    /** @type {Timer} */
-    initialTimer = null;
-    /** @type {Timer} */
-    gameTimer = null;
-    /** @type {Timer} */
-    fruitsTimer = null;
-    /** @type {Timer} */
-    endGameTimer = null;
-
-    /** @type {Boolean} */
-    gameStarted = false;
-    /** @type {Boolean} */
-    gameEnded = false;
-
-    /** @type {Number} */
-    points = 0;
+        /** @type {Button} */
+        this.backButton = null;
+    
+        /** @type {FoodHuntPlayer} */
+        this.player = null;
+        /** @type {FoodHuntTree} */
+        this.tree = null;
+        /** @type {Object2D} */
+        this.fruits = null;
+        /** @type {FoodHuntBasket} */
+        this.basket = null;
+        /** @type {FoodHuntDialogue} */
+        this.dialogue = null;
+    
+        /** @type {Timer} */
+        this.initialTimer = null;
+        /** @type {Timer} */
+        this.gameTimer = null;
+        /** @type {Timer} */
+        this.fruitsTimer = null;
+        /** @type {Timer} */
+        this.endGameTimer = null;
+    
+        /** @type {Boolean} */
+        this.gameStarted = false;
+        /** @type {Boolean} */
+        this.gameEnded = false;
+    
+        /** @type {Number} */
+        this.points = 0;
+    }
 
     _setup()
     {

@@ -21,26 +21,33 @@
 
 class RebusTutorial extends Object2D
 {
-    /** @type {Object} */
-    levelData = null;
-    /** @type {Boolean} */
-    gameFinished = false;
-    /** @type {Number} */
-    points = 3;
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {Button} */
-    backButton = null;
-    continueButton = null;
-    timer = null;
-
-    /** @type {Number} */
-    tutorialStep = 0;
-    /** @type {Array} */
-    questionCards = [];
-    /** @type {Array} */
-    optionCards = [];
-    /** @type {Number} */
-    answerIdx = 0;
+        /** @type {Object} */
+        this.levelData = null;
+        /** @type {Boolean} */
+        this.gameFinished = false;
+        /** @type {Number} */
+        this.points = 3;
+    
+        /** @type {Button} */
+        this.backButton = null;
+        /** @type {Button} */
+        this.continueButton = null;
+        /** @type {Timer} */
+        this.timer = null;
+    
+        /** @type {Number} */
+        this.tutorialStep = 0;
+        /** @type {Array} */
+        this.questionCards = [];
+        /** @type {Array} */
+        this.optionCards = [];
+        /** @type {Number} */
+        this.answerIdx = 0;
+    }
 
     _setup()
     {

@@ -21,19 +21,24 @@
 
 class RebusGameVisualEffects extends Object2D
 {
-    /** @type {String} */
-    suffix = "";
-    /** @type {number} */
-    bgOpacity = 0;
-    /** @type {number} */
-    textOpacity = 0;
+    constructor(name)
+    {
+        super(name);
+
+        /** @type {String} */
+        this.suffix = "";
+        /** @type {number} */
+        this.bgOpacity = 0;
+        /** @type {number} */
+        this.textOpacity = 0;
+    }
 
     _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
         if (this.parent.gameFinished)
         {
             db.noStroke();
-            db.fill(0, min(this.bgOpacity +=  75 * delta, 200));
+            db.fill(0, min(this.bgOpacity += 75 * delta, 200));
             db.rectMode(CENTER);
             db.rect(db.width / 2, db.height / 2, 1800, 600, 40, 40);
             db.textAlign(CENTER, CENTER);

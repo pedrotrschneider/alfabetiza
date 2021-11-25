@@ -21,30 +21,35 @@
 
 class RebusOptionCard extends Object2D
 {
-    /** @type {TextureRes} */
-    thumb = null;
-    /** @type {String} */
-    imgName = "";
-    /** @type {Boolean} */
-    isAnswer = false;
-    /** @type {Boolean} */
-    selected = false;
-    /** @type {Boolean} */
-    selectable = true;
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {Color} */
-    fillColor = new Color(200, 200, 200);
-    /** @type {Boolean} */
-    mouseOver = false;
-    /** @type  {Boolean} */
-    mousePress = false;
-
-    /** @type {Boolean} */
-    tweenStarted = false;
-    /** @type {Tween} */
-    tween = null;
-    /** @type {Timer} */
-    timer = null;
+        /** @type {TextureRes} */
+        this.thumb = null;
+        /** @type {String} */
+        this.imgName = "";
+        /** @type {Boolean} */
+        this.isAnswer = false;
+        /** @type {Boolean} */
+        this.selected = false;
+        /** @type {Boolean} */
+        this.selectable = true;
+    
+        /** @type {Color} */
+        this.fillColor = new Color(200, 200, 200);
+        /** @type {Boolean} */
+        this.mouseOver = false;
+        /** @type  {Boolean} */
+        this.mousePress = false;
+    
+        /** @type {Boolean} */
+        this.tweenStarted = false;
+        /** @type {Tween} */
+        this.tween = null;
+        /** @type {Timer} */
+        this.timer = null;
+    }
 
     _initSignals()
     {

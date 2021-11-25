@@ -1,7 +1,12 @@
 class FoodHuntBasket extends Object2D
 {
-    /** @type {FoodHuntPlayer} */
-    player = null;
+    constructor(name)
+    {
+        super(name);
+
+        /** @type {FoodHuntPlayer} */
+        this.player = null;
+    }
 
     _update( /** @type {Number} */ delta)
     {

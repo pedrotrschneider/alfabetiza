@@ -21,8 +21,13 @@
 
 class RebusLevelButton extends Button
 {
-    /** @type {Object} */
-    levelData = null;
+    constructor(name)
+    {
+        super(name);
+
+        /** @type {Object} */
+        this.levelData = null;
+    }
 
     _initSignals()
     {

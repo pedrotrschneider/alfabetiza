@@ -1,19 +1,24 @@
 class LetterHuntDialogue extends Object2D
 {
-    /** @type {String} */
-    text = ``;
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {Number} */
-    bgOpacity = 0;
-    /** @type {Number} */
-    textOpacity = 0;
-
-    /** @type {Button} */
-    continueButton = null;
-    /** @type {Tween} */
-    tween = null;
-    /** @type {Timer} */
-    buttonTimer = null;
+        /** @type {String} */
+        this.text = ``;
+    
+        /** @type {Number} */
+        this.bgOpacity = 0;
+        /** @type {Number} */
+        this.textOpacity = 0;
+    
+        /** @type {Button} */
+        this.continueButton = null;
+        /** @type {Tween} */
+        this.tween = null;
+        /** @type {Timer} */
+        this.buttonTimer = null;
+    }
 
     _initSignals()
     {
@@ -43,7 +48,7 @@ class LetterHuntDialogue extends Object2D
 
     _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
-        this.text = `ACABOU O JOGO!\nVOCÊ GANHOU ${this.parent.points} PONTOS!`;
+        this.text = `ACABOU O JOGO!\n\nVOCÊ GANHOU ${this.parent.points} PONTOS!`;
         db.noStroke();
         db.fill(0, this.bgOpacity);
         db.rectMode(CENTER);

@@ -1,23 +1,28 @@
 class EarthMinigameSelector extends Object2D
 {
-    /** @type {Button} */
-    backButton = null;
-    /** @type {Button} */
-    foodHuntButton = null;
-    /** @type {Button} */
-    letterHuntButton = null;
-    /** @type {Button} */
-    acrofonyButton = null;
-    /** @type {Button} */
-    valise1Button = null;
-    /** @type {Button} */
-    valise2Button = null;
-    /** @type {Button} */
-    valise3Button = null;
-    /** @type {Button} */
-    rebusButton = null;
-    /** @type {Button} */
-    guessButton = null;
+    constructor(name)
+    {
+        super(name);
+
+        /** @type {Button} */
+        this.backButton = null;
+        /** @type {Button} */
+        this.foodHuntButton = null;
+        /** @type {Button} */
+        this.letterHuntButton = null;
+        /** @type {Button} */
+        this.acrofonyButton = null;
+        /** @type {Button} */
+        this.valise1Button = null;
+        /** @type {Button} */
+        this.valise2Button = null;
+        /** @type {Button} */
+        this.valise3Button = null;
+        /** @type {Button} */
+        this.rebusButton = null;
+        /** @type {Button} */
+        this.guessButton = null;
+    }
 
     _setup()
     {

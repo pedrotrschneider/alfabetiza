@@ -1,18 +1,23 @@
 class FoodHuntFruit extends Object2D
 {
-    /** @type {Number} */
-    G = 10;
-
-    /** @type {FoodHuntBasket} */
-    basket = null;
-    /** @type {Color} */
-    color = new Color(0, 0, 0);
-    /** @type {Number} */
-    r = 50;
-    /** @type {Number} */
-    fallVel = 0;
-    /** @type {Boolean} */
-    collected = false;
+    constructor(name)
+    {
+        super(name);
+        
+        /** @type {Number} */
+        this.G = 10;
+    
+        /** @type {FoodHuntBasket} */
+        this.basket = null;
+        /** @type {Color} */
+        this.color = new Color(0, 0, 0);
+        /** @type {Number} */
+        this.r = 50;
+        /** @type {Number} */
+        this.fallVel = 0;
+        /** @type {Boolean} */
+        this.collected = false;
+    }
 
     _initSignals()
     {

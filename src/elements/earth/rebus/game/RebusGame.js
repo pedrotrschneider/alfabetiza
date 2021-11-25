@@ -21,19 +21,24 @@
 
 class RebusGame extends Object2D
 {
-    /** @type {Object} */
-    levelData = null;
-    /** @type {Boolean} */
-    gameFinished = false;
-    /** @type {number} */
-    points = 3;
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {Button} */
-    backButton = null;
-    /** @type {Button} */
-    continueButton = null;
-    /** @type {Button} */
-    timer = null;
+        /** @type {Object} */
+        this.levelData = null;
+        /** @type {Boolean} */
+        this.gameFinished = false;
+        /** @type {number} */
+        this.points = 3;
+    
+        /** @type {Button} */
+        this.backButton = null;
+        /** @type {Button} */
+        this.continueButton = null;
+        /** @type {Button} */
+        this.timer = null;
+    }
 
     _setup()
     {

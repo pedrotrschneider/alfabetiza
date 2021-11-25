@@ -1,21 +1,26 @@
 class LetterHuntPlant extends Object2D
 {
-    /** @type {String} */
-    letter = "";
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {Area2D} */
-    area = null;
-    /** @type {Boolean} */
-    mouseOver = false;
-    /** @type {Boolean} */
-    mosueIsDown = false;
-    /** @type {Boolean} */
-    selected = false;
-    /** @type {Boolean} */
-    selectable = true;
-
-    /** @type {Number} */
-    growSpeed = 2;
+        /** @type {String} */
+        this.letter = "";
+    
+        /** @type {Area2D} */
+        this.area = null;
+        /** @type {Boolean} */
+        this.mouseOver = false;
+        /** @type {Boolean} */
+        this.mosueIsDown = false;
+        /** @type {Boolean} */
+        this.selected = false;
+        /** @type {Boolean} */
+        this.selectable = true;
+    
+        /** @type {Number} */
+        this.growSpeed = 2;
+    }
 
     _initSignals()
     {

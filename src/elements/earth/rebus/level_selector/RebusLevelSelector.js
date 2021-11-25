@@ -21,16 +21,21 @@
 
 class RebusLevelSelector extends Object2D
 {
-    /** @type {Object} */
-    gridMargins = {
-        left: 0,
-        right: 0,
-        up: 500,
-        down: 0
-    };
+    constructor(name)
+    {
+        super(name);
 
-    /** @type {number} */
-    gridCols = 5;
+        /** @type {Object} */
+        this.gridMargins = {
+            left: 0,
+            right: 0,
+            up: 500,
+            down: 0
+        };
+    
+        /** @type {number} */
+        this.gridCols = 5;
+    }
 
     _setup()
     {

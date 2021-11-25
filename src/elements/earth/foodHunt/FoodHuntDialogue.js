@@ -1,23 +1,28 @@
 class FoodHuntDialogue extends Object2D
 {
-    /** @type {String} */
-    text1 = "Você conhece alguma árvore que dá tantos frutos diferentes assim?";
-    /** @type {String} */
-    text2 = " Já ouviu falar na grande árvore do Tamoromu? Converse com sua professora."
+    constructor(name)
+    {
+        super(name);
+        
+        /** @type {String} */
+        this.text1 = "Você conhece alguma árvore que dá tantos frutos diferentes assim?";
+        /** @type {String} */
+        this.text2 = " Já ouviu falar na grande árvore do Tamoromu? Converse com sua professora."
 
-    /** @type {Number} */
-    bgOpacity = 0;
-    /** @type {Number} */
-    text1Opacity = 0;
-    /** @type {Number} */
-    text2Opacity = 0;
+        /** @type {Number} */
+        this.bgOpacity = 0;
+        /** @type {Number} */
+        this.text1Opacity = 0;
+        /** @type {Number} */
+        this.text2Opacity = 0;
 
-    /** @type {Button} */
-    continueButton = null;
-    /** @type {Tween} */
-    tween = null;
-    /** @type {Timer} */
-    buttonTimer = null;
+        /** @type {Button} */
+        this.continueButton = null;
+        /** @type {Tween} */
+        this.tween = null;
+        /** @type {Timer} */
+        this.buttonTimer = null;
+    }
 
     _initSignals()
     {

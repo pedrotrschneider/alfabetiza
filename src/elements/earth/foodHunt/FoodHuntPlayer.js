@@ -1,7 +1,12 @@
 class FoodHuntPlayer extends Object2D
 {
-    /** @type {Number} */
-    direction = 0;
+    constructor(name)
+    {
+        super(name);
+
+        /** @type {Number} */
+        this.direction = 0;
+    }
 
     _setup()
     {
