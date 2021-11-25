@@ -22,7 +22,6 @@ class LetterHuntDialogue extends Object2D
 
     _setup()
     {
-        this.text = `ACABOU O JOGO!\nVOCÊ GANHOU ${this.parent.points} PONTOS!`;
 
         this.setPosition(1920 / 2, 1080 - 300);
         this.continueButton = new Button("Continue", "Continuar")
@@ -44,6 +43,7 @@ class LetterHuntDialogue extends Object2D
 
     _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
     {
+        this.text = `ACABOU O JOGO!\nVOCÊ GANHOU ${this.parent.points} PONTOS!`;
         db.noStroke();
         db.fill(0, this.bgOpacity);
         db.rectMode(CENTER);
