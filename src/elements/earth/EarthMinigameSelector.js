@@ -129,7 +129,9 @@ class EarthMinigameSelector extends Object2D
 
     _onLetterHuntSelected()
     {
-        console.log("Letter hunt has been selected");
+        var lh = new LetterHuntGame("LetterHunt");
+        GameHandler.addRootObject(lh);
+        this.queueFree();
     }
 
     _onAcrofonySelected()

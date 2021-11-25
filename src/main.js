@@ -30,6 +30,8 @@ GameHandler._setup = function()
     GameHandler.drawDebugBufferBounds(true);
     // textFont(AssetHandler.getP5FontByName("Lato"));
 
+    // var lh = new LetterHuntGame("LetterHunt");
+    // GameHandler.addRootObject(lh);
     var menu = new EelementSelector("ElementSelector");
     GameHandler.addRootObject(menu);
 }

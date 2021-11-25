@@ -3,12 +3,12 @@ class FoodHuntBasket extends Object2D
     /** @type {FoodHuntPlayer} */
     player = null;
 
-    _update()
+    _update( /** @type {Number} */ delta)
     {
         this.position = this.player.position;
     }
 
-    _draw( /** @type {number} */ delta, /** @type {p5.Graphics} */ db)
+    _draw( /** @type {Number} */ delta, /** @type {p5.Graphics} */ db)
     {
         db.rectMode(CENTER);
         db.fill(200);

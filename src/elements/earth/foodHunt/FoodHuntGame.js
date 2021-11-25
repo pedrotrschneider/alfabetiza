@@ -67,7 +67,7 @@ class FoodHuntGame extends Object2D
         this.initialTimer.connect("timeout", this, "_onInitialTimerTimeout");
         this.addChild(this.initialTimer);
 
-        this.gameTimer = new Timer("GameTimer", 10, false, true);
+        this.gameTimer = new Timer("GameTimer", 60, false, true);
         this.gameTimer.connect("timeout", this, "_onGameTimerTimeout");
         this.addChild(this.gameTimer);
 
