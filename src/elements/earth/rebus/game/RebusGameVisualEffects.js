@@ -27,9 +27,9 @@ class RebusGameVisualEffects extends Object2D
 
         /** @type {String} */
         this.suffix = "";
-        /** @type {number} */
+        /** @type {Number} */
         this.bgOpacity = 0;
-        /** @type {number} */
+        /** @type {Number} */
         this.textOpacity = 0;
     }
 
@@ -45,7 +45,7 @@ class RebusGameVisualEffects extends Object2D
             db.fill(255, min(this.textOpacity += 80 * delta, 255));
             db.textSize(40);
             this.parent.points > 1 ? this.suffix = "S" : this.suffix = "";
-            db.text(`PARABÉNS, NÍVEL CONCLUÍDO\nVOCÊ GANHOU ${this.parent.points} PONTO${this.suffix}!`, db.width / 2, db.height / 2 - 100);
+            db.text(`PARABÉNS, NÍVEL CONCLUÍDO\n\nVOCÊ GANHOU ${this.parent.points} PONTO${this.suffix}!`, db.width / 2, db.height / 2 - 100);
         }
     }
 }

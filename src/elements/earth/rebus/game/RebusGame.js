@@ -31,13 +31,18 @@ class RebusGame extends Object2D
         this.gameFinished = false;
         /** @type {number} */
         this.points = 3;
-    
+
         /** @type {Button} */
         this.backButton = null;
         /** @type {Button} */
         this.continueButton = null;
         /** @type {Button} */
         this.timer = null;
+    }
+
+    _initSignals()
+    {
+        this.addSignal("slected");
     }
 
     _setup()

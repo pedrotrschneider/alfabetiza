@@ -28,10 +28,13 @@ GameHandler._setup = function()
 {
     GameHandler.drawDebugFPS(true);
     GameHandler.drawDebugBufferBounds(true);
-    // textFont(AssetHandler.getP5FontByName("Lato"));
+    textFont("Lato");
 
-    // var lh = new LetterHuntGame("LetterHunt");
-    // GameHandler.addRootObject(lh);
+    // var ag = new AcrofonyGame("AcrofonyGame");
+    // GameHandler.addRootObject(ag);
+
+    // var alm = new AcrofonyLevelManager("AcrofonyLevelManager");
+    // GameHandler.addRootObject(alm);
     var menu = new EelementSelector("ElementSelector");
     GameHandler.addRootObject(menu);
 }

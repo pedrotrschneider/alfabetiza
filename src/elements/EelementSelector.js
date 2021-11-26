@@ -18,6 +18,7 @@ class EelementSelector extends Object2D
 
     _setup()
     {
+        
         this.backButton = new Button("BackButton");
         this.backButton.setLabel("Voltar");
         this.backButton.setFontSize(30);
@@ -25,7 +26,7 @@ class EelementSelector extends Object2D
         this.backButton.setSize(110, 75);
         this.backButton.connect("mouseClicked", this, "_onBackClicked");
         this.addChild(this.backButton);
-
+        
         var buttonSize = new Vector2(1920 / 4, 1080 / 4);
         var buttonPosition = new Vector2(1920 / 2, 1080 / 2 + 100);
         var buttonMargin = new Vector2(50, 50);

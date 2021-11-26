@@ -1,323 +1,323 @@
 var ACROFONY_LEVELS = {
     tutorial:
     {
-        path: "assets/textures/glasses.png",
-        name: "Rrelógio",
-        syllable: ["RE", "LO", "GI"],
+        path: "assets/textures/monke.png",
+        name: "Relógio",
+        syllables: ["RE", "LO", "GI"],
     },
 
     level1:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Dedo",
-        syllable: ["DE", "DO", "DA"],
+        syllables: ["DE", "DO", "DA"],
     },
 
     level2:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Cueca",
-        syllable: ["CU", "E", "CA"],
+        syllables: ["CU", "E", "CA"],
     },
 
     level3:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Tigre",
-        syllable: ["TI", "GRE", "TO"],
+        syllables: ["TI", "GRE", "TO"],
     },
 
     level4:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Abelha",
-        syllable: ["A", "BE", "LHA"],
+        syllables: ["A", "BE", "LHA"],
     },
 
     level5:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Macaco",
-        syllable: ["MA", "CA", "CO"],
+        syllables: ["MA", "CA", "CO"],
     },
 
     level6:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Tomate",
-        syllable: ["TO", "MA", "TE"],
+        syllables: ["TO", "MA", "TE"],
     },
 
     level7:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Óculos",
-        syllable: ["Ó", "CU", "LOS"],
+        syllables: ["Ó", "CU", "LOS"],
     },
 
     level8:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Casa",
-        syllable: ["CA", "CO", "SA"],
+        syllables: ["CA", "CO", "SA"],
     },
 
     level9:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Unha",
-        syllable: ["U", "O", "NHA"],
+        syllables: ["U", "O", "NHA"],
     },
 
     level10:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Vaca",
-        syllable: ["VA", "VE", "CA"],
+        syllables: ["VA", "VE", "CA"],
     },
 
     level11:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Foca",
-        syllable: ["FO", "FA", "CA"],
+        syllables: ["FO", "FA", "CA"],
     },
 
     level12:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Mesa",
-        syllable: ["ME", "MA", "SA"],
+        syllables: ["ME", "MA", "SA"],
     },
 
     level13:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Cavalo",
-        syllable: ["CA", "LO", "VA"],
+        syllables: ["CA", "LO", "VA"],
     },
 
     level14:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Juba",
-        syllable: ["JU", "BA", "UVA"],
+        syllables: ["JU", "BA", "UVA"],
     },
 
     level15:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Pena",
-        syllable: ["PE", "NE", "NA"],
+        syllables: ["PE", "NE", "NA"],
     },
 
     level16:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Rato",
-        syllable: ["RA", "RU", "TO"],
+        syllables: ["RA", "RU", "TO"],
     },
 
     level17:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Maçã",
-        syllable: ["MA", "MI", "ÇÃ"],
+        syllables: ["MA", "MI", "ÇÃ"],
     },
 
     level18:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Chave",
-        syllable: ["CHA", "VO", "VE"],
+        syllables: ["CHA", "VO", "VE"],
     },
 
     level19:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Dominó",
-        syllable: ["DO", "MI", "NÓ"],
+        syllables: ["DO", "MI", "NÓ"],
     },
 
     level20:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Toalha",
-        syllable: ["TO", "A", "LHA"],
+        syllables: ["TO", "A", "LHA"],
     },
 
     level21:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Mato",
-        syllable: ["MA", "TO", "TU"],
+        syllables: ["MA", "TO", "TU"],
     },
 
     level22:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Telefone",
-        syllable: ["TE", "LE", "FO"],
+        syllables: ["TE", "LE", "FO"],
     },
 
     level23:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Avião",
-        syllable: ["A", "VI", "ÃO"],
+        syllables: ["A", "VI", "ÃO"],
     },
 
     level24:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Banana",
-        syllable: ["BA", "NA", "NE"],
+        syllables: ["BA", "NA", "NE"],
     },
 
     level25:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Cadeira",
-        syllable: ["CA", "DEI", "RA"],
+        syllables: ["CA", "DEI", "RA"],
     },
 
     level26:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Xícara",
-        syllable: ["XÍ", "CA", "RA"],
+        syllables: ["XÍ", "CA", "RA"],
     },
 
     level27:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Baleia",
-        syllable: ["BA", "LEI", "A"],
+        syllables: ["BA", "LEI", "A"],
     },
 
     level28:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Tatu",
-        syllable: ["TA", "TU", "TO"],
+        syllables: ["TA", "TU", "TO"],
     },
 
     level29:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Tapete",
-        syllable: ["TA", "PE", "TE"],
+        syllables: ["TA", "PE", "TE"],
     },
 
     level30:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Anel",
-        syllable: ["A", "NEL", "LA"],
+        syllables: ["A", "NEL", "LA"],
     },
 
     level31:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Batata",
-        syllable: ["BA", "TA", "TO"],
+        syllables: ["BA", "TA", "TO"],
     },
 
     level32:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Caju",
-        syllable: ["CA", "JU", "JO"],
+        syllables: ["CA", "JU", "JO"],
     },
 
     level33:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Tesoura",
-        syllable: ["TE", "SOU", "RA"],
+        syllables: ["TE", "SOU", "RA"],
     },
 
     level34:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Cebola",
-        syllable: ["CE", "BO", "LA"],
+        syllables: ["CE", "BO", "LA"],
     },
 
     level35:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Noiva",
-        syllable: ["NO", "VA", "VI"],
+        syllables: ["NO", "VA", "VI"],
     },
 
     level36:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Uva",
-        syllable: ["U", "O", "VA"],
+        syllables: ["U", "O", "VA"],
     },
 
     level37:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Raio",
-        syllable: ["RA", "TO", "IO"],
+        syllables: ["RA", "TO", "IO"],
     },
 
     level38:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Macaco",
-        syllable: ["MA", "CO", "CA"],
+        syllables: ["MA", "CO", "CA"],
     },
 
     level39:
     {
-        path: "assets/textures/glasses.png",
-        name: "Caju",
-        syllable: ["RA", "TO", "TA"],
+        path: "assets/textures/monke.png",
+        name: "Rato",
+        syllables: ["RA", "TO", "TA"],
     },
 
     level40:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Cutia",
-        syllable: ["CU", "TI", "A"],
+        syllables: ["CU", "TI", "A"],
     },
 
     level41:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Jacaré",
-        syllable: ["JA", "CA", "RÉ"],
+        syllables: ["JA", "CA", "RÉ"],
     },
 
     level42:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Janela",
-        syllable: ["JA", "NE", "LA"],
+        syllables: ["JA", "NE", "LA"],
     },
 
     level43:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Bule",
-        syllable: ["BU", "LE", "LO"],
+        syllables: ["BU", "LE", "LO"],
     },
 
     level44:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Bala",
-        syllable: ["BA", "BO", "LA"],
+        syllables: ["BA", "BO", "LA"],
     },
 
     level45:
     {
-        path: "assets/textures/glasses.png",
+        path: "assets/textures/monke.png",
         name: "Rei",
-        syllable: ["RE", "LO", "GI"],
+        syllables: ["RE", "LO", "GI"],
     },
 }

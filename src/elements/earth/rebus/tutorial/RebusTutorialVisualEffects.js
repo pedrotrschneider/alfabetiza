@@ -39,12 +39,12 @@ class RebusTutorialVisualEffects extends Object2D
         {
             case 0:
                 this.bgOpacity = min(this.bgOpacity + 150 * delta, 200);
-                this.textOpacity = min(this.bgOpacity + 150 * delta, 255);
+                this.textOpacity = min(this.textOpacity + 150 * delta, 255);
                 this.text = `Vamos ler rébus?\nRébus é uma palavra formada quando juntamos os primeiros\npedacinhos de outras palavras.\nVeja!`;
                 break;
             case 1:
                 this.bgOpacity = max(this.bgOpacity - 150 * delta, 0);
-                this.textOpacity = max(this.bgOpacity - 150 * delta, 0);
+                this.textOpacity = max(this.textOpacity - 150 * delta, 0);
                 this.text = `Vamos ler rébus?\nRébus é uma palavra formada quando juntamos os primeiros\npedacinhos de outras palavras.\nVeja!`;
                 break;
             case 2:
@@ -53,12 +53,12 @@ class RebusTutorialVisualEffects extends Object2D
                 break;
             case 3:
                 this.bgOpacity = min(this.bgOpacity + 150 * delta, 200);
-                this.textOpacity = min(this.bgOpacity + 150 * delta, 255);
+                this.textOpacity = min(this.textOpacity + 150 * delta, 255);
                 this.text = `Que palavra será formada ao juntarmos o começo dessas duas palavras?`;
                 break;
             case 4:
                 this.bgOpacity = max(this.bgOpacity - 150 * delta, 0);
-                this.textOpacity = max(this.bgOpacity - 150 * delta, 0);
+                this.textOpacity = max(this.textOpacity - 150 * delta, 0);
                 this.text = `Que palavra será formada ao juntarmos o começo dessas duas palavras?`;
                 break;
             case 5:
@@ -67,7 +67,7 @@ class RebusTutorialVisualEffects extends Object2D
                 break;
             case 7:
                 this.bgOpacity = min(this.bgOpacity + 150 * delta, 200);
-                this.textOpacity = min(this.bgOpacity + 150 * delta, 255);
+                this.textOpacity = min(this.textOpacity + 150 * delta, 255);
                 this.text = `Agora é sua vez!`;
                 break;
         }

@@ -141,7 +141,9 @@ class EarthMinigameSelector extends Object2D
 
     _onAcrofonySelected()
     {
-        console.log("Acrofony has been selected");
+        var alm = new AcrofonyLevelManager("AcrofonyLevelManager");
+        GameHandler.addRootObject(alm);
+        this.queueFree();
     }
 
     _onValise1Selected()
