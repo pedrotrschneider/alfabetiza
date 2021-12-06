@@ -30,11 +30,9 @@ GameHandler._setup = function()
     GameHandler.drawDebugBufferBounds(true);
     textFont("Lato");
 
-    // var ag = new AcrofonyGame("AcrofonyGame");
-    // GameHandler.addRootObject(ag);
+    // var vg = new Valise2LevelSelector("Valise2Game");
+    // GameHandler.addRootObject(vg);
 
-    // var alm = new AcrofonyLevelManager("AcrofonyLevelManager");
-    // GameHandler.addRootObject(alm);
     var menu = new EelementSelector("ElementSelector");
     GameHandler.addRootObject(menu);
 }

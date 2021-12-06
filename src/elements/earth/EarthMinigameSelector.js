@@ -1,3 +1,24 @@
+/************************************************************************
+ * EarthMinigameSelector.js
+ ************************************************************************
+ * Copyright (c) 2021 Pedro Tonini Rosenberg Schneider.
+ *
+ * This file is part of Alfabetiza.
+ *
+ * Alfabetiza is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Alfabetiza is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *     
+ * You should have received a copy of the GNU General Public License     
+ * along with Alfabetiza.  If not, see <https://www.gnu.org/licenses/>.
+ *************************************************************************/
+
 class EarthMinigameSelector extends Object2D
 {
     constructor(name)
@@ -148,17 +169,23 @@ class EarthMinigameSelector extends Object2D
 
     _onValise1Selected()
     {
-        console.log("Palavra valise 1 has been selected");
+        var vls = new Valise1LevelSelector("Valise1LevelSelector");
+        GameHandler.addRootObject(vls);
+        this.queueFree();
     }
 
     _onValise2Selected()
     {
-        console.log("Palavra valise 2 has been selected");
+        var vls = new Valise2LevelSelector("Valise2LevelSelector");
+        GameHandler.addRootObject(vls);
+        this.queueFree();
     }
 
     _onValise3Selected()
     {
-        console.log("Palavra valise 3 has been selected");
+        var vls = new Valise3LevelSelector("Valise3LevelSelector");
+        GameHandler.addRootObject(vls);
+        this.queueFree();
     }
 
     _onRebusSelected()
