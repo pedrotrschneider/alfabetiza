@@ -28,6 +28,7 @@ GameHandler._setup = function()
 {
     GameHandler.drawDebugFPS(true);
     GameHandler.drawDebugBufferBounds(true);
+    GameHandler.setPixelDensityMobile(1);
     textFont("Lato");
 
     // var vg = new Valise2LevelSelector("Valise2Game");
